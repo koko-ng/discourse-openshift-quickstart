@@ -1,0 +1,14 @@
+{{#conditional-loading-spinner condition=loading}}
+  {{#if topics}}
+    {{topic-list
+        showParticipants=showParticipants
+        hideCategory=hideCategory
+        topics=topics
+        expandExcerpts=expandExcerpts
+    }}
+  {{else}}
+    <div class='alert alert-info'>
+      {{i18n 'choose_topic.none_found'}}
+    </div>
+  {{/if}}
+{{/conditional-loading-spinner}}

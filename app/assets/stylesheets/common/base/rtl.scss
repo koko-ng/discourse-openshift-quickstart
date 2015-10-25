@@ -1,0 +1,58 @@
+// Right to left styles.
+// *** These styles are all going to be flipped by the r2 gem ***
+// Adding the !important declaration to a rule prevents it from being flipped.
+
+// Keep the topic admin menu on the page
+.rtl .popup-menu {
+  right: 0 !important;
+}
+
+// This is used to flip the .fa-caret-right icon
+@mixin rotate( $degrees ) {
+  -webkit-transform: rotate(#{$degrees}deg);
+  -moz-transform: rotate(#{$degrees}deg);
+  -ms-transform: rotate(#{$degrees}deg);
+  -o-transform: rotate(#{$degrees}deg);
+  transform: rotate(#{$degrees}deg);
+
+  filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)});
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})";
+  zoom: 1;
+}
+
+// Get the right caret to point left
+.rtl .fa-caret-right {
+  @include rotate(180);
+}
+
+// Changes the triangle arrow direction in .nav-stacked .active
+// The 'left' and 'right' in these selectors is not being flipped by r2.
+.rtl .nav-stacked .active > a::after {
+  border-left-color: transparent !important;
+  border-right-color: $secondary !important;
+}
+.rtl code {
+    direction: ltr !important;
+    text-align: left !important;
+}
+.rtl .pull-left {
+  float: right !important;
+}
+.rtl .autocomplete { 
+  left: 27px; 
+}
+
+.rtl .customize .current-style .toggle-mobile {
+position: static !important;
+float: left !important;
+}
+.rtl .customize .current-style .toggle-maximize {
+position: static !important;
+float: left !important;
+}
+.rtl .dashboard-left {
+  float: right !important;
+}
+.rtl .dashboard-right {
+  float: left !important;
+}

@@ -1,0 +1,81 @@
+#topic-title {
+
+  .title-wrapper {
+    float: left;
+    width: 90%;
+    .btn-small {
+      margin: 0 6px 0 0;
+    }
+
+    .badge-wrapper {
+      float: left;
+    }
+  }
+
+  a.badge-category {
+    margin-top: 5px;
+  }
+
+  a.edit-topic i { font-size: 0.8em; }
+}
+
+.topic-title-outlet {
+  clear: both;
+}
+
+.extra-info-wrapper {
+  .badge-wrapper {
+    float: left;
+    &.bullet {
+      margin-top: 5px;
+    }
+  }
+
+}
+
+.has-pending-posts {
+  padding: 0.5em;
+  background-color: dark-light-diff($highlight, $secondary, 50%, -70%);
+  a[href] {
+    float: right;
+  }
+}
+
+// Target the .badge-category text, the bullet icon needs to maintain `display: block`
+#suggested-topics h3 .badge-wrapper.bullet span.badge-category,
+#suggested-topics h3 .badge-wrapper.box span,
+#suggested-topics h3 .badge-wrapper.bar span {
+  display: inline;
+  overflow: inherit;
+}
+
+#suggested-topics h3 .badge-wrapper.bullet span.badge-category, {
+  // Override vertical-align: text-top from `badges.css.scss`
+  vertical-align: baseline;
+}
+
+#suggested-topics h3 .badge-wrapper.bullet,
+#suggested-topics h3 .badge-wrapper.bullet span.badge-category-parent-bg,
+#suggested-topics h3 .badge-wrapper.bullet span.badge-category-bg {
+  // Top of bullet aligns with top of line - adjust line height to vertically align bullet.
+  line-height: 0.8;
+}
+
+#suggested-topics .badge-wrapper.bullet span.badge-category,
+#suggested-topics .badge-wrapper.bar span.badge-category {
+  max-width: 150px;
+}
+
+.topic-unsubscribe {
+  .notification-options {
+    display: inline-block;
+    float: none;
+    line-height: 2em;
+    .dropdown-toggle {
+      float: none;
+    }
+    .dropdown-menu {
+      bottom: initial;
+    }
+  }
+}

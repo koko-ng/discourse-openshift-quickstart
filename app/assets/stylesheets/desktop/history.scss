@@ -1,0 +1,65 @@
+// styles that apply to the popup that appears when you show the edit history of a post
+
+.modal.history-modal {
+  .btn {
+    // remove transitions on the buttons in the history modal
+    transition: none;
+  }
+  .modal-inner-container {
+    min-width: 960px;
+    min-height: 500px;
+  }
+  #revision-controls {
+    float: left;
+    .btn[disabled] {
+      cursor: not-allowed;
+      background-color: dark-light-diff($primary, $secondary, 90%, -60%);
+    }
+    .btn-danger[disabled] {
+      background-color: dark-light-diff($danger, $secondary, 30%, -60%);
+    }
+  }
+  #display-modes {
+    text-align: right;
+  }
+  #revision-details {
+    padding: 5px;
+    margin-top: 10px;
+    border-bottom: 3px solid dark-light-diff($primary, $secondary, 90%, -60%);
+  }
+  #revisions {
+    word-wrap: break-word;
+    table {
+      margin-top: 10px;
+    }
+  }
+  img {
+    max-width: 670px;
+    height: auto;
+  }
+  .inline-diff {
+    width: 670px;
+  }
+  .markdown {
+    font-family: monospace;
+    font-size: 0.857em;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    td {
+      width: 50%;
+      vertical-align: top;
+      max-width: 440px;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+  }
+  .span8, .markdown {
+    img {
+      max-width: 400px;
+    }
+  }
+  .modal-header {
+    height: 42px;
+  }
+}

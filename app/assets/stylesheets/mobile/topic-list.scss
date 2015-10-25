@@ -1,0 +1,429 @@
+// --------------------------------------------------
+// Topic lists
+// --------------------------------------------------
+
+// List controls
+// --------------------------------------------------
+
+.list-controls {
+  .category-breadcrumb.hidden {
+    display: none;
+  }
+  margin: 5px 0;
+  .nav {
+    float: left;
+    margin-right: 15px;
+    li {
+      margin-top: 5px;
+    }
+  }
+  .btn {
+    float: right;
+    margin-left: 8px;
+    margin-top: 5px;
+  }
+  .nav-pills {
+    position: relative;
+  }
+  .nav-pills .drop {
+    border: 1px solid dark-light-diff($primary, $secondary, 90%, -65%);
+    position: absolute;
+    z-index: 1000;
+    background-color: $secondary;
+    padding: 0 10px 10px 10px;
+    width: 150px;
+    top: 100%;
+    margin: 0;
+    li {
+      list-style-type: none;
+      margin-left: 0;
+      margin-top: 5px;
+      padding-top: 10px;
+      a {
+        width: 100%;
+        display: inline-block;
+      }
+    }
+
+  }
+  .nav-pills > li {
+    background: dark-light-diff($primary, $secondary, 90%, -65%);
+    i.fa-caret-down {
+      margin-left: 8px;
+    }
+  }
+}
+
+.list-container .full-width {
+  margin-left: 0;
+}
+
+// Base list
+// --------------------------------------------------
+
+.topic-list {
+
+  .creator {
+    margin-left: 5px;
+  }
+
+  .right {
+      margin-left: 60px;
+  }
+
+  > tbody > tr {
+    &.highlighted {
+      background-color: dark-light-choose(scale-color($tertiary, $lightness: 85%), scale-color($tertiary, $lightness: -55%));
+    }
+  }
+
+  th,
+  td {
+    padding: 7px 0;
+    color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));
+  }
+
+  a.title {color: $primary;}
+
+  .badge-notification, .category-topic-link td.num .badge-notification {
+    position: relative;
+    top: -1px;
+    font-size: 1.071em;
+    padding: 4px 6px 3px 6px;
+    i {color: $secondary;}
+
+    &.new-topic::before {
+      margin-right: 0;
+    }
+    &.new-topic {
+      padding-right: 0;
+      top: -3px;
+    }
+  }
+
+  .category-topic-link td.num .badge-notification {
+    &.new-posts, &.unread-posts {
+      color: dark-light-choose($secondary, $secondary);
+    }
+  }
+
+  .topic-item-stats {
+    margin-top: 8px;
+    .category, .num, .last-poster {
+      float: left;
+    }
+    .category a {
+      max-width: 160px;
+    }
+    .num .fa, a, a:visited {
+      color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));
+    }
+  }
+
+  .num.posts {
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .age {
+    white-space: nowrap;
+    a {
+      // let's make all ages dim on mobile so we're not
+      // overwhelming people with info about each topic
+      color: dark-light-choose(scale-color($primary, $lightness: 70%), scale-color($secondary, $lightness: 30%)) !important;
+    }
+  }
+}
+
+// Category list
+// --------------------------------------------------
+.categories-list .list-container {
+  margin-left: -10px; // Extend past the .wrap padding to the edge of the window
+}
+
+.category-list-item.category {
+  // Allow percentage widths on table cells to include their padding
+  box-sizing: border-box;
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .posts {
+    width: 10%;
+    vertical-align: top;
+  }
+
+  .age {
+    margin-left: 5px;
+  }
+}
+
+tr.category-topic-link {
+  border-top: darken($secondary, 3%) 1px solid;
+  border-bottom: darken($secondary, 3%) 1px solid;
+}
+
+.topic-list.categories {
+  td.latest {
+    vertical-align: top;
+    padding: 5px;
+  }
+
+  .badge-category {
+    display: inline-block;
+    margin-top: 1px;
+  }
+  .featured-users {
+    @include mobile-portrait  {
+      margin-bottom: 10px;
+      padding-top: 8px;
+      clear: left;
+    }
+    @include not-mobile-portrait  {
+      float: right;
+    }
+  }
+  .latest {
+    @include mobile-portrait { width: 150px; }
+    @include mobile-landscape { width: 270px; }
+    @include tablet-landscape { width: 450px; }
+    .featured-topic {
+      margin: 8px 0;
+      a.last-posted-at, a.last-posted-at:visited {
+        color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));
+      }
+    }
+  }
+  .stats {
+    @include not-tablet-landscape { display: none; }
+    @include tablet-landscape { min-width: 80px; }
+  }
+}
+
+.category-list-item {
+
+  border-left: 6px solid;
+
+  h3 {
+    display: inline-block;
+    font-size: 1.286em;
+    margin: 0 0 0 10px;
+    i {
+      margin-right: 5px;
+    }
+    a[href] {
+      color: $primary;
+    }
+  }
+
+  .category-topic-link .main-link, .subcategories-list td, .category-description td {
+    padding-left: 10px;
+  }
+
+  .category-topic-link .main-link .age {
+    font-size: 0.857em;
+  }
+
+  .category-description td {
+    padding-top: 0;
+    padding-bottom: 15px;
+  }
+
+  .subcategories-list td {
+    padding-top: 15px;
+  }
+
+  .topic-list > tbody > tr {
+    &:nth-child(odd) {
+      background-color: $secondary;
+    }
+    &:nth-child(even) {
+      background-color: $secondary;
+    }
+  }
+
+  th .badge-category {
+    margin: 0;
+    font-size: 110%;
+  }
+
+  .category-topic-link {
+    .num {
+      white-space: nowrap;
+      .number {
+        font-size: 1.071em;
+      }
+    }
+    .topic-excerpt {
+      width: 110%;
+    }
+  }
+
+
+  .posters {
+    float: left;
+  }
+  > footer {
+    border-top: 0;
+    padding: 7px 10px;
+    figure {
+      float: left;
+      margin: 3px 7px 0 0;
+      color: dark-light-choose(scale-color($primary, $lightness: 10%), scale-color($secondary, $lightness: 90%));
+      font-weight: bold;
+      font-size: 0.857em;
+    }
+    figcaption {
+      display: inline;
+      font-weight: normal;
+    }
+    .btn {
+      float: right;
+      margin-left: 7px;
+    }
+  }
+}
+
+
+.topic-list-bottom {
+  margin: 20px 0 0 0;
+}
+
+
+// Misc. stuff
+// --------------------------------------------------
+
+.list-controls {
+  .category-dropdown-button {
+    padding: 4px 10px 4px 8px;
+  }
+}
+
+.btn-group .dropdown-toggle:active,
+.btn-group.open .dropdown-toggle {
+  outline: 0;
+}
+
+.dropdown {
+  position: relative;
+}
+.dropdown-toggle:active,
+.open .dropdown-toggle {
+  outline: 0;
+}
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-top: 4px solid $primary;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+  margin-left: 5px;
+}
+.dropdown-menu {
+  position: relative;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  width: 280px;
+  padding: 4px 0;
+  list-style: none;
+  background-color: $secondary;
+  border: 1px solid dark-light-choose(rgba(0, 0, 0, 0.2), scale-color($primary, $lightness: -60%));
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  margin: 1px 0 20px;
+  .title {font-weight: bold; display: block;}
+}
+.dropdown-menu a {
+  display: block;
+  padding: 3px 15px;
+  clear: both;
+  font-weight: normal;
+  line-height: 18px;
+  color: $primary;
+}
+.dropdown-menu li > a:hover,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+  color: $tertiary;
+  text-decoration: none;
+  background-color: scale-color($tertiary, $lightness: 75%);
+}
+.open > .dropdown-menu {
+  display: block;
+  clear: both;
+}
+.fade {
+  opacity: 0;
+  transition: opacity linear .15s;
+}
+.fade.in {
+  opacity: 1;
+}
+
+ol.category-breadcrumb {
+  margin: 5px 10px 0 0;
+}
+
+.category-dropdown-menu {
+  height: 200px;
+
+  a.badge-category {
+    line-height: 26px !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+.top-lists {
+  h2 { margin-left: 10px; }
+  .topic-list { padding-bottom: 10px; }
+  .btn-default.pull-right { margin-right: 10px; }
+}
+
+.category-notification-menu {
+  display: none;
+}
+
+.topic-list-bottom h3 {
+  clear:both;
+  padding-top:10px;
+}
+
+.category-logo {
+  display: block;
+  max-width: 100%;
+  padding: 8px 0;
+}
+
+button.dismiss-read {
+  margin-right: 10px;
+}
+
+// base defines extra padding for easier click/top of title field
+// this is a bit too much for mobile
+td .main-link {
+  width: 80%;
+  display: inline-block;
+  a.title {
+    padding: 5px 10px 5px 0;
+  }
+}
+.topic-list {
+  .posts-map {
+    display: inline;
+    font-size: 1.071em;
+    padding-top: 2px;
+  }
+  // so the topic excerpt is full width
+  // as the containing div is 80%
+  .topic-excerpt {
+    padding-right: 0;
+    width: 120%;
+  }
+}

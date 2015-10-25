@@ -1,0 +1,95 @@
+// global styles that apply to the Discourse application specifically
+// BEWARE: changing these styles implies they take effect anywhere they are seen
+// throughout the Discourse application
+
+body {
+  background-color: $secondary;
+}
+
+// This sets the space between the application content and the edge of the
+// screen. This value is required in 'mobile/header.scss' to set the position
+// of the drop-down menu.
+$mobile-wrapper-padding: 10px;
+.wrap {
+  padding: 0 $mobile-wrapper-padding;
+}
+
+body {
+
+  .boxed {
+    .contents {
+      padding: 10px 0 0 0;
+    }
+    &.white {
+      background-color: $secondary;
+    }
+  }
+  #main {
+    position: relative;
+    img.avatar {
+      &.header {
+        width: 45px;
+        height: 45px;
+      }
+      &.medium {
+        width: 32px;
+        height: 32px;
+      }
+      &.small {
+        width: 25px;
+        height: 25px;
+      }
+      &.tiny {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .user-list {
+      .user {
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
+
+blockquote {
+  /* 13px left is intentional here to properly align with post quotes */
+  padding: 10px 8px 10px 13px;
+  p {
+    margin: 0 0 10px 0;
+  }
+  p:last-of-type {
+    margin-bottom:0;
+  }
+}
+
+.topic-statuses {
+  float: left;
+  .topic-status {
+    i {
+      color: dark-light-diff($secondary, $primary, 40%, -20%);
+    }
+  }
+}
+.topic-statuses:empty {
+  display: none;
+}
+
+// Styles used before the user is logged into discourse. For example, activating their
+// account or changing their email.
+
+#simple-container {
+  width: 90%;
+}
+
+// somehow the image logo assumption inherits margins from earlier in the CSS stack
+// we must remove margins for text site titles
+h2#site-text-logo
+{
+  margin: 0 0 0 10px;
+}
+
+// categories should not be bold on mobile; they fight with the topic title too much
+.badge-wrapper {
+  font-weight: normal;
+}
