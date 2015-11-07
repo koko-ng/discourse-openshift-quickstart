@@ -1,0 +1,5 @@
+killall httpd
+killall ruby
+RAILS_ENV=production DISCOURSE_HOSTNAME=discoursenew-koko42.rhcloud.com bundle exec sidekiq -d -L ${OPENSHIFT_LOG_DIR}sidekiq.log
+RAILS_ENV=production RUBY_GC_MALLOC_LIMIT=90000000 DISCOURSE_HOSTNAME=discoursenew-koko42.rhcloud.com bundle exec rails server -d -p $OPENSHIFT_RUBY_PORT -b $OPENSHIFT_RUBY_IP
+
