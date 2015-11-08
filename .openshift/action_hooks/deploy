@@ -1,11 +1,9 @@
 unset $TMOUT
-sed
 
-if [ echo "\connect $OPENSHIFT_APP_NAME; \dt" | psql | grep warnings ]
+if  echo "\connect $OPENSHIFT_APP_NAME; \dt" | psql | grep warnings
 then
     bundle exec rake db:schema:load RAILS_ENV="production"
 else
     bundle exec rake db:migrate RAILS_ENV="production"
 fi
 
-RAILS_ENV=production DISCOURSE_HOSTNAME=$OPENSHIFT_APP_DNS bundle exec rake assets:precompile
