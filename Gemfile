@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://mirror.openshift.com/'
 # if there is a super emergency and rubygems is playing up, try
 #source 'http://production.cf.rubygems.org'
 
@@ -16,6 +16,7 @@ else
   gem 'rails-observers'
   gem 'seed-fu', '~> 2.3.5'
 end
+gem 'rack',  '~> 1.5.2'
 
 gem 'mail'
 gem 'mime-types', require: 'mime/types/columnar'
