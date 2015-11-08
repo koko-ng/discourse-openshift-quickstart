@@ -16,7 +16,6 @@ else
   gem 'rails-observers'
   gem 'seed-fu', '~> 2.3.5'
 end
-gem 'rack',  '~> 1.5.2'
 
 gem 'mail'
 gem 'mime-types', require: 'mime/types/columnar'
