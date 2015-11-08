@@ -1,4 +1,5 @@
 unset $TMOUT
+sed
 
 if [ echo "\connect $OPENSHIFT_APP_NAME; \dt" | psql | grep warnings ]
 then
