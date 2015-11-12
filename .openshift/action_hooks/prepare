@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo "# redis server address 
+redis_host = ${OPENSHIFT_REDIS_DB_HOST} 
+#redis server port 
+redis_port = ${OPENSHIFT_REDIS_DB_PORT} 
+# host address for db server
+# This is set to blank so it tries to use sockets first
+db_host = ${OPENSHIFT_POSTGRESQL_DB_HOST}
+#
+# port running db server, no need to set it
+db_port = ${OPENSHIFT_POSTGRESQL_DB_PORT}
+#
+# database name running discourse
+db_name = ${OPENSHIFT_APP_NAME}
+#
+# username accessing database
+db_username = ${OPENSHIFT_POSTGRESQL_DB_USERNAME}
+#
+# password used to access the db
+db_password = ${OPENSHIFT_POSTGRESQL_DB_PASSWORD}
+#" > "${OPENSHIFT_REPO_DIR}config/discourse.conf"
+
+
+gem install bundler --version 1.9
+gem install image_optim_bin --version 0.0.7

@@ -1,2 +1,4 @@
-killall ruby
-killall httpd
+#!/bin/bash
+
+kill "$(cat "${OPENSHIFT_DATA_DIR}sidekiq.pid")"
+kill "$(cat "${OPENSHIFT_DATA_DIR}discourse.pid")"

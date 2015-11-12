@@ -1,2 +1,0 @@
-killall httpd
-echo 0
