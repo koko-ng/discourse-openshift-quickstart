@@ -14,7 +14,7 @@ if ! [ -d "$OPENSHIFT_DATA_DIR/node-v4.2.1-linux-x64" ]; then
 fi
 
 pushd "$OPENSHIFT_DATA_DIR"
-"$HOME/.gem/bin/npm install uglifyjs"
+"$HOME/.gem/bin/npm" install uglifyjs
 popd
 
 if ! [ -f "$HOME/.gem/bin/uglifyjs" ]; then
