@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "# All settings apply to production only
 
 # connection pool size, sidekiq is set to 5, allowing an extra 3 for bg threads
@@ -98,16 +97,17 @@ redis_port = ${OPENSHIFT_REDIS_DB_PORT}
 # host address for db server
 # This is set to blank so it tries to use sockets first
 db_host = ${OPENSHIFT_POSTGRESQL_DB_HOST}
-#
+
 # port running db server, no need to set it
 db_port = ${OPENSHIFT_POSTGRESQL_DB_PORT}
-#
+
 # database name running discourse
 db_name = ${OPENSHIFT_APP_NAME}
 #
+
 # username accessing database
 db_username = ${OPENSHIFT_POSTGRESQL_DB_USERNAME}
-#
+
 # password used to access the db
 db_password = ${OPENSHIFT_POSTGRESQL_DB_PASSWORD}
 #" > "${OPENSHIFT_REPO_DIR}config/discourse.conf"
@@ -115,3 +115,46 @@ db_password = ${OPENSHIFT_POSTGRESQL_DB_PASSWORD}
 
 gem install bundler --version 1.9
 gem install image_optim_bin --version 0.0.7
+
+unset TMOUT
+NODE_VERSION="v4.2.4"
+#assets storage between push etc.
+DISCOURSE_PERM_DIR="${OPENSHIFT_DATA_DIR}discourse_data/"
+if ! [ -d "${DISCOURSE_PERM_DIR}" ]; then
+	mkdir "${DISCOURSE_PERM_DIR}"
+fi 
+#"install" node for uglifyjs
+if ! [ -d "$OPENSHIFT_DATA_DIR/node-$NODE_VERSION-linux-x64" ] || [ -f "${OPENSHIFT_REPO_DIR}/.openshift/markers/force_clean_build" ]; then
+	echo "Removing old links..."
+	rm "$HOME/.gem/bin/node"
+	rm "$HOME/.gem/bin/npm"
+	echo "Installing node.js in $OPENSHIFT_DATA_DIR"
+	wget "https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.gz" -O "$OPENSHIFT_TMP_DIR/node.tar.gz"
+	tar -xf "$OPENSHIFT_TMP_DIR/node.tar.gz" -C "$OPENSHIFT_DATA_DIR"
+	ln -s "$OPENSHIFT_DATA_DIR/node-$NODE_VERSION-linux-x64/bin/node" "$HOME/.gem/bin/"
+	ln -s "$OPENSHIFT_DATA_DIR/node-$NODE_VERSION-linux-x64/bin/npm" "$HOME/.gem/bin/"
+	mkdir "$OPENSHIFT_DATA_DIR/node_modules"
+	mkdir "$OPENSHIFT_DATA_DIR/node-$NODE_VERSION-linux-x64/etc"
+	echo "cache=$OPENSHIFT_DATA_DIR/node_modules/.npm
+	prefix=$OPENSHIFT_DATA_DIR" > "$OPENSHIFT_DATA_DIR/node-$NODE_VERSION-linux-x64/etc/npmrc"
+fi
+
+pushd "$OPENSHIFT_DATA_DIR"
+"$HOME/.gem/bin/npm" install uglifyjs
+popd
+
+if ! [ -f "$HOME/.gem/bin/uglifyjs" ] || [ -f "${OPENSHIFT_REPO_DIR}/.openshift/markers/force_clean_build" ]; then
+	ln -s "$OPENSHIFT_DATA_DIR/node_modules/uglifyjs/bin/uglifyjs" "$HOME/.gem/bin/"
+fi
+
+pushd "${OPENSHIFT_REPO_DIR}"
+RAILS_ENV="production" bundle exec rake db:migrate
+
+if ! [ -d "${DISCOURSE_PERM_DIR}assets/" ] || [ -f "${OPENSHIFT_REPO_DIR}/.openshift/markers/force_clean_build" ]; then
+	"${OPENSHIFT_REPO_DIR}script/assets_tool_openshift.sh" precompile "${DISCOURSE_PERM_DIR}"
+	
+fi
+
+"${OPENSHIFT_REPO_DIR}script/assets_tool_openshift.sh" link "${DISCOURSE_PERM_DIR}"
+
+popd

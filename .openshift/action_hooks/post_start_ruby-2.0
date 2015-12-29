@@ -6,5 +6,7 @@ echo "Replacing the default Passenger server with Discourse"
 "${HOME}/ruby/bin/control" stop &> /dev/null
 set -e
 
+pushd "${OPENSHIFT_DEPLOYMENTS_DIR}current/repo"
 RAILS_ENV=production DISCOURSE_HOSTNAME="${OPENSHIFT_APP_DNS}" bundle exec sidekiq -d -P "${OPENSHIFT_DATA_DIR}sidekiq.pid" -L "${OPENSHIFT_LOG_DIR}sidekiq.log"
 RAILS_ENV=production RUBY_GC_MALLOC_LIMIT=90000000 DISCOURSE_HOSTNAME=${OPENSHIFT_APP_DNS} bundle exec rails server -P "${OPENSHIFT_DATA_DIR}discourse.pid" -p "${OPENSHIFT_RUBY_PORT}" -b "${OPENSHIFT_RUBY_IP}" >> "${OPENSHIFT_LOG_DIR}discourse.log" &
+popd
