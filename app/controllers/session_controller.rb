@@ -112,6 +112,7 @@ class SessionController < ApplicationController
       else
         render text: I18n.t("sso.not_found"), status: 500
       end
+
     rescue => e
       details = {}
       SingleSignOn::ACCESSORS.each do |a|

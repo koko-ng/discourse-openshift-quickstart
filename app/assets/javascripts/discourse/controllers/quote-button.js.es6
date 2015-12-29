@@ -96,7 +96,17 @@ export default Ember.Controller.extend({
 
   quoteText() {
     const postId = this.get('postId');
-    const post = this.get('post');
+    const postStream = this.get('controllers.topic.model.postStream');
+    const postId = this.get('postId');
+    const post = postStream.findLoadedPost(postId);
+
+    // defer load if needed, if in an expanded replies section
+    if (!post) {
+      postStream.loadPost(postId).then(() => {
+        this.quoteText();
+      });
+      return;
+    }
 
     // defer load if needed, if in an expanded replies section
     if (!post) {

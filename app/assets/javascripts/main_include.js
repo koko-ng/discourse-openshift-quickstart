@@ -73,10 +73,8 @@
 //= require ./discourse/components/topic-notifications-button
 //= require ./discourse/lib/link-mentions
 //= require ./discourse/views/header
+//= require ./discourse/lib/utilities
 //= require ./discourse/dialects/dialect
-//= require ./discourse/lib/emoji/emoji
-//= require ./discourse/lib/emoji/emoji-groups
-//= require ./discourse/lib/emoji/emoji-toolbar
 //= require ./discourse/views/composer
 //= require ./discourse/lib/show-modal
 //= require ./discourse/lib/screen-track
@@ -94,6 +92,8 @@
 //= require ./discourse/helpers/loading-spinner
 //= require ./discourse/helpers/category-link
 //= require ./discourse/lib/export-result
+//= require ./discourse/dialects/dialect
+//= require ./discourse/lib/emoji/emoji
 //= require_tree ./discourse/lib
 //= require ./discourse/router
 

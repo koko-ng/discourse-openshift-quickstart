@@ -3,9 +3,9 @@ module Discourse
   unless defined? ::Discourse::VERSION
     module VERSION #:nodoc:
       MAJOR = 1
-      MINOR = 5
-      TINY  = 0
-      PRE   = 'beta3'
+      MINOR = 4
+      TINY  = 3
+      PRE   = nil
 
       STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
     end

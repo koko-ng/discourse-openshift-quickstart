@@ -13,7 +13,6 @@ export function exportUserArchive() {
   });
 }
 
-
 export function exportEntity(entity, args) {
   return exportEntityByType('admin', entity, args);
 }
