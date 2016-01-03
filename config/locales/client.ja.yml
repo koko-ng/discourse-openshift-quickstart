@@ -353,6 +353,7 @@ ja:
       tracked_categories: "トラック中"
       tracked_categories_instructions: "これらのカテゴリの新規トピックを自動的にトラックします。トピックに対して新しい投稿があった場合、トピック一覧に新しい投稿数がつきます。"
       muted_categories: "ミュート中"
+      muted_categories_instructions: "このカテゴリに投稿されたトピックについての通知を受け取りません。また、未読タブにも通知されません。"
       delete_account: "アカウントを削除する"
       delete_account_confirm: "本当にアカウントを削除しますか？削除されたアカウントを復元できません。"
       deleted_yourself: "あなたのアカウントは削除されました。"
@@ -478,6 +479,7 @@ ja:
         search: "招待履歴を検索するためにキーワードを入力してください..."
         title: "招待"
         user: "招待したユーザ"
+        truncated: "最初の {{count}} 個の招待履歴を表示しています。"
         redeemed: "受理された招待"
         redeemed_tab: "受理"
         redeemed_at: "受理日"
@@ -674,6 +676,7 @@ ja:
       edit_reason_placeholder: "編集する理由は何ですか?"
       show_edit_reason: "(編集理由を追加)"
       view_new_post: "新規ポストを見る。"
+      saving: "保存中..."
       saved: "保存完了!"
       saved_draft: "編集中の投稿があります。選択すると再開します"
       uploading: "アップロード中..."
@@ -906,6 +909,7 @@ ja:
           description: "このメッセージについての通知を受け取りません。"
         muted:
           title: "ミュート"
+          description: "このトピックについての通知を受け取りません。また、未読タブにも通知されません。"
       actions:
         recover: "トピック削除の取り消し"
         delete: "トピック削除"
@@ -1257,12 +1261,16 @@ ja:
       notifications:
         watching:
           title: "カテゴリ参加中"
+          description: "これらのカテゴリに新しく投稿されたトピックを自動的に参加します。これらのカテゴリに対して新しい投稿があった場合、登録されたメールアドレスと、コミュニティ内の通知ボックスに通知が届き、トピック一覧に新しい回答数がつきます。"
         tracking:
           title: "トラック中"
+          description: "これらのカテゴリの新規トピックを自動的にトラックします。トピックに対して新しい投稿があった場合、トピック一覧に新しい回答数がつきます。"
         regular:
+          title: "通常"
           description: "他ユーザからタグ付けをされた場合、またはあなたの投稿に回答が付いた場合に通知されます。"
         muted:
           title: "ミュート中"
+          description: "このカテゴリに投稿されたトピックについての通知を受け取りません。また、未読タブにも通知されません。"
     flagging:
       title: '私達のコミュニティの維持を助けてくれてありがとうごうざいます'
       private_reminder: 'フラグはプライベートです。スタッフ<b>のみ</b>が参照できます'
@@ -1312,6 +1320,7 @@ ja:
         help: "このトピックはピン留めされていません。 既定の順番に表示されます。"
       pinned_globally:
         title: "全サイト的にピン留めされました"
+        help: "このトピックは全サイト的にピン留めされました。全てのリストのトップに表示されます。"
       pinned:
         title: "ピン留め"
         help: "このトピックはピン留めされています。常にカテゴリのトップに表示されます"

@@ -193,17 +193,13 @@ SQL
   end
 
   def topic_url
-    if has_attribute?("topic_slug")
-      Topic.relative_url(topic_id, read_attribute(:topic_slug))
-    else
-      topic_only_relative_url.try(:relative_url)
-    end
+    topic_only_relative_url.try(:relative_url)
   end
 
   def description_text
     return nil unless description
 
-    @@cache ||= LruRedux::ThreadSafeCache.new(1000)
+    @@cache ||= LruRedux::ThreadSafeCache.new(100)
     @@cache.getset(self.description) do
       Nokogiri::HTML(self.description).text
     end
@@ -285,14 +281,6 @@ SQL
 
   def permissions=(permissions)
     set_permissions(permissions)
-  end
-
-  def permissions_params
-    hash = {}
-    category_groups.includes(:group).each do |category_group|
-      hash[category_group.group_name] = category_group.permission_type
-    end
-    hash
   end
 
   def apply_permissions
@@ -382,8 +370,7 @@ SQL
   end
 
   def has_children?
-    @has_children ||= (id && Category.where(parent_category_id: id).exists?) ? :true : :false
-    @has_children == :true
+    id && Category.where(parent_category_id: id).exists?
   end
 
   def uncategorized?

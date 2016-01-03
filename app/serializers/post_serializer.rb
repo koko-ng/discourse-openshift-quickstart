@@ -74,7 +74,7 @@ class PostSerializer < BasicPostSerializer
   end
 
   def topic_slug
-    object.topic && object.topic.slug
+    object.try(:topic).try(:slug)
   end
 
   def include_topic_title?

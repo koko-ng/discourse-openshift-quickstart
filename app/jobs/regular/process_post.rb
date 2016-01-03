@@ -14,9 +14,7 @@ module Jobs
       recooked = nil
 
       if args[:cook].present?
-        cooking_options = args[:cooking_options] || {}
-        cooking_options[:topic_id] = post.topic_id
-        recooked = post.cook(post.raw, cooking_options.symbolize_keys)
+        recooked = post.cook(post.raw, topic_id: post.topic_id)
         post.update_column(:cooked, recooked)
       end
 

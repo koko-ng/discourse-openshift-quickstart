@@ -19,6 +19,12 @@
       float: left;
     }
 
+    .valign-helper {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+
     #site-logo {
       max-height: 40px;
     }

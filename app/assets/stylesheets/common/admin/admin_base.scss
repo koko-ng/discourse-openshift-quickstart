@@ -180,6 +180,7 @@ td.flaggers td {
   .result-message {
     display: inline-block;
     padding-left: 10px;
+    padding-top: 5px;
   }
   .username {
     input[type=text] {
@@ -1165,6 +1166,10 @@ table.api-keys {
     margin-top: 10px;
   }
 
+  .pagedown-editor {
+    width: 98%;
+  }
+
   textarea.plain {
     width: 98%;
     height: 200px;
@@ -1474,6 +1479,9 @@ and (max-width : 500px) {
 
   .content-editor {
     width: 100%;
+      .pagedown-editor {
+        box-sizing: border-box;
+      }
   }
 
   div.ac-wrap {

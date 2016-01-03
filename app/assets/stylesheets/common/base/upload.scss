@@ -1,12 +1,6 @@
 .uploaded-image-preview {
-  background: $primary center;
   background-size: cover;
-}
-
-.image-uploader.no-repeat {
-  .uploaded-image-preview {
-    background-repeat: no-repeat;
-  }
+  background: $primary center center;
 }
 
 .image-uploader.no-repeat {

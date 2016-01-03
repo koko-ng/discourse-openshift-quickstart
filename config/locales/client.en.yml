@@ -460,7 +460,7 @@ en:
       tracked_categories: "Tracked"
       tracked_categories_instructions: "You will automatically track all new topics in these categories. A count of new posts will appear next to the topic."
       muted_categories: "Muted"
-      muted_categories_instructions: "You will not be notified of anything about new topics in these categories, and they will not appear in latest."
+      muted_categories_instructions: "You will not be notified of anything about new topics in these categories, and they will not appear on your unread tab."
       delete_account: "Delete My Account"
       delete_account_confirm: "Are you sure you want to permanently delete your account? This action cannot be undone!"
       deleted_yourself: "Your account has been deleted successfully."
@@ -619,9 +619,7 @@ en:
         user: "Invited User"
         sent: "Sent"
         none: "There are no pending invites to display."
-        truncated:
-          one: "Showing the first invite."
-          other: "Showing the first {{count}} invites."
+        truncated: "Showing the first {{count}} invites."
         redeemed: "Redeemed Invites"
         redeemed_tab: "Redeemed"
         redeemed_tab_with_count: "Redeemed ({{count}})"
@@ -807,9 +805,6 @@ en:
       admin_not_allowed_from_ip_address: "You can't log in as admin from that IP address."
       resend_activation_email: "Click here to send the activation email again."
       sent_activation_email_again: "We sent another activation email to you at <b>{{currentEmail}}</b>. It might take a few minutes for it to arrive; be sure to check your spam folder."
-      to_continue: "Please Log In"
-      preferences: "You need to be logged in to change your user preferences."
-      forgot: "I don't recall my account details"
       google:
         title: "with Google"
         message: "Authenticating with Google (make sure pop up blockers are not enabled)"
@@ -836,7 +831,6 @@ en:
 
     composer:
       emoji: "Emoji :smile:"
-      more_emoji: "more..."
       options: "Options"
       whisper: "whisper"
 
@@ -873,7 +867,7 @@ en:
       show_edit_reason: "(add edit reason)"
       reply_placeholder: "Type here. Use Markdown, BBCode, or HTML to format. Drag or paste images."
       view_new_post: "View your new post."
-      saving: "Saving"
+      saving: "Saving..."
       saved: "Saved!"
       saved_draft: "Post draft in progress. Select to resume."
       uploading: "Uploading..."
@@ -889,7 +883,6 @@ en:
       link_description: "enter link description here"
       link_dialog_title: "Insert Hyperlink"
       link_optional_text: "optional title"
-      link_placeholder: "http://example.com \"optional text\""
       quote_title: "Blockquote"
       quote_text: "Blockquote"
       code_title: "Preformatted text"
@@ -902,10 +895,10 @@ en:
       heading_title: "Heading"
       heading_text: "Heading"
       hr_title: "Horizontal Rule"
+      undo_title: "Undo"
+      redo_title: "Redo"
       help: "Markdown Editing Help"
       toggler: "hide or show the composer panel"
-      modal_ok: "OK"
-      modal_cancel: "Cancel"
 
       admin_options_title: "Optional staff settings for this topic"
       auto_close:
@@ -967,9 +960,9 @@ en:
       from_my_computer: "From my device"
       from_the_web: "From the web"
       remote_tip: "link to image"
-      remote_tip_with_attachments: "link to image or file {{authorized_extensions}}"
+      remote_tip_with_attachments: "link to image or file ({{authorized_extensions}})"
       local_tip: "select images from your device"
-      local_tip_with_attachments: "select images or files from your device {{authorized_extensions}}"
+      local_tip_with_attachments: "select images or files from your device ({{authorized_extensions}})"
       hint: "(you can also drag & drop into the editor to upload them)"
       hint_for_supported_browsers: "you can also drag and drop or paste images into the editor"
       uploading: "Uploading"
@@ -1010,12 +1003,10 @@ en:
       bulk:
         reset_read: "Reset Read"
         delete: "Delete Topics"
-        dismiss: "Dismiss"
-        dismiss_button: "Dismiss…"
-        dismiss_tooltip: "Dismiss just new posts or stop tracking topics"
-        dismiss_body: "Would you like to dismiss just the new posts in these topics, or dismiss the topics entirely?"
-        dismiss_posts: "Dismiss Just New Posts"
+        dismiss_posts: "Dismiss Posts"
+        dismiss_posts_tooltip: "Clear unread counts on these topics but continue to show them on my unread list when new posts are made"
         dismiss_topics: "Dismiss Topics"
+        dismiss_topics_tooltip: "Stop showing these topics in my unread list when new posts are made"
         dismiss_new: "Dismiss New"
         toggle: "toggle bulk selection of topics"
         actions: "Bulk Actions"
@@ -1181,7 +1172,7 @@ en:
           description: "You will never be notified of anything about this message."
         muted:
           title: "Muted"
-          description: "You will never be notified of anything about this topic, and it will not appear in latest."
+          description: "You will never be notified of anything about this topic, and it will not appear on your unread tab."
 
       actions:
         recover: "Un-Delete Topic"
@@ -1426,7 +1417,6 @@ en:
         revert_to_regular: "Remove Staff Color"
         rebake: "Rebuild HTML"
         unhide: "Unhide"
-        change_owner: "Change Ownership"
 
       actions:
         flag: 'Flag'
@@ -1618,7 +1608,7 @@ en:
           description: "You will be notified if someone mentions your @name or replies to you."
         muted:
           title: "Muted"
-          description: "You will never be notified of anything about new topics in these categories, and they will not appear in latest."
+          description: "You will never be notified of anything about new topics in these categories, and they will not appear on your unread tab."
 
     flagging:
       title: 'Thanks for helping to keep our community civil!'
@@ -1675,7 +1665,7 @@ en:
         help: "This topic is unpinned for you; it will display in regular order"
       pinned_globally:
         title: "Pinned Globally"
-        help: "This topic is pinned globally; it will display at the top of latest and its category"
+        help: "This topic is pinned globally; it will display at the top of all lists"
       pinned:
         title: "Pinned"
         help: "This topic is pinned for you; it will display at the top of its category"
@@ -2183,7 +2173,6 @@ en:
         ip_address: "IP"
         topic_id: "Topic ID"
         post_id: "Post ID"
-        category_id: "Category ID"
         delete: 'Delete'
         edit: 'Edit'
         save: 'Save'
@@ -2224,9 +2213,6 @@ en:
             impersonate: "impersonate"
             anonymize_user: "anonymize user"
             roll_up: "roll up IP blocks"
-            change_category_settings: "change category settings"
-            delete_category: "delete category"
-            create_category: "create category"
         screened_emails:
           title: "Screened Emails"
           description: "When someone tries to create a new account, the following email addresses will be checked and the registration will be blocked, or some other action performed."
@@ -2602,9 +2588,7 @@ en:
         embed_username_key_from_feed: "Key to pull discourse username from feed"
         embed_truncate: "Truncate the embedded posts"
         embed_whitelist_selector: "CSS selector for elements that are allowed in embeds"
-        whitelist_example: "article, #story, .post"
         embed_blacklist_selector: "CSS selector for elements that are removed from embeds"
-        blacklist_example: ".ad-unit, header"
         feed_polling_enabled: "Import posts via RSS/ATOM"
         feed_polling_url: "URL of RSS/ATOM feed to crawl"
         save: "Save Embedding Settings"

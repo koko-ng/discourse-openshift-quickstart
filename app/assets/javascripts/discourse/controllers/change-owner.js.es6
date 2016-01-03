@@ -42,10 +42,7 @@ export default Ember.Controller.extend(SelectedPostsCount, ModalFunctionality, {
       Discourse.Topic.changeOwners(this.get('topicController.model.id'), saveOpts).then(function() {
         // success
         self.send('closeModal');
-        self.get('topicController').send('deselectAll');
-        if (self.get('topicController.multiSelect')) {
-          self.get('topicController').send('toggleMultiSelect');
-        }
+        self.get('topicController').send('toggleMultiSelect');
         Em.run.next(() => { DiscourseURL.routeTo(self.get("topicController.model.url")); });
       }, function() {
         // failure

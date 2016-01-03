@@ -228,7 +228,7 @@ const AdminUser = Discourse.User.extend({
       type: 'POST',
       data: { username_or_email: this.get('username') }
     }).then(function() {
-      document.location = Discourse.BaseUri;
+      document.location = Discourse.getURL("/");
     }).catch(function(e) {
       if (e.status === 404) {
         bootbox.alert(I18n.t('admin.impersonate.not_found'));
@@ -387,16 +387,16 @@ const AdminUser = Discourse.User.extend({
 
     const buttons = [{
       "label": I18n.t("composer.cancel"),
-      "class": "btn",
+      "class": "cancel",
       "link":  true
+    }, {
+      "label": I18n.t('admin.user.delete_dont_block'),
+      "class": "btn",
+      "callback": function(){ performDestroy(false); }
     }, {
       "label": '<i class="fa fa-exclamation-triangle"></i>' + I18n.t('admin.user.delete_and_block'),
       "class": "btn btn-danger",
       "callback": function(){ performDestroy(true); }
-    }, {
-      "label": I18n.t('admin.user.delete_dont_block'),
-      "class": "btn btn-primary",
-      "callback": function(){ performDestroy(false); }
     }];
 
     bootbox.dialog(message, buttons, { "classes": "delete-user-modal" });

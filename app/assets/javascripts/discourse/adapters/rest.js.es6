@@ -24,7 +24,9 @@ export default Ember.Object.extend({
     return "/";
   },
 
-  appendQueryParams(path, findArgs) {
+  pathFor(store, type, findArgs) {
+    let path = this.basePath(store, type, findArgs) + Ember.String.underscore(store.pluralize(type));
+
     if (findArgs) {
       if (typeof findArgs === "object") {
         const queryString = Object.keys(findArgs)
@@ -32,19 +34,15 @@ export default Ember.Object.extend({
                                   .map(k => k + "=" + encodeURIComponent(findArgs[k]));
 
         if (queryString.length) {
-          return path + "?" + queryString.join('&');
+          path += "?" + queryString.join('&');
         }
       } else {
         // It's serializable as a string if not an object
-        return path + "/" + findArgs;
+        path += "/" + findArgs;
       }
     }
-    return path;
-  },
 
-  pathFor(store, type, findArgs) {
-    let path = this.basePath(store, type, findArgs) + Ember.String.underscore(store.pluralize(type));
-    return this.appendQueryParams(path, findArgs);
+    return path;
   },
 
   findAll(store, type) {

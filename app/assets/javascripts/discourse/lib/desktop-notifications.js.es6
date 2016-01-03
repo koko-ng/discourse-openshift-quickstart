@@ -1,6 +1,5 @@
 import DiscourseURL from 'discourse/lib/url';
 import PageTracker from 'discourse/lib/page-tracker';
-import KeyValueStore from 'discourse/lib/key-value-store';
 
 let primaryTab = false;
 let liveEnabled = false;
@@ -10,8 +9,6 @@ let lastAction = -1;
 
 const focusTrackerKey = "focus-tracker";
 const idleThresholdTime = 1000 * 10; // 10 seconds
-
-const keyValueStore = new KeyValueStore("discourse_desktop_notifications_");
 
 // Called from an initializer
 function init(messageBus) {
@@ -23,7 +20,7 @@ function init(messageBus) {
   }
 
   try {
-    keyValueStore.getItem(focusTrackerKey);
+    localStorage.getItem(focusTrackerKey);
   } catch (e) {
     Em.Logger.info('Discourse desktop notifications are disabled - localStorage denied.');
     return;
@@ -69,7 +66,7 @@ function setupNotifications() {
   window.addEventListener("focus", function() {
     if (!primaryTab) {
       primaryTab = true;
-      keyValueStore.setItem(focusTrackerKey, mbClientId);
+      localStorage.setItem(focusTrackerKey, mbClientId);
     }
   });
 
@@ -77,7 +74,7 @@ function setupNotifications() {
     primaryTab = false;
   } else {
     primaryTab = true;
-    keyValueStore.setItem(focusTrackerKey, mbClientId);
+    localStorage.setItem(focusTrackerKey, mbClientId);
   }
 
   if (document) {
@@ -98,7 +95,7 @@ function onNotification(data) {
   if (!liveEnabled) { return; }
   if (!primaryTab) { return; }
   if (!isIdle()) { return; }
-  if (keyValueStore.getItem('notifications-disabled')) { return; }
+  if (localStorage.getItem('notifications-disabled')) { return; }
 
   const notificationTitle = I18n.t(i18nKey(data.notification_type), {
      site_title: Discourse.SiteSettings.title,

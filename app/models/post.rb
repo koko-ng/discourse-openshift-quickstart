@@ -91,7 +91,7 @@ class Post < ActiveRecord::Base
   end
 
   def limit_posts_per_day
-    if user && user.first_day_user? && post_number && post_number > 1
+    if user.first_day_user? && post_number && post_number > 1
       RateLimiter.new(user, "first-day-replies-per-day", SiteSetting.max_replies_in_first_day, 1.day.to_i)
     end
   end
@@ -106,8 +106,6 @@ class Post < ActiveRecord::Base
       id: id,
       post_number: post_number,
       updated_at: Time.now,
-      user_id: user_id,
-      last_editor_id: last_editor_id,
       type: type
     }
 
@@ -509,7 +507,6 @@ class Post < ActiveRecord::Base
     }
     args[:image_sizes] = image_sizes if image_sizes.present?
     args[:invalidate_oneboxes] = true if invalidate_oneboxes.present?
-    args[:cooking_options] = self.cooking_options
     Jobs.enqueue(:process_post, args)
     DiscourseEvent.trigger(:after_trigger_post_process, self)
   end

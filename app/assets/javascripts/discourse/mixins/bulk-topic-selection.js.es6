@@ -42,7 +42,6 @@ export default Ember.Mixin.create({
           });
           tracker.incrementMessageCount();
         }
-        self.send('closeModal');
         self.send('refresh');
       });
     }

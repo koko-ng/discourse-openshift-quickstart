@@ -3,17 +3,15 @@ export default {
   REGEXP: /\[quote=([^\]]*)\]((?:[\s\S](?!\[quote=[^\]]*\]))*?)\[\/quote\]/im,
 
   // Build the BBCode quote around the selected text
-  build(post, contents, opts) {
+  build: function(post, contents, opts) {
     var contents_hashed, result, sansQuotes, stripped, stripped_hashed, tmp;
     var full = opts && opts["full"];
     var raw = opts && opts["raw"];
 
-    if (!post) { return ""; }
-
     if (!contents) contents = "";
 
     sansQuotes = contents.replace(this.REGEXP, '').trim();
-    if (sansQuotes.length === 0) { return ""; }
+    if (sansQuotes.length === 0) return "";
 
     // Escape the content of the quote
     sansQuotes = sansQuotes.replace(/</g, "&lt;")
@@ -24,7 +22,7 @@ export default {
     /* Strip the HTML from cooked */
     tmp = document.createElement('div');
     tmp.innerHTML = post.get('cooked');
-    stripped = tmp.textContent || tmp.innerText || "";
+    stripped = tmp.textContent || tmp.innerText;
 
     /*
       Let's remove any non alphanumeric characters as a kind of hash. Yes it's

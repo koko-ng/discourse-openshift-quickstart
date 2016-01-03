@@ -1,6 +1,5 @@
 class PostActionUserSerializer < BasicUserSerializer
-  attributes :post_url,
-             :username_lower
+  attributes :post_url
 
   def id
     object.user.id
@@ -8,10 +7,6 @@ class PostActionUserSerializer < BasicUserSerializer
 
   def username
     object.user.username
-  end
-
-  def username_lower
-    object.user.username_lower
   end
 
   def avatar_template

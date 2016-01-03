@@ -1,15 +1,9 @@
 Discourse.LoginMethod = Ember.Object.extend({
-  title: function() {
-    var titleSetting = this.get('titleSetting');
-    if (!Ember.isEmpty(titleSetting)) {
-      var result = Discourse.SiteSettings[titleSetting];
-      if (!Ember.isEmpty(result)) { return result; }
-    }
-
+  title: function(){
     return this.get("titleOverride") || I18n.t("login." + this.get("name") + ".title");
   }.property(),
 
-  message: function() {
+  message: function(){
     return this.get("messageOverride") || I18n.t("login." + this.get("name") + ".message");
   }.property()
 });
@@ -18,8 +12,8 @@ Discourse.LoginMethod = Ember.Object.extend({
 //  just Em.get("Discourse.LoginMethod.all") and then
 //  pushObject for any new methods
 Discourse.LoginMethod.reopenClass({
-  register: function(method) {
-    if (this.methods){
+  register: function(method){
+    if(this.methods){
       this.methods.pushObject(method);
     } else {
       this.preRegister = this.preRegister || [];
@@ -56,14 +50,7 @@ Discourse.LoginMethod.reopenClass({
 
     if (this.preRegister){
       this.preRegister.forEach(function(method){
-        var enabledSetting = method.get('enabledSetting');
-        if (enabledSetting) {
-          if (Discourse.SiteSettings[enabledSetting]) {
-            methods.pushObject(method);
-          }
-        } else {
-          methods.pushObject(method);
-        }
+        methods.pushObject(method);
       });
       delete this.preRegister;
     }

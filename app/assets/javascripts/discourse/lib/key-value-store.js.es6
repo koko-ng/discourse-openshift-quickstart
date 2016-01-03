@@ -5,14 +5,12 @@ try {
   safeLocalStorage = localStorage;
   if (localStorage["disableLocalStorage"] === "true") {
     safeLocalStorage = null;
-  } else {
-    // makes sure we can write to the local storage
-    safeLocalStorage["safeLocalStorage"] = true;
   }
-} catch (e) {
+} catch(e){
   // cookies disabled, we don't care
   safeLocalStorage = null;
 }
+
 
 const KeyValueStore = function(ctx) {
   this.context = ctx;
@@ -43,10 +41,6 @@ KeyValueStore.prototype = {
     safeLocalStorage[this.context + opts.key] = opts.value;
   },
 
-  setObject(opts) {
-    this.set({ key: opts.key, value: JSON.stringify(opts.value) });
-  },
-
   get(key) {
     if (!safeLocalStorage) { return null; }
     return safeLocalStorage[this.context + key];
@@ -62,8 +56,9 @@ KeyValueStore.prototype = {
 
   getObject(key) {
     if (!safeLocalStorage) { return null; }
-    try { return JSON.parse(safeLocalStorage[this.context + key]); }
-    catch (e) { }
+    try {
+      return JSON.parse(safeLocalStorage[this.context + key]);
+    } catch(e) {}
   }
 };
 
@@ -73,5 +68,6 @@ KeyValueStore.prototype.removeItem = KeyValueStore.prototype.remove;
 KeyValueStore.prototype.setItem = function(key, value) {
   this.set({ key, value });
 };
+
 
 export default KeyValueStore;

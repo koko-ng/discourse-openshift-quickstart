@@ -11,7 +11,6 @@ Discourse.StaffActionLog = Discourse.Model.extend({
     formatted += this.format('admin.logs.ip_address', 'ip_address');
     formatted += this.format('admin.logs.topic_id', 'topic_id');
     formatted += this.format('admin.logs.post_id', 'post_id');
-    formatted += this.format('admin.logs.category_id', 'category_id');
     if (!this.get('useCustomModalForDetails')) {
       formatted += this.format('admin.logs.staff_actions.new_value', 'new_value');
       formatted += this.format('admin.logs.staff_actions.previous_value', 'previous_value');
@@ -20,7 +19,7 @@ Discourse.StaffActionLog = Discourse.Model.extend({
       if (this.get('details')) formatted += Discourse.Utilities.escapeExpression(this.get('details')) + '<br/>';
     }
     return formatted;
-  }.property('ip_address', 'email', 'topic_id', 'post_id', 'category_id'),
+  }.property('ip_address', 'email', 'topic_id', 'post_id'),
 
   format: function(label, propertyName) {
     if (this.get(propertyName)) {

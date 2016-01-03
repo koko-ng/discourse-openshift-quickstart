@@ -15,6 +15,7 @@ function filterQueryParams(params, defaultParams) {
 function findTopicList(store, tracking, filter, filterParams, extras) {
   extras = extras || {};
   return new Ember.RSVP.Promise(function(resolve) {
+
     const session = Discourse.Session.current();
 
     if (extras.cached) {
@@ -71,7 +72,7 @@ export default function(filter, extras) {
       // attempt to stop early cause we need this to be called before .sync
       ScreenTrack.current().stop();
 
-      const findOpts = filterQueryParams(data),
+      const findOpts = filterQueryParams(transition.queryParams),
             findExtras = { cached: this.isPoppedState(transition) };
 
       return findTopicList(this.store, this.topicTrackingState, filter, findOpts, findExtras);
@@ -84,11 +85,18 @@ export default function(filter, extras) {
       return I18n.t('filters.with_topics', {filter: filterText});
     },
 
-    setupController(controller, model) {
+    setupController(controller, model, trans) {
+      if (trans) {
+        controller.setProperties(Em.getProperties(trans, _.keys(queryParams).map(function(v){
+          return 'queryParams.' + v;
+        })));
+      }
+
+      const period = model.get('for_period') || (filter.indexOf('/') > 0 ? filter.split('/')[1] : '');
       const topicOpts = {
         model,
         category: null,
-        period: model.get('for_period') || (filter.indexOf('/') > 0 ? filter.split('/')[1] : ''),
+        period,
         selected: [],
         expandGloballyPinned: true
       };
@@ -106,12 +114,6 @@ export default function(filter, extras) {
 
       this.openTopicDraft(model);
       this.controllerFor('navigation/default').set('canCreateTopic', model.get('can_create_topic'));
-    },
-
-    resetController(controller, isExiting) {
-      if (isExiting) {
-        controller.setProperties({ order: "default", ascending: false });
-      }
     },
 
     renderTemplate() {

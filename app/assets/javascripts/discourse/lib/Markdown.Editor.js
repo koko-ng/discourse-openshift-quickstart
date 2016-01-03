@@ -306,8 +306,7 @@
     // end of Chunks
 
     function firstByClass(doc, containerElement, className) {
-      var container = containerElement || doc;
-      var elements = container.getElementsByClassName(className);
+      var elements = doc.getElementsByClassName(className);
       if (elements && elements.length) {
         return elements[0];
       }

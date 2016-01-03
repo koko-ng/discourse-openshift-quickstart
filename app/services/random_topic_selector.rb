@@ -40,17 +40,15 @@ class RandomTopicSelector
 
     results = []
 
-    return results if count < 1
+    left = count
 
-    results = $redis.multi do
-      $redis.lrange(key, 0, count-1)
-      $redis.ltrim(key, count, -1)
+    while left > 0
+      id = $redis.lpop key
+      break unless id
+
+      results << id.to_i
+      left -= 1
     end
-
-    results = results[0]
-    results.map!(&:to_i)
-
-    left = count - results.length
 
     backfilled = false
     if left > 0

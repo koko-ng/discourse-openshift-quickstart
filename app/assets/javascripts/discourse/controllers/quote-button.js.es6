@@ -1,6 +1,5 @@
 import loadScript from 'discourse/lib/load-script';
 import Quote from 'discourse/lib/quote';
-import property from 'ember-addons/ember-computed-decorators';
 
 export default Ember.Controller.extend({
   needs: ['topic', 'composer'],
@@ -9,15 +8,10 @@ export default Ember.Controller.extend({
     loadScript('defer/html-sanitizer-bundle');
   }.on('init'),
 
-  @property('buffer', 'postId')
-  post(buffer, postId) {
-    if (!postId || Ember.isEmpty(buffer)) { return null; }
-
-    const postStream = this.get('controllers.topic.model.postStream');
-    const post = postStream.findLoadedPost(postId);
-
-    return post;
-  },
+  //  If the buffer is cleared, clear out other state (post)
+  bufferChanged: function() {
+    if (Ember.isEmpty(this.get('buffer'))) this.set('post', null);
+  }.observes('buffer'),
 
   // Save the currently selected text and displays the
   //  "quote reply" button
@@ -32,12 +26,8 @@ export default Ember.Controller.extend({
     }
 
     const selection = window.getSelection();
-
-     // no selections
-    if (selection.isCollapsed) {
-      this.set('buffer', '');
-      return;
-    }
+    // no selections
+    if (selection.isCollapsed) return;
 
     // retrieve the selected range
     const range = selection.getRangeAt(0),
@@ -95,7 +85,7 @@ export default Ember.Controller.extend({
   },
 
   quoteText() {
-    const postId = this.get('postId');
+
     const postStream = this.get('controllers.topic.model.postStream');
     const postId = this.get('postId');
     const post = postStream.findLoadedPost(postId);
@@ -106,15 +96,6 @@ export default Ember.Controller.extend({
         this.quoteText();
       });
       return;
-    }
-
-    // defer load if needed, if in an expanded replies section
-    if (!post) {
-      const postStream = this.get('controllers.topic.model.postStream');
-      return postStream.loadPost(postId).then(p => {
-        this.set('post', p);
-        return this.quoteText();
-      });
     }
 
     // If we can't create a post, delegate to reply as new topic
@@ -129,7 +110,7 @@ export default Ember.Controller.extend({
       draftKey: post.get('topic.draft_key')
     };
 
-    if (post.get('post_number') === 1) {
+    if(post.get('post_number') === 1) {
       composerOpts.topic = post.get("topic");
     } else {
       composerOpts.post = post;

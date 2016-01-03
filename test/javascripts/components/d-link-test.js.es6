@@ -20,6 +20,8 @@ componentTest('with a label', {
   test(assert) {
     const $a = this.$('a');
     assert.equal($a.text(), I18n.t('user.preferences'));
+    assert.equal($a.attr('title'), I18n.t('user.preferences'));
+    assert.equal($a.attr('aria-title'), I18n.t('user.preferences'));
   }
 });
 
@@ -29,6 +31,8 @@ componentTest('with a label and icon', {
     const $a = this.$('a');
     assert.ok(this.$('i.fa-gear', $a).length, 'shows the icon');
     assert.equal($a.text(), ` ${I18n.t('user.preferences')}`, "includes a space");
+    assert.equal($a.attr('title'), I18n.t('user.preferences'));
+    assert.equal($a.attr('aria-title'), I18n.t('user.preferences'));
   }
 });
 

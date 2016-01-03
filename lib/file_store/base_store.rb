@@ -71,12 +71,8 @@ module FileStore
     def purge_tombstone(grace_period)
     end
 
-    def get_depth_for(id)
-      [0, Math.log(id / 1_000.0, 16).ceil].max
-    end
-
     def get_path_for(type, id, sha, extension)
-      depth = get_depth_for(id)
+      depth = [0, Math.log(id / 1_000.0, 16).ceil].max
       tree = File.join(*sha[0, depth].split(""), "")
       "#{type}/#{depth + 1}X/#{tree}#{sha}#{extension}"
     end

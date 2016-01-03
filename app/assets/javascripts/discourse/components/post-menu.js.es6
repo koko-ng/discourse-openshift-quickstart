@@ -364,9 +364,7 @@ const PostMenuComponent = Ember.Component.extend(StringBuffer, {
           rebakePostIcon = iconHTML('cog'),
           rebakePostText = I18n.t('post.controls.rebake'),
           unhidePostIcon = iconHTML('eye'),
-          unhidePostText = I18n.t('post.controls.unhide'),
-          changePostOwnerIcon = iconHTML('user'),
-          changePostOwnerText = I18n.t('post.controls.change_owner');
+          unhidePostText = I18n.t('post.controls.unhide');
 
     const html = '<div class="post-admin-menu popup-menu">' +
                  '<h3>' + I18n.t('admin_title') + '</h3>' +
@@ -375,7 +373,6 @@ const PostMenuComponent = Ember.Component.extend(StringBuffer, {
                    (Discourse.User.currentProp('staff') ? '<li class="btn" data-action="togglePostType">' + postTypeIcon + postTypeText + '</li>' : '') +
                    '<li class="btn" data-action="rebakePost">' + rebakePostIcon + rebakePostText + '</li>' +
                    (post.hidden ? '<li class="btn" data-action="unhidePost">' + unhidePostIcon + unhidePostText + '</li>' : '') +
-                   (Discourse.User.currentProp('admin') ? '<li class="btn" data-action="changePostOwner">' + changePostOwnerIcon + changePostOwnerText + '</li>' : '') +
                  '</ul>' +
                '</div>';
 
@@ -405,10 +402,6 @@ const PostMenuComponent = Ember.Component.extend(StringBuffer, {
 
   clickUnhidePost() {
     this.sendAction("unhidePost", this.get("post"));
-  },
-
-  clickChangePostOwner() {
-    this.sendAction("changePostOwner", this.get("post"));
   },
 
   buttonForShowMoreActions() {

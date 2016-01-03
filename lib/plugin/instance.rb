@@ -218,8 +218,13 @@ class Plugin::Instance
     js = javascripts.join("\n")
 
     auth_providers.each do |auth|
+      overrides = ""
+      overrides = ", titleOverride: '#{auth.title}'" if auth.title
+      overrides << ", messageOverride: '#{auth.message}'" if auth.message
+      overrides << ", frameWidth: '#{auth.frame_width}'" if auth.frame_width
+      overrides << ", frameHeight: '#{auth.frame_height}'" if auth.frame_height
 
-      js << "Discourse.LoginMethod.register(Discourse.LoginMethod.create(#{auth.to_json}));\n"
+      js << "Discourse.LoginMethod.register(Discourse.LoginMethod.create({name: '#{auth.name}'#{overrides}}));\n"
 
       if auth.glyph
         css << ".btn-social.#{auth.name}:before{ content: '#{auth.glyph}'; }\n"
@@ -300,8 +305,7 @@ class Plugin::Instance
 
   def auth_provider(opts)
     provider = Plugin::AuthProvider.new
-
-    Plugin::AuthProvider.auth_attributes.each do |sym|
+    [:glyph, :background_color, :title, :message, :frame_width, :frame_height, :authenticator].each do |sym|
       provider.send "#{sym}=", opts.delete(sym)
     end
     auth_providers << provider

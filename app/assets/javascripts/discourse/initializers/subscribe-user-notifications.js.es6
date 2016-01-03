@@ -29,6 +29,10 @@ export default {
         });
       }
 
+      bus.subscribe("/notification-alert/" + user.get('id'), function(data){
+        onNotification(data, user);
+      });
+
       bus.subscribe("/notification/" + user.get('id'), function(data) {
         const oldUnread = user.get('unread_notifications');
         const oldPM = user.get('unread_private_messages');
@@ -81,13 +85,7 @@ export default {
       });
 
       if (!Ember.testing) {
-        if (!Discourse.Mobile.mobileView) {
-          bus.subscribe("/notification-alert/" + user.get('id'), function(data){
-            onNotification(data, user);
-          });
-
-          initDesktopNotifications(bus);
-        }
+        initDesktopNotifications(bus);
       }
     }
   }

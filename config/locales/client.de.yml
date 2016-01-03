@@ -329,10 +329,6 @@ de:
       no_subcategory: "keine"
       category: "Kategorie"
       reorder:
-        title: "Kategorien neu sortieren"
-        title_long: "Neustrukturierung der Kategorieliste"
-        fix_order: "Positionen fixieren"
-        fix_order_tooltip: "Nicht alle Kategorien haben eine eindeutige Positionsnummer, was zu unerwarteten Ergebnissen führen kann."
         save: "Reihenfolge speichern"
         apply_all: "Anwenden"
         position: "Position"
@@ -416,6 +412,7 @@ de:
       tracked_categories: "Verfolgt"
       tracked_categories_instructions: "Du wirst automatisch allen neuen Themen in diesen Kategorien folgen. Die Anzahl der neuen Antworten wird bei den betroffenen Themen angezeigt."
       muted_categories: "Stummgeschaltet"
+      muted_categories_instructions: "Du erhältst keine Benachrichtigungen über neue Themen in diesen Kategorien und sie werden nicht in deiner Liste ungelesener Themen aufscheinen."
       delete_account: "Lösche mein Benutzerkonto"
       delete_account_confirm: "Möchtest du wirklich dein Benutzerkonto permanent löschen? Diese Aktion kann nicht rückgängig gemacht werden!"
       deleted_yourself: "Dein Benutzerkonto wurde erfolgreich gelöscht."
@@ -549,14 +546,11 @@ de:
         after_5_minutes: "nach 5 Minuten"
         after_10_minutes: "nach 10 Minuten"
       invited:
-        search: "zum Suchen nach Einladungen hier eingeben..."
+        search: "schreib zum Suchen nach Einladungen..."
         title: "Einladungen"
         user: "Eingeladener Benutzer"
         sent: "Gesendet"
-        none: "Es gibt keine ausstehenden Einladungen."
-        truncated:
-          one: "Zeige die erste Einladung."
-          other: "Zeige die ersten {{count}} Einladungen."
+        truncated: "Zeige die ersten {{count}} Einladungen."
         redeemed: "Angenommene Einladungen"
         redeemed_tab: "Angenommen"
         redeemed_tab_with_count: "Angenommen ({{count}})"
@@ -575,8 +569,6 @@ de:
         days_visited: "Besuchstage"
         account_age_days: "Konto-Alter in Tagen"
         create: "Einladung versenden"
-        generate_link: "Einladungslink kopieren"
-        generated_link_message: '<p>Einladungslink erfolgreich generiert!</p><p><input class="invite-link-input" style="width: 75%;" type="text" value="%{inviteLink}"></p><p>Der Einladungslink ist nur für folgende E-Mail-Adresse gültig: <b>%{invitedEmail}</b></p>'
         bulk_invite:
           none: "Du hast noch niemanden hierher eingeladen. Du kannst individuelle Einladungen verschicken oder eine Masseneinladung an eine Gruppe von Leuten verschicken indem du <a href='https://meta.discourse.org/t/send-bulk-invites/16468'>eine Datei für Masseneinladung</a> hochlädst."
           text: "Masseneinladung aus Datei"
@@ -616,13 +608,11 @@ de:
         server: "Server-Fehler"
         forbidden: "Zugriff verweigert"
         unknown: "Fehler"
-        not_found: "Seite nicht gefunden"
       desc:
         network: "Bitte überprüfe deine Netzwerkverbindung."
         network_fixed: "Sieht aus, als wäre es wieder da."
         server: "Fehlercode: {{status}}"
         forbidden: "Du darfst das nicht ansehen."
-        not_found: "Hoppla! Die Anwendung hat versucht eine URL zu laden, die nicht existiert."
         unknown: "Etwas ist schief gelaufen."
       buttons:
         back: "Zurück"
@@ -654,8 +644,8 @@ de:
     signup_cta:
       sign_up: "Registrieren"
       hide_session: "Erinnere mich morgen"
-      hide_forever: "Nein danke"
-      hidden_for_session: "In Ordnung, ich frag dich morgen wieder. Du kannst dir auch jederzeit unter „Anmelden“ ein Benutzerkonto erstellen."
+      hide_forever: "Nein danke!"
+      hidden_for_session: "In Ordnung, ich frag dich morgen wieder. Du kannst dir auch jederzeit mit „Anmelden“ ein Benutzerkonto erstellen."
       intro: "Hallo! :heart_eyes: Es sieht so aus, als würde dir die Diskussion gefallen. Du hast aber noch kein Benutzerkonto."
       value_prop: "Wenn du ein Benutzerkonto anlegst, merken wir uns, was du gelesen hast, damit du immer dort fortsetzten kannst, wo du aufgehört hast. Du kannst auch Benachrichtigungen – hier oder per E-Mail – erhalten, wenn neue Beiträge verfasst werden. Beiträge, die dir gefallen, kannst du mit einem Like versehen und diese Freude mit allen teilen. :heartbeat:"
       methods:
@@ -723,7 +713,6 @@ de:
       admin_not_allowed_from_ip_address: "Von dieser IP-Adresse darfst du dich nicht als Administrator anmelden."
       resend_activation_email: "Klicke hier, um eine neue Aktivierungsmail zu schicken."
       sent_activation_email_again: "Wir haben dir eine weitere E-Mail zur Aktivierung an <b>{{currentEmail}}</b> geschickt. Es könnte ein paar Minuten dauern, bis diese ankommt; sieh auch im Spam-Ordner nach."
-      preferences: "Du musst eingeloggt sein, um deine Benutzereinstellungen bearbeiten zu können."
       google:
         title: "mit Google"
         message: "Authentifiziere mit Google (stelle sicher, dass keine Pop-up-Blocker aktiviert sind)"
@@ -748,7 +737,6 @@ de:
     emoji_one: "Emoji One"
     composer:
       emoji: "Emoji :smile:"
-      more_emoji: "mehr..."
       options: "Optionen"
       whisper: "flüstern"
       add_warning: "Dies ist eine offizielle Warnung."
@@ -779,8 +767,9 @@ de:
       title_placeholder: "Um was geht es in dieser Diskussion? Schreib einen kurzen Satz."
       edit_reason_placeholder: "Warum bearbeitest du?"
       show_edit_reason: "(Bearbeitungsgrund hinzufügen)"
-      reply_placeholder: "Schreib hier. Verwende Markdown, BBCode oder HTML zur Formatierung. Füge Bilder ein oder ziehe sie herein."
+      reply_placeholder: "Schreibe hier. Verwende Markdown, BBCode oder HTML zur Formatierung. Füge Bilder ein oder ziehe sie herein."
       view_new_post: "Sieh deinen neuen Beitrag an."
+      saving: "Speichere..."
       saved: "Gespeichert!"
       saved_draft: "Ein Beitrag ist in Arbeit. Zum Fortsetzen hier klicken."
       uploading: "Wird hochgeladen..."
@@ -848,11 +837,6 @@ de:
         liked: "Gefällt dein Beitrag"
         private_message: "Nachricht von"
         invited_to_private_message: "Zu Unterhaltung eingeladen von"
-        invited_to_topic: "Zu Thema eingeladen von"
-        invitee_accepted: "Einladung angenommen von"
-        moved_post: "Dein Beitrag wurde verschoben von"
-        linked: "Link zu deinem Beitrag"
-        granted_badge: "Abzeichen erhalten"
       popup:
         mentioned: '{{username}} hat dich in "{{topic}}" - {{site_title}} erwähnt'
         quoted: '{{username}} hat dich in "{{topic}}" - {{site_title}} zitiert'
@@ -877,7 +861,7 @@ de:
     search:
       sort_by: "Sortieren nach"
       relevance: "Relevanz"
-      latest_post: "letzter Beitrag"
+      latest_post: "letztem Beitrag"
       most_viewed: "Anzahl der Aufrufe"
       most_liked: "Anzahl der Likes"
       select_all: "Alle auswählen"
@@ -896,7 +880,6 @@ de:
         category: "Kategorie „{{category}}“ durchsuchen"
         topic: "Dieses Thema durchsuchen"
         private_messages: "Nachrichten durchsuchen"
-    hamburger_menu: "wechsel zu einem anderen Beitragsliste oder Kategorie"
     new_item: "neu"
     go_back: 'zurückgehen'
     not_logged_in_user: 'Benutzerseite mit einer Zusammenfassung der Benutzeraktivitäten und Einstellungen'
@@ -1054,6 +1037,7 @@ de:
           description: "Du erhältst keine Benachrichtigungen im Zusammenhang mit dieser Unterhaltung."
         muted:
           title: "Stummgeschaltet"
+          description: "Du erhältst keine Benachrichtigungen über dieses Thema und es wird nicht in deiner Liste ungelesener Themen aufscheinen."
       actions:
         recover: "Löschen rückgängig machen"
         delete: "Thema löschen"
@@ -1094,7 +1078,6 @@ de:
         unpin: "Dieses Thema vom Anfang der {{categoryLink}} Kategorie loslösen."
         unpin_until: "Dieses Thema vom Anfang der {{categoryLink}} Kategorie loslösen oder bis <strong>%{until}</strong> warten."
         pin_note: "Benutzer können das Thema für sich selbst loslösen."
-        pin_validation: "Ein Datum wird benötigt um diesen Beitrag zu fixieren."
         already_pinned:
           zero: "Es sind in {{categoryLink}} keine Themen angeheftet."
           one: "Momentan in {{categoryLink}} angeheftete Themen: <strong class='badge badge-notification unread'>1</strong>"
@@ -1240,7 +1223,6 @@ de:
         no_value: "Nein, beibehalten"
         yes_value: "Ja, verwerfen"
       via_email: "dieser Beitrag ist per E-Mail eingetroffen"
-      whisper: "Dieser Beitrag ist Privat für Moderatoren."
       wiki:
         about: "dieser Beitrag ist ein Wiki; Anwärter können diesen bearbeiten"
       archetypes:
@@ -1401,7 +1383,6 @@ de:
       topic_template: "Themenvorlage"
       delete: 'Kategorie löschen'
       create: 'Neue Kategorie'
-      create_long: 'Eine neue Kategorie erstellen'
       save: 'Kategorie speichern'
       slug: 'Sprechender Name für URL'
       slug_placeholder: '(Optional) mit Bindestrich getrennte Wörter für URL'
@@ -1431,7 +1412,6 @@ de:
       email_in_allow_strangers: "Akzeptiere E-Mails von nicht registrierten, anonymen Benutzern"
       email_in_disabled: "Das Erstellen von neuen Themen per E-Mail ist in den Website-Einstellungen deaktiviert. Um das Erstellen von neuen Themen per E-Mail zu erlauben,"
       email_in_disabled_click: 'aktiviere die Einstellung „email in“.'
-      suppress_from_homepage: "Löse diese Kategorie von der Webseite."
       allow_badges_label: "Erlaube das Verleihen von Abzeichen in dieser Kategorie"
       edit_permissions: "Berechtigungen bearbeiten"
       add_permission: "Berechtigung hinzufügen"
@@ -1444,15 +1424,16 @@ de:
       notifications:
         watching:
           title: "Beobachten"
-          description: "Du wirst automatisch alle neuen Themen in diesen Kategorien beobachten. Du wirst über jeden neuen Beitrag in jedem Thema benachrichtigt und die Anzahl neuer Antworten wird angezeigt."
+          description: "Du wirst automatisch alle neuen Themen in dieser Kategorie beobachten und über alle neuen Beiträge und Themen benachrichtigt werden. Die Anzahl der neuen Antworten wird bei den betroffenen Themen angezeigt."
         tracking:
           title: "Verfolgen"
-          description: "Du wirst automatisch allen neuen Themen in diesen Kategorien folgen. Du wirst benachrichtigt, wenn dich jemand mit @Name erwähnt oder dir antwortet, und die Anzahl neuer Antworten wird angezeigt."
+          description: "Du wirst automatisch allen neuen Themen in dieser Kategorie folgen. Die Anzahl der neuen Antworten wird bei den betroffenen Themen angezeigt."
         regular:
           title: "Normal"
           description: "Du wirst benachrichtigt, wenn jemand deinen @Namen erwähnt oder dir antwortet."
         muted:
           title: "Stummgeschaltet"
+          description: "Du erhältst keine Benachrichtigungen über neue Themen in dieser Kategorie und die Themen werden nicht in deiner Liste ungelesener Themen aufscheinen."
     flagging:
       title: 'Danke für deine Mithilfe!'
       private_reminder: 'Meldungen sind vertraulich und <b>nur</b> für Mitarbeiter sichtbar'
@@ -1498,13 +1479,12 @@ de:
         help: "Dieses Thema ist geschlossen. Das Antworten ist nicht mehr möglich."
       archived:
         help: "Dieses Thema ist archiviert; es ist eingefroren und kann nicht mehr geändert werden"
-      locked_and_archived:
-        help: "Dieses Thema ist geschlossen. Das Antworten oder das Bearbeiten ist nicht mehr möglich."
       unpinned:
         title: "Losgelöst"
         help: "Dieses Thema ist für dich losgelöst; es wird in der normalen Reihenfolge angezeigt"
       pinned_globally:
         title: "Global angeheftet"
+        help: "Dieses Thema ist global angeheftet; es wird immer am Anfang aller Listen auftauchen"
       pinned:
         title: "Angeheftet"
         help: "Dieses Thema ist für dich angeheftet; es wird immer am Anfang seiner Kategorie auftauchen"
@@ -1978,7 +1958,6 @@ de:
         ip_address: "IP"
         topic_id: "Themen-ID"
         post_id: "Beitrags-ID"
-        category_id: "Kategorie-ID"
         delete: 'Löschen'
         edit: 'Bearbeiten'
         save: 'Speichern'
@@ -2019,9 +1998,6 @@ de:
             impersonate: "Nutzersicht"
             anonymize_user: "Benutzer anonymisieren"
             roll_up: "IP-Adressen zusammenfassen"
-            change_category_settings: "Kategorieeinstellungen ändern"
-            delete_category: "Kategorie löschen"
-            create_category: "Kategorie erstellen"
         screened_emails:
           title: "Gefilterte E-Mails"
           description: "Wenn jemand ein Konto erstellt, werden die folgenden E-Mail-Adressen überprüft und es wird die Anmeldung blockiert oder eine andere Aktion ausgeführt."
@@ -2372,19 +2348,10 @@ de:
         title: "Einbettung"
         host: "Erlaubte Hosts"
         edit: "bearbeiten"
-        category: "In Kategorie Beitrag schreiben"
         add_host: "Host hinzufügen"
         settings: "Einbettungseinstellungen"
         feed_settings: "Feed-Einstellungen"
         crawling_settings: "Crawler-Einstellungen"
-        embed_by_username: "Benutzername für Beitragserstellung"
-        embed_post_limit: "Maximale Anzahl der Beiträge, welche eingebettet werden"
-        embed_username_key_from_feed: "Schlüssel, um Discourse-Benutzernamen aus Feed zu extrahieren."
-        embed_truncate: "Kürze die eingebetteten Beiträge"
-        embed_whitelist_selector: "CSS Selektor für Elemente, die in Einbettungen erlaubt sind."
-        whitelist_example: "article, #story, .post"
-        embed_blacklist_selector: "CSS Selektor für Elemente, die in Einbettungen entfernt werden."
-        blacklist_example: ".ad-unit, header"
         feed_polling_enabled: "Beiträge über RSS/ATOM importieren"
         feed_polling_url: "URL des RSS/ATOM Feeds für den Import"
         save: "Einbettungseinstellungen speichern"
@@ -2568,13 +2535,13 @@ de:
           description: Hat in einem Thema mit mehr als 100 Beiträgen jeden Beitrag gelesen
         popular_link:
           name: Beliebter Link
-          description: Hat einen externen Link veröffentlicht, welcher mindestens 50 Klicks erhalten hat.
+          description: Hat einen externen Link veröffentlicht, der mindestens 50 Klicks erhalten hat.
         hot_link:
           name: Angesagter Link
-          description: Hat einen externen Link veröffentlicht, welcher mindestens 300 Klicks erhalten hat.
+          description: Hat einen externen Link veröffentlicht, der mindestens 300 Klicks erhalten hat.
         famous_link:
           name: Berühmter Link
-          description: Hat einen externen Link veröffentlicht, welcher mindestens 1000 Klicks erhalten hat.
+          description: Hat einen externen Link veröffentlicht, der mindestens 1000 Klicks erhalten hat.
     google_search: |
       <h3>Mit Google suchen</h3>
       <p>

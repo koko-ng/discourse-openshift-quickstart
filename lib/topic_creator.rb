@@ -95,7 +95,7 @@ class TopicCreator
 
     category = find_category
 
-    @guardian.ensure_can_create!(Topic, category) unless (@opts[:skip_validations] || @opts[:archetype] == Archetype.private_message)
+    @guardian.ensure_can_create!(Topic, category) unless @opts[:skip_validations]
 
     topic_params[:category_id] = category.id if category.present?
 
@@ -150,7 +150,7 @@ class TopicCreator
 
   def add_users(topic, usernames)
     return unless usernames
-    User.where(username: usernames.split(',').flatten).each do |user|
+    User.where(username: usernames.split(',')).each do |user|
       check_can_send_permission!(topic, user)
       @added_users << user
       topic.topic_allowed_users.build(user_id: user.id)

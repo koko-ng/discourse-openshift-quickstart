@@ -17,10 +17,6 @@ const User = RestModel.extend({
   hasNotPosted: Em.computed.not("hasPosted"),
   canBeDeleted: Em.computed.and("can_be_deleted", "hasNotPosted"),
 
-  redirected_to_top: {
-    reason: null,
-  },
-
   @computed()
   stream() {
     return UserStream.create({ user: this });

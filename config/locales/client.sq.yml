@@ -383,6 +383,7 @@ sq:
       tracked_categories: "Gjurmuar"
       tracked_categories_instructions: "You will automatically track all new topics in these categories. A count of new posts will appear next to the topic."
       muted_categories: "Heshtur"
+      muted_categories_instructions: "You will not be notified of anything about new topics in these categories, and they will not appear on your unread tab."
       delete_account: "Fshi Llogarin Time"
       delete_account_confirm: "Are you sure you want to permanently delete your account? This action cannot be undone!"
       deleted_yourself: "Llogaria juaj u fshi me sukses."
@@ -508,6 +509,7 @@ sq:
         search: "shkruaj për të kërkuar ftesat..."
         title: "Ftesa"
         user: "Anëtarët e Ftuar"
+        truncated: "Shfaq {{count}} ftesat e para."
         redeemed: "Ridërgo ftesat"
         redeemed_tab: "Redeemed"
         redeemed_at: "Redeemed"
@@ -705,6 +707,7 @@ sq:
       edit_reason_placeholder: "pse jeni duke e redaktuar?"
       show_edit_reason: "(arsye redaktimit)"
       view_new_post: "Shikoni postimin tuaj te ri."
+      saving: "Duke ruajtur..."
       saved: "U Ruajt!"
       saved_draft: "Post draft in progress. Select to resume."
       uploading: "Duke nga ngarkuar..."
@@ -944,6 +947,7 @@ sq:
           description: "You will never be notified of anything about this message."
         muted:
           title: "Muted"
+          description: "You will never be notified of anything about this topic, and it will not appear on your unread tab."
       actions:
         recover: "Un-Delete Topic"
         delete: "Fshi Diskutimin"
@@ -1324,12 +1328,16 @@ sq:
       notifications:
         watching:
           title: "Watching"
+          description: "You will automatically watch all new topics in these categories. You will be notified of all new posts and topics, and a count of new replies will appear for these topics."
         tracking:
           title: "Tracking"
+          description: "You will automatically track all new topics in these categories. A count of new replies will appear for these topics."
         regular:
+          title: "Regular"
           description: "You will be notified if someone mentions your @name or replies to you."
         muted:
           title: "Muted"
+          description: "You will not be notified of anything about new topics in these categories, and they will not appear on your unread tab."
     flagging:
       title: 'Faleminderit për ndihmën që i jepni këtij komuniteti!'
       private_reminder: 'flags are private, <b>only</b> visible to staff'
@@ -1380,6 +1388,7 @@ sq:
         help: "This topic is unpinned for you; it will display in regular order"
       pinned_globally:
         title: "Pinned Globally"
+        help: "This topic is pinned globally; it will display at the top of all lists"
       pinned:
         title: "Pinned"
         help: "This topic is pinned for you; it will display at the top of its category"

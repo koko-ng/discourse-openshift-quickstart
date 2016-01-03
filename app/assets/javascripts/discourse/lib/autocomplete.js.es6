@@ -130,13 +130,10 @@ export default function(options) {
         if (options.transformComplete) {
           term = options.transformComplete(term);
         }
-
-        if (term) {
-          var text = me.val();
-          text = text.substring(0, completeStart) + (options.key || "") + term + ' ' + text.substring(completeEnd + 1, text.length);
-          me.val(text);
-          Discourse.Utilities.setCaretPosition(me[0], completeStart + 1 + term.length);
-        }
+        var text = me.val();
+        text = text.substring(0, completeStart) + (options.key || "") + term + ' ' + text.substring(completeEnd + 1, text.length);
+        me.val(text);
+        Discourse.Utilities.setCaretPosition(me[0], completeStart + 1 + term.length);
       }
     }
     closeAutocomplete();
@@ -287,7 +284,7 @@ export default function(options) {
     if (options.key && e.which === options.key.charCodeAt(0)) {
       caretPosition = Discourse.Utilities.caretPosition(me[0]);
       var prevChar = me.val().charAt(caretPosition - 1);
-      if (!prevChar || /[^\w\)\]]/.test(prevChar)) {
+      if (!prevChar || /\W/.test(prevChar)) {
         completeStart = completeEnd = caretPosition;
         updateAutoComplete(options.dataSource(""));
       }
@@ -341,7 +338,7 @@ export default function(options) {
         stopFound = prev === options.key;
         if (stopFound) {
           prev = me[0].value[c - 1];
-          if (!prev || /[^\w\)\]]/.test(prev)) {
+          if (!prev || /\W/.test(prev)) {
             completeStart = c;
             caretPosition = completeEnd = initial;
             term = me[0].value.substring(c + 1, initial);

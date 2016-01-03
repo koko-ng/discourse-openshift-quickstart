@@ -22,14 +22,8 @@ export default Ember.Component.extend({
     const it = this.get('notification');
     const badgeId = it.get("data.badge_id");
     if (badgeId) {
-      var badgeSlug = it.get("data.badge_slug");
-
-      if (!badgeSlug) {
-        const badgeName = it.get("data.badge_name");
-        badgeSlug = badgeName.replace(/[^A-Za-z0-9_]+/g, '-').toLowerCase();
-      }
-
-      return Discourse.getURL('/badges/' + badgeId + '/' + badgeSlug);
+      const badgeName = it.get("data.badge_name");
+      return Discourse.getURL('/badges/' + badgeId + '/' + badgeName.replace(/[^A-Za-z0-9_]+/g, '-').toLowerCase());
     }
 
     const topicId = it.get('topic_id');

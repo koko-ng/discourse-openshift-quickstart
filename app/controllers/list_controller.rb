@@ -84,7 +84,7 @@ class ListController < ApplicationController
     end
 
     define_method("category_#{filter}") do
-      canonical_url "#{Discourse.base_url_no_prefix}#{@category.url}"
+      canonical_url "#{Discourse.base_url}#{@category.url}"
       self.send(filter, category: @category.id)
     end
 
@@ -93,7 +93,7 @@ class ListController < ApplicationController
     end
 
     define_method("parent_category_category_#{filter}") do
-      canonical_url "#{Discourse.base_url_no_prefix}#{@category.url}"
+      canonical_url "#{Discourse.base_url}#{@category.url}"
       self.send(filter, category: @category.id)
     end
 
@@ -228,11 +228,11 @@ class ListController < ApplicationController
     parent_category_id = nil
     if parent_slug_or_id.present?
       parent_category_id = Category.query_parent_category(parent_slug_or_id)
-      redirect_or_not_found and return if parent_category_id.blank?
+      raise Discourse::NotFound if parent_category_id.blank?
     end
 
     @category = Category.query_category(slug_or_id, parent_category_id)
-    redirect_or_not_found and return if !@category
+    raise Discourse::NotFound if !@category
 
     @description_meta = @category.description_text
     guardian.ensure_can_see!(@category)
@@ -295,7 +295,7 @@ class ListController < ApplicationController
       return period if top_topics.count >= SiteSetting.topics_per_period_in_top_page
     end
     # default period is yearly
-    SiteSetting.top_page_default_timeframe
+    :yearly
   end
 
   def self.best_periods_for(date)
@@ -306,25 +306,6 @@ class ListController < ApplicationController
     periods << :monthly if date > 180.days.ago
     periods << :yearly
     periods
-  end
-
-  def redirect_or_not_found
-    url = request.fullpath
-    permalink = Permalink.find_by_url(url)
-
-    if permalink.present?
-      # permalink present, redirect to that URL
-      if permalink.external_url
-        redirect_to permalink.external_url, status: :moved_permanently
-      elsif permalink.target_url
-        redirect_to "#{Discourse::base_uri}#{permalink.target_url}", status: :moved_permanently
-      else
-        raise Discourse::NotFound
-      end
-    else
-      # redirect to 404
-      raise Discourse::NotFound
-    end
   end
 
 end

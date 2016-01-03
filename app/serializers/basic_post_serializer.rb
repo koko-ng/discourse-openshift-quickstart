@@ -9,15 +9,15 @@ class BasicPostSerializer < ApplicationSerializer
              :cooked_hidden
 
   def name
-    object.user && object.user.name
+    object.user.try(:name)
   end
 
   def username
-    object.user && object.user.username
+    object.user.try(:username)
   end
 
   def avatar_template
-    object.user && object.user.avatar_template
+    object.user.try(:avatar_template)
   end
 
   def cooked_hidden

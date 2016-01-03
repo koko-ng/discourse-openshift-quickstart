@@ -56,12 +56,12 @@ export default Ember.ArrayController.extend({
 
     var badges = [];
     this.get('badges').forEach(function(badge) {
-      if (badge.get('enabled') && (badge.get('multiple_grant') || !granted[badge.get('id')])) {
+      if (badge.get('multiple_grant') || !granted[badge.get('id')]) {
         badges.push(badge);
       }
     });
 
-    return _.sortBy(badges, badge => badge.get('displayName'));
+    return _.sortBy(badges, "name");
   }.property('badges.@each', 'model.@each'),
 
   /**

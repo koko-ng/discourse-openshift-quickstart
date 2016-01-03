@@ -46,7 +46,6 @@ class TopicQuery
     options.assert_valid_keys(VALID_OPTIONS)
     @options = options.dup
     @user = user
-    @guardian = Guardian.new(@user)
   end
 
   def joined_topic_user(list=nil)
@@ -186,7 +185,7 @@ class TopicQuery
     topics = yield(topics) if block_given?
 
     options = options.merge(@options)
-    if ["activity","default"].include?(options[:order] || "activity") && !options[:unordered]
+    if (options[:order] || "activity") == "activity" && !options[:unordered]
       topics = prioritize_pinned_topics(topics, options)
     end
 
@@ -360,7 +359,7 @@ class TopicQuery
         when 'unlisted'
           result = result.where('NOT topics.visible')
         when 'deleted'
-          guardian = @guardian
+          guardian = Guardian.new(@user)
           if guardian.is_staff?
             result = result.where('topics.deleted_at IS NOT NULL')
             require_deleted_clause = false
@@ -392,7 +391,7 @@ class TopicQuery
       result = result.where('topics.posts_count <= ?', options[:max_posts]) if options[:max_posts].present?
       result = result.where('topics.posts_count >= ?', options[:min_posts]) if options[:min_posts].present?
 
-      @guardian.filter_allowed_categories(result)
+      Guardian.new(@user).filter_allowed_categories(result)
     end
 
     def remove_muted_categories(list, user, opts=nil)
@@ -408,10 +407,8 @@ class TopicQuery
                AND cu.category_id = topics.category_id
                AND cu.notification_level = :muted
                AND cu.category_id <> :category_id
-               AND (tu.notification_level IS NULL OR tu.notification_level < :tracking)
           )", user_id: user.id,
               muted: CategoryUser.notification_levels[:muted],
-              tracking: TopicUser.notification_levels[:tracking],
               category_id: category_id || -1)
       end
 

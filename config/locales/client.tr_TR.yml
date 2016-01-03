@@ -386,6 +386,7 @@ tr_TR:
       tracked_categories: "Takip edildi"
       tracked_categories_instructions: "Bu kategorilerdeki tüm yeni konuları otomatik olarak takip edeceksiniz. Okunmamış ve yeni gönderilerin sayısı ilgili konunun yanında belirecek."
       muted_categories: "Susturuldu"
+      muted_categories_instructions: "Bu kategorideki yeni konular okunmamışlar sekmenizde belirmeyecek, ve haklarında hiçbir bildirim almayacaksınız."
       delete_account: "Hesabımı Sil"
       delete_account_confirm: "Hesabınızı kalıcı olarak silmek istediğinize emin misiniz? Bu işlemi geri alamazsınız!"
       deleted_yourself: "Hesabınız başarıyla silindi."
@@ -524,6 +525,7 @@ tr_TR:
         user: "Davet Edilen Kullanıcı"
         sent: "Gönderildi"
         none: "Bekleyen davet yok."
+        truncated: "İlk {{count}} davetler gösteriliyor."
         redeemed: "Kabul Edilen Davetler"
         redeemed_tab: "Kabul Edildi"
         redeemed_tab_with_count: "İtfa edilmiş ({{count}})"
@@ -725,6 +727,7 @@ tr_TR:
       show_edit_reason: "(düzenleme sebebi ekle)"
       reply_placeholder: "Buraya yazın. Biçimlendirmek için Markdown, BBCode ya da HTML kullanabilirsin. Resimleri sürükleyebilir ya da yapıştırabilirsin."
       view_new_post: "Yeni gönderinizi görüntüleyin."
+      saving: "Kaydediliyor..."
       saved: "Kaydedildi!"
       saved_draft: "Gönderi taslağı işleniyor. Geri almak için seçin. "
       uploading: "Yükleniyor..."
@@ -918,7 +921,7 @@ tr_TR:
       options: "Konu Seçenekleri"
       show_links: "Bu konunun içindeki bağlantıları göster. "
       toggle_information: "konu ayrıntılarını aç/kapa"
-      read_more_in_category: "Daha fazlası için {{catLink}} kategorisine göz atabilir ya da  {{latestLink}}yebilirsiniz."
+      read_more_in_category: "Daha fazlası için {{catLink}} kategorisine göz atabilir ya da  {{latestLink}}bilirsiniz."
       read_more: "Daha fazla okumak mı istiyorsunuz? {{catLink}} ya da {{latestLink}}."
       read_more_MF: "Kalan { UNREAD, plural, =0 {} one { <a href='/unread'>1 okunmamış</a> } other { <a href='/unread'># okunmamış</a> } } { NEW, plural, =0 {} one { {BOTH, select, true{ve} false {} other{}} <a href='/new'>1 yeni</a> konu} other { {BOTH, select, true{and } false {} other{}} <a href='/new'># yeni</a> konu} } var, veya {CATEGORY, select, true { {catLink}} false {{latestLink}} kategorilerindeki diğer {} konulara göz atabilirsiniz }"
       browse_all_categories: Bütün kategorilere göz at
@@ -981,6 +984,7 @@ tr_TR:
           description: "Bu mesajlaşmayla ilgili hiç bir bildirim almayacaksınız."
         muted:
           title: "Susturuldu"
+          description: "Bu konu okunmamışlar sekmenizde belirmeyecek, ve hakkında hiç bir bildirim almayacaksınız."
       actions:
         recover: "Konuyu Geri Getir"
         delete: "Konuyu Sil"
@@ -1343,12 +1347,16 @@ tr_TR:
       notifications:
         watching:
           title: "Gözleniyor"
+          description: "Bu kategorilerdeki tüm yeni konuları otomatik olarak gözleyeceksiniz. Tüm yeni gönderi ve konularla ilgili bildiri alacaksınız, ayrıca okunmamış ve yeni gönderilerin sayısı ilgili konunun yanında belirecek."
         tracking:
           title: "Takip Ediliyor"
+          description: "Bu kategorilerdeki tüm yeni konuları otomatik olarak takip edeceksiniz. Okunmamış ve yeni gönderilerin sayısı ilgili konunun yanında belirecek."
         regular:
+          title: "Standart"
           description: "Birisi @isim şeklinde sizden bahsederse ya da gönderinize cevap verirse bildirim alacaksınız."
         muted:
           title: "Susturuldu"
+          description: "Bu kategorilerdeki yeni konular hakkında herhangi bir bildiri almayacaksınız ve okunmamışlar sekmenizde belirmeyecek. "
     flagging:
       title: 'Topluluğumuzun medeni kalmasına yardımcı olduğunuz için teşekkürler!'
       private_reminder: 'bayraklar özeldir, <b>sadece</b> görevlilere gözükür'
@@ -1400,6 +1408,7 @@ tr_TR:
         help: "Bu konu sizin için başa tutturulmuyor; normal sıralama içerisinde görünecek"
       pinned_globally:
         title: "Her Yerde Başa Tutturuldu"
+        help: "Bu konu her yerde başa tutturuldu; tüm listelerin başında görünecek"
       pinned:
         title: "Başa Tutturuldu"
         help: "Bu konu sizin için başa tutturuldu; kendi kategorisinin en üstünde görünecek"

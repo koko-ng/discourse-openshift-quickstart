@@ -113,14 +113,13 @@ Discourse::Application.routes.draw do
 
     resources :impersonate, constraints: AdminConstraint.new
 
-    resources :email, constraints: AdminConstraint.new do
+    resources :email do
       collection do
         post "test"
         get "all"
         get "sent"
         get "skipped"
         get "preview-digest" => "email#preview_digest"
-        post "handle_mail"
       end
     end
 
@@ -205,7 +204,6 @@ Discourse::Application.routes.draw do
 
     get "memory_stats"=> "diagnostics#memory_stats", constraints: AdminConstraint.new
     get "dump_heap"=> "diagnostics#dump_heap", constraints: AdminConstraint.new
-    get "dump_statement_cache"=> "diagnostics#dump_statement_cache", constraints: AdminConstraint.new
 
   end # admin namespace
 
@@ -243,7 +241,6 @@ Discourse::Application.routes.draw do
   get "tos" => "static#show", id: "tos", as: 'tos'
   get "privacy" => "static#show", id: "privacy", as: 'privacy'
   get "signup" => "list#latest"
-  get "login-preferences" => "static#show", id: "login"
 
   get "users/admin-login" => "users#admin_login"
   put "users/admin-login" => "users#admin_login"
@@ -368,7 +365,6 @@ Discourse::Application.routes.draw do
 
   get "excerpt" => "excerpt#show"
 
-  resources :post_action_users
   resources :post_actions do
     collection do
       get "users"
@@ -538,7 +534,6 @@ Discourse::Application.routes.draw do
   get "favicon/proxied" => "static#favicon", format: false
 
   get "robots.txt" => "robots_txt#index"
-  get "manifest.json" => "manifest_json#index", as: :manifest
 
   Discourse.filters.each do |filter|
     root to: "list##{filter}", constraints: HomePageConstraint.new("#{filter}"), :as => "list_#{filter}"

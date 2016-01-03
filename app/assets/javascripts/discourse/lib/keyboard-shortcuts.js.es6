@@ -3,7 +3,7 @@ import DiscourseURL from 'discourse/lib/url';
 const bindings = {
   '!':               {postAction: 'showFlags'},
   '#':               {handler: 'toggleProgress', anonymous: true},
-  '/':               {handler: 'toggleSearch', anonymous: true},
+  '/':               {handler: 'showSearch', anonymous: true},
   '=':               {handler: 'toggleHamburgerMenu', anonymous: true},
   '?':               {handler: 'showHelpModal', anonymous: true},
   '.':               {click: '.alert.alert-info.clickable', anonymous: true}, // show incoming/updated topics
@@ -99,7 +99,7 @@ export default {
     $('.topic-post.selected button.create').click();
     // lazy but should work for now
     setTimeout(function() {
-      $('.wmd-quote-post').click();
+      $('#wmd-quote-post').click();
     }, 500);
   },
 
@@ -142,11 +142,6 @@ export default {
   },
 
   showBuiltinSearch() {
-    if (this.container.lookup('controller:header').get('searchVisible')) {
-      this.toggleSearch();
-      return true;
-    }
-
     this.searchService.set('searchContextEnabled', false);
 
     const currentPath = this.container.lookup('controller:application').get('currentPath'),
@@ -162,7 +157,7 @@ export default {
 
     if (showSearch) {
       this.searchService.set('searchContextEnabled', true);
-      this.toggleSearch();
+      this.showSearch();
       return false;
     }
 
@@ -181,7 +176,7 @@ export default {
     this.container.lookup('controller:topic-progress').send('toggleExpansion', {highlight: true});
   },
 
-  toggleSearch() {
+  showSearch() {
     this.container.lookup('controller:header').send('toggleSearch');
     return false;
   },
@@ -358,8 +353,8 @@ export default {
   },
 
   _changeSection(direction) {
-    const $sections = $('.nav.nav-pills li'),
-        active = $('.nav.nav-pills li.active'),
+    const $sections = $('#navigation-bar li'),
+        active = $('#navigation-bar li.active'),
         index = $sections.index(active) + direction;
 
     if (index >= 0 && index < $sections.length) {

@@ -205,7 +205,7 @@ SQL
       JOIN users u2 ON u2.id = i.user_id
       WHERE i.deleted_at IS NULL AND u2.active AND u2.trust_level >= #{trust_level.to_i} AND not u2.blocked
       GROUP BY invited_by_id
-      HAVING COUNT(*) >= #{count.to_i}
+      HAVING COUNT(*) > #{count.to_i}
     ) AND u.active AND NOT u.blocked AND u.id > 0 AND
       (:backfill OR u.id IN (:user_ids) )
 "
@@ -329,37 +329,11 @@ SQL
     Badge.find_each(&:reset_grant_count!)
   end
 
-  def display_name
-    if self.system?
-      key = "admin_js.badges.badge.#{i18n_name}.name"
-      I18n.t(key, default: self.name)
-    else
-      self.name
-    end
-  end
-
-  def long_description
-    if self[:long_description].present?
-      self[:long_description]
-    else
-      key = "badges.long_descriptions.#{i18n_name}"
-      I18n.t(key, default: '')
-    end
-  end
-
-  def slug
-    Slug.for(self.display_name, '-')
-  end
-
   protected
   def ensure_not_system
     unless id
       self.id = [Badge.maximum(:id) + 1, 100].max
     end
-  end
-
-  def i18n_name
-    self.name.downcase.gsub(' ', '_')
   end
 end
 

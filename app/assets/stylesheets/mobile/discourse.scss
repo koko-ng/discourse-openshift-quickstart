@@ -64,7 +64,8 @@ blockquote {
 }
 
 .topic-statuses {
-  float: left;
+  display: inline-block;
+  vertical-align: middle;
   .topic-status {
     i {
       color: dark-light-diff($secondary, $primary, 40%, -20%);

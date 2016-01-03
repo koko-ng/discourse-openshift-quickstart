@@ -418,7 +418,7 @@ es:
       tracked_categories: "Siguiendo"
       tracked_categories_instructions: "Seguirás automáticamente todos los nuevos temas en estas categorías. Se añadirá un contador de posts nuevos y sin leer al lado del tema."
       muted_categories: "Silenciado"
-      muted_categories_instructions: "No serás notificado de ningún tema en estas categorías, y no aparecerán en la página de mensajes recientes."
+      muted_categories_instructions: "No será notificado de nuevos temas en estas categorías, y no aparecerán en la sección de \"no leídos\"."
       delete_account: "Borrar Mi Cuenta"
       delete_account_confirm: "¿Estás seguro que quieres borrar permanentemente tu cuenta? ¡Esta acción no puede ser revertida!"
       deleted_yourself: "Tu cuenta ha sido borrada exitosamente."
@@ -557,9 +557,7 @@ es:
         user: "Invitar Usuario"
         sent: "Enviadas"
         none: "No hay ninguna invitación pendiente que mostrar."
-        truncated:
-          one: "Mostrando la primera invitación."
-          other: "Mostrando las primeras {{count}} invitaciones."
+        truncated: "Mostrando las primeras {{count}} invitaciones."
         redeemed: "Invitaciones aceptadas"
         redeemed_tab: "Usado"
         redeemed_tab_with_count: "Aceptadas ({{count}})"
@@ -619,13 +617,11 @@ es:
         server: "Error del Servidor"
         forbidden: "Acceso Denegado"
         unknown: "Error"
-        not_found: "Página no encontrada"
       desc:
         network: "Por favor revisa tu conexión."
         network_fixed: "Parece que ha vuelto."
         server: "Código de error: {{status}}"
         forbidden: "No estás permitido para ver eso."
-        not_found: "¡Ups! la aplicación intentó cargar una URL inexistente."
         unknown: "Algo salió mal."
       buttons:
         back: "Volver Atrás"
@@ -660,10 +656,10 @@ es:
     signup_cta:
       sign_up: "Registrarse"
       hide_session: "Recordar mañana"
-      hide_forever: "no, gracias"
+      hide_forever: "No gracias"
       hidden_for_session: "Vale, te preguntaremos mañana. Recuerda que también puedes usar el botón 'Iniciar sesión' para crear una cuenta en cualquier momento."
       intro: "¡Hola! :heart_eyes: Parece que estás interesado en las cosas que nuestros usuarios publican, pero no tienes una cuenta registrada."
-      value_prop: "Cuando te registras, recordamos lo que has leído, para que puedas volver justo donde estabas leyendo. También recibes notificaciones, por aquí y por email, cuando se publican nuevos mensajes. ¡También puedes darle a Me gusta a los mensajes! :heartbeat:"
+      value_prop: "Si estás registrado, podemos saber exactamente lo que has leído, para que siempre puedas retomar la lectura donde la dejaste. También puedes recibir notificaciones, por aquí o por email, cuando se publiquen nuevos mensajes. Ah, ¡y puedes darle a Me gusta a los mensajes! :heartbeat:"
       methods:
         sso: "Registrarse es gratis: sólo necesitas una cuenta de la web principal."
         only_email: "Registrarse es fácil: sólo necesitas un email y una contraseña."
@@ -729,9 +725,6 @@ es:
       admin_not_allowed_from_ip_address: "No puedes iniciar sesión como admin desde esta dirección IP."
       resend_activation_email: "Has clic aquí para enviar el email de activación nuevamente."
       sent_activation_email_again: "Te hemos enviado otro e-mail de activación a <b>{{currentemail}}</b>. Podría tardar algunos minutos en llegar; asegúrate de revisar tu carpeta de spam."
-      to_continue: "Por favor, inicia sesión"
-      preferences: "Debes tener una sesión iniciada para cambiar tus preferencias de usuario."
-      forgot: "No me acuerdo de los detalles de mi cuenta."
       google:
         title: "con Google"
         message: "Autenticando con Google (asegúrate de desactivar cualquier bloqueador de pop ups)"
@@ -756,7 +749,6 @@ es:
     emoji_one: "Emoji One"
     composer:
       emoji: "Emoji :smile:"
-      more_emoji: "más..."
       options: "Opciones"
       whisper: "susurrar"
       add_warning: "Ésta es una advertencia oficial."
@@ -789,7 +781,7 @@ es:
       show_edit_reason: "(añadir motivo de edición)"
       reply_placeholder: "Escribe aquí. Usa Markdown, BBCode o HTML para darle formato. Arrastra o pega imágenes."
       view_new_post: "Ver tu nuevo post."
-      saving: "Guardando"
+      saving: "Guardando..."
       saved: "¡Guardado!"
       saved_draft: "Borrador en progreso. Selecciona para continuar."
       uploading: "Subiendo..."
@@ -1061,7 +1053,7 @@ es:
           description: "Nunca se te notificará nada sobre este hilo de mensajes."
         muted:
           title: "Silenciar"
-          description: "No serás notificado de algo relacionado con este tema, y no aparecerá en la página de mensajes recientes."
+          description: "Nunca recibirás notificaciones sobre este tema y no aparecerá en tu pestaña de no leídos."
       actions:
         recover: "Deshacer borrar tema"
         delete: "Eliminar tema"
@@ -1278,7 +1270,6 @@ es:
         revert_to_regular: "Eliminar el formato de post de staff"
         rebake: "Reconstruir HTML"
         unhide: "Deshacer ocultar"
-        change_owner: "Cambiar dueño"
       actions:
         flag: 'Reportar'
         defer_flags:
@@ -1454,16 +1445,16 @@ es:
       notifications:
         watching:
           title: "Vigilar"
-          description: "Vigilarás automáticamente todos los nuevos temas en estas categorías. Serás notificado por cada nuevo mensaje en cada tema, y verás una cuenta de las nuevas respuestas."
+          description: "Seguirás automáticamente todos los nuevos temas en estas categorías. Se te notificará de cada nuevo post y tema, y además, se añadirá un contador de posts nuevos y sin leer al lado del tema."
         tracking:
           title: "Seguir"
-          description: "Seguirás automáticamente todos los nuevos temas en estas categorías. Serás notificado si alguien menciona tu @nombre o te responde, y verás una cuenta de las nuevas respuestas."
+          description: "Seguirás automáticamente todos los nuevos temas en estas categorías. Se añadirá un contador de posts nuevos y sin leer al lado del tema."
         regular:
           title: "Normal"
           description: "Se te notificará solo si alguien menciona tu @nombre o te responde a un post."
         muted:
           title: "Silenciadas"
-          description: "No serás notificado de ningún tema en estas categorías, y no aparecerán en la página de mensajes recientes."
+          description: "No se te notificará de nuevos temas en estas categorías y no aparecerán en la pestaña de no leídos."
     flagging:
       title: '¡Gracias por ayudar a mantener una comunidad civilizada!'
       private_reminder: 'los reportes son privados, son visibles <b>únicamente</b> por los administradores'
@@ -1516,7 +1507,7 @@ es:
         help: "Este tema se ha dejado de destacar para ti; en tu listado de temas se mostrará en orden normal"
       pinned_globally:
         title: "Destacado globalmente"
-        help: "Este tema ha sido destacado globalmente, se mostrará en la parte superior de la página de mensajes recientes y de su categoría."
+        help: "Este tema ha sido destacado globalmente, se mostrará en la parte superior de todas las listas"
       pinned:
         title: "Destacado"
         help: "Este tema ha sido destacado para ti; se mostrará en la parte superior de su categoría"
@@ -1995,7 +1986,6 @@ es:
         ip_address: "IP"
         topic_id: "ID del Tema"
         post_id: "ID del Post"
-        category_id: "ID de la categoría"
         delete: 'Eliminar'
         edit: 'Editar'
         save: 'Guardar'
@@ -2036,9 +2026,6 @@ es:
             impersonate: "impersonar"
             anonymize_user: "anonimizar usuario"
             roll_up: "agrupar bloqueos de IP"
-            change_category_settings: "cambiar opciones de categoría"
-            delete_category: "eliminar categoría"
-            create_category: "crear categoría"
         screened_emails:
           title: "Correos bloqueados"
           description: "Cuando alguien trata de crear una cuenta nueva, los siguientes correos serán revisados y el registro será bloqueado, o alguna otra acción será realizada."
@@ -2403,9 +2390,7 @@ es:
         embed_username_key_from_feed: "Clave para extraer usuario de discourse del feed"
         embed_truncate: "Truncar los posts insertados"
         embed_whitelist_selector: "Selector CSS para permitir elementos a embeber"
-        whitelist_example: "article, #story, .post"
         embed_blacklist_selector: "Selector CSS para restringir elementos a embeber"
-        blacklist_example: ".ad-unit, header"
         feed_polling_enabled: "Importar posts usando RSS/ATOM"
         feed_polling_url: "URL del feed RSS/ATOM del que extraer datos"
         save: "Guardar ajustes de Insertado"

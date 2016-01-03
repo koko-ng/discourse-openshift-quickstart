@@ -255,6 +255,7 @@ ja:
       title: "リーダー"
     change_failed_explanation: "%{user_name} を '%{new_trust_level}' に格下げしようとしましたが、既にトラストレベルが '%{current_trust_level}' です。%{user_name} は '%{current_trust_level}' のままになります - もしユーザーを降格させたい場合は、トラストレベルをロックしてください"
   rate_limiter:
+    slow_down: "多すぎるアクションが実行されました。時間を置いてから試してください"
     too_many_requests: "このアクションを一日の間に実施可能な回数が決まっています。%{time_left}待ってから再度試してください。"
     hours:
       other: "%{count} 時間"
@@ -655,6 +656,7 @@ ja:
     summary_likes_required: "'トピックサマリー'が有効になるために必要な最小「いいね!」数"
     summary_percent_filter: "ユーザが'トピックサマリー'をクリックしたとき, 上位何パーセントのポストを表示するか"
     summary_max_results: "'トピックサマリー'として返却される最大ポスト数"
+    enable_private_messages: "トラストレベル1のユーザーにプライベートメッセージの作成と返信を許可する"
     enable_long_polling: "通知用のメッセージバスによるロングポーリングの利用を許可する"
     long_polling_base_url: "ロングポーリングのベースURL(CDNが動的コンテンツを配信している場合、これをoriginに指定してください) eg: http://origin.site.com"
     long_polling_interval: "ユーザに送信するデータが存在しないとき、サーバが待機する時間(ログインユーザーのみ)"

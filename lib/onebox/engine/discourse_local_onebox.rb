@@ -33,14 +33,13 @@ module Onebox
       def to_html
         uri = URI::parse(@url)
         route = Rails.application.routes.recognize_path(uri.path)
-        url = @url.sub(/[&?]source_topic_id=(\d+)/, "")
-        source_topic_id = $1.to_i
+
 
         # Figure out what kind of onebox to show based on the URL
         case route[:controller]
         when 'topics'
 
-          linked = "<a href='#{url}'>#{url}</a>"
+          linked = "<a href='#{@url}'>#{@url}</a>"
           if route[:post_number].present? && route[:post_number].to_i > 1
             # Post Link
             post = Post.find_by(topic_id: route[:topic_id], post_number: route[:post_number].to_i)
@@ -57,9 +56,7 @@ module Onebox
             excerpt.gsub!("[/quote]", "[quote]")
             quote = "[quote=\"#{post.user.username}, topic:#{topic.id}, slug:#{slug}, post:#{post.post_number}\"]#{excerpt}[/quote]"
 
-            args = {}
-            args[:topic_id] = source_topic_id if source_topic_id > 0
-            cooked = PrettyText.cook(quote, args)
+            cooked = PrettyText.cook(quote)
             return cooked
 
           else
@@ -80,7 +77,7 @@ module Onebox
             end
 
             quote = post.excerpt(SiteSetting.post_onebox_maxlength)
-            args = { original_url: url,
+            args = { original_url: @url,
                      title: topic.title,
                      avatar: PrettyText.avatar_img(topic.user.avatar_template, 'tiny'),
                      posts_count: topic.posts_count,

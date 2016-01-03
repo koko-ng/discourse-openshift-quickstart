@@ -10,7 +10,6 @@ class UserHistorySerializer < ApplicationSerializer
              :new_value,
              :topic_id,
              :post_id,
-             :category_id,
              :action,
              :custom_type
 

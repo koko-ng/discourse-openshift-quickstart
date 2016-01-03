@@ -123,10 +123,11 @@ a:hover.reply-new {
   border: 1px solid dark-light-diff($primary, $secondary, 90%, -60%);
   padding: 5px;
   background: $secondary;
+  @include box-shadow(0 0px 2px rgba(0,0,0, .2));
 
   position: relative;
-  left: 340px;
-  width: 135px;
+  left: 345px;
+  width: 133px;
   padding: 5px;
 
   button.full {

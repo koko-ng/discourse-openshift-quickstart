@@ -54,11 +54,8 @@ module CategoryGuardian
 
   # all allowed category ids
   def allowed_category_ids
-    @allowed_category_ids ||=
-      begin
-        unrestricted = Category.where(read_restricted: false).pluck(:id)
-        unrestricted.concat(secure_category_ids)
-      end
+    unrestricted = Category.where(read_restricted: false).pluck(:id)
+    unrestricted.concat(secure_category_ids)
   end
 
   def topic_create_allowed_category_ids

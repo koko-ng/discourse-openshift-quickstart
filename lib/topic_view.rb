@@ -160,7 +160,8 @@ class TopicView
   end
 
   def image_url
-    @topic.image_url || SiteSetting.default_opengraph_image_url
+    return nil if desired_post.blank?
+    desired_post.user.try(:small_avatar_url)
   end
 
   def filter_posts(opts = {})
@@ -185,8 +186,7 @@ class TopicView
         result[g[0]] = g[1]
       end
     end
-
-    @group_names = result
+    result
   end
 
   # Find the sort order for a post in the topic

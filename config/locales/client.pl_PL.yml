@@ -128,7 +128,6 @@ pl_PL:
       google+: 'udostępnij ten odnośnik na Google+'
       email: 'wyślij ten odnośnik przez email'
     action_codes:
-      split_topic: "podziel ten temat %{when}"
       autoclosed:
         enabled: 'zamknięcie %{when}'
         disabled: 'otworzenie %{when}'
@@ -252,7 +251,6 @@ pl_PL:
     revert: "Przywróć"
     failed: "Niepowodzenie"
     switch_to_anon: "Tryb anonimowy"
-    switch_from_anon: "Zakończ tryb anonimowy"
     banner:
       close: "Zamknij ten baner."
       edit: "Edytuj ten baner >>"
@@ -448,7 +446,7 @@ pl_PL:
       tracked_categories: "Śledzone"
       tracked_categories_instructions: "Będziesz automatycznie śledzić wszystkie nowe tematy w tych kategoriach. Licznik nowych wpisów pojawi się obok tytułu na liście tematów."
       muted_categories: "Wyciszone"
-      muted_categories_instructions: "Nie będziesz powiadamiany o nowych tematach w tych kategoriach. Nie pojawią się na liście nieprzeczytanych."
+      muted_categories_instructions: "Nie będziesz powiadamiany o niczym dotyczącym nowych tematów w tych kategoriach, i nie będą się one pojawiać na karcie nieprzeczytanych."
       delete_account: "Usuń moje konto"
       delete_account_confirm: "Czy na pewno chcesz usunąć swoje konto? To nieodwracalne!"
       deleted_yourself: "Twoje konto zostało usunięte."
@@ -587,10 +585,7 @@ pl_PL:
         user: "Zaproszony(-a) użytkownik(-czka)"
         sent: "Wysłane"
         none: "Nie ma żadnych zaproszeń do wyświetlenia."
-        truncated:
-          one: "Wyświetlanie pierwszego zaproszenia."
-          few: "Wyświetlanie {{count}} pierwszych zaproszeń."
-          other: "Wyświetlanie {{count}} pierwszych zaproszeń."
+        truncated: "Pokaż pierwsze {{count}} zaproszeń."
         redeemed: "Cofnięte zaproszenia"
         redeemed_tab: "Przyjęte"
         redeemed_tab_with_count: "Zrealizowane ({{count}})"
@@ -650,13 +645,11 @@ pl_PL:
         server: "błąd serwera"
         forbidden: "Brak dostępu"
         unknown: "Błąd"
-        not_found: "Nie znaleziono strony"
       desc:
         network: "Sprawdź swoje połączenie."
         network_fixed: "Chyba już w porządku."
         server: "Kod błędu: {{status}}"
         forbidden: "Nie możesz obejrzeć tego zasobu."
-        not_found: "Ups, aplikacja próbowała otworzyć URL który nie istnieje."
         unknown: "Coś poszło nie tak."
       buttons:
         back: "Cofnij"
@@ -669,9 +662,6 @@ pl_PL:
     read_only_mode:
       enabled: "Aktywowani tryb tylko-do-odczytu. Możesz nadal przeglądać serwis, ale operacje zmieniające stan i treść mogą nie działać."
       login_disabled: "Logowanie jest zablokowane, gdy strona jest w trybie tylko do odczytu."
-    too_few_topics_and_posts_notice: "Pora <a href='http://blog.discourse.org/2014/08/building-a-discourse-community/'>rozruszać dyskusję!</a> Aktualnie istnieje <strong>%{currentTopics} / %{requiredTopics}</strong> tematów i <strong>%{currentPosts} / %{requiredPosts}</strong> wpisów. Odwiedzający potrzebują więcej tematów i konwersacji do czytania i pisania na ich temat."
-    too_few_topics_notice: "Pora <a href='http://blog.discourse.org/2014/08/building-a-discourse-community/'>rozruszać dyskusję!</a> Aktualnie istnieje <strong>%{currentTopics} / %{requiredTopics}</strong> tematów. Odwiedzający potrzebują więcej tematów i konwersacji do czytania i pisania na ich temat."
-    too_few_posts_notice: "Pora <a href='http://blog.discourse.org/2014/08/building-a-discourse-community/'>rozruszać dyskusję!</a> Aktualnie istnieje <strong>%{currentPosts} / %{requiredPosts}</strong> wpisów. Odwiedzający potrzebują więcej tematów i konwersacji do czytania i pisania na ich temat."
     learn_more: "dowiedz się więcej…"
     year: 'rok'
     year_desc: 'tematy dodane w ciągu ostatnich 365 dni'
@@ -689,21 +679,6 @@ pl_PL:
       one: odpowiedź
       few: odpowiedzi
       other: odpowiedzi
-    signup_cta:
-      sign_up: "Rejestracja"
-      hide_session: "Przypomnij mi jutro"
-      hide_forever: "nie, dziękuję"
-      hidden_for_session: "Ok, zapytamy jutro. Pamiętaj, że konto możesz w każdej chwili założyć klikając na 'Logowanie'."
-      intro: "Hej! :heart_eyes: Wygląda na to, że zainteresowała Cię dyskusja, ale nie posiadasz jeszcze konta."
-      value_prop: "Jeśli stworzysz konto, zapamiętamy przeczytane przez Ciebie wpisy i tematy, dzięki czemu zawsze powrócisz do odpowiedniego miejsca.  Otrzymasz też powiadomienia o nowych wpisach. Dodatkowo możliwe będzie polubienie ciekawych wpisów  :heartbeat:"
-      methods:
-        sso: "Rejestracja jest łatwa: wystarczy posiadać konto w naszym serwisie."
-        only_email: "Rejestracja jest łatwa: wystarczy podać e-mail oraz hasło."
-        only_other: "Użyj swojego konta %{provider} podczas rejestracji."
-        one_and_email: "Aby się zarejestrować, użyj swojego konta %{provider} lub adresu e-mail i hasła."
-        multiple_no_email: "Rejestracja jest łatwa: użyj jednego z %{count} serwisów społecznościowych."
-        multiple: "Rejestracja jest łatwa: użyj jednego z %{count} serwisów społecznościowych lub adresu e-mail i hasła."
-        unknown: "błąd podczas pobierania metod logowania"
     summary:
       enabled_description: "Przeglądasz podsumowanie tego tematu: widoczne są jedynie najbardziej wartościowe wpisy zdaniem uczestników. "
       description: "Istnieją <b>{{count}}</b> odpowiedzi."
@@ -761,9 +736,6 @@ pl_PL:
       admin_not_allowed_from_ip_address: "Nie możesz się zalogować jako admin z tego adresu IP."
       resend_activation_email: "Kliknij tutaj, aby ponownie wysłać email z aktywacją konta."
       sent_activation_email_again: "Wysłaliśmy do ciebie kolejny email z aktywacją konta na <b>{{currentEmail}}</b>. Zanim dotrze, może minąć kilka minut; pamiętaj, żeby sprawdzić folder ze spamem."
-      to_continue: "Zaloguj się"
-      preferences: "Musisz się zalogować, aby zmieniać swoje ustawienia."
-      forgot: "Nie pamiętam konta"
       google:
         title: "przez Google"
         message: "Uwierzytelnianie przy pomocy konta Google (upewnij się, że blokada wyskakujących okienek nie jest włączona)"
@@ -788,11 +760,7 @@ pl_PL:
     emoji_one: "Emoji One"
     composer:
       emoji: "Emoji :smile:"
-      more_emoji: "więcej…"
-      options: "Opcje"
-      whisper: "szept"
       add_warning: "To jest oficjalne ostrzeżenie."
-      toggle_whisper: "Przełącz szept"
       posting_not_on_topic: "W którym temacie chcesz odpowiedzieć?"
       saving_draft_tip: "zapisuję..."
       saved_draft_tip: "zapisano"
@@ -821,7 +789,7 @@ pl_PL:
       show_edit_reason: "(dodaj powód edycji)"
       reply_placeholder: "Pisz w tym miejscu. Wspierane formatowanie to Markdown, BBCode lub HTML.  Możesz też przeciągnąć tu obrazek."
       view_new_post: "Zobacz Twój nowy wpis."
-      saving: "Zapisywanie"
+      saving: "Zapisuję…"
       saved: "Zapisano!"
       saved_draft: "Posiadasz zachowany szkic wpisu. Kliknij tu aby wznowić jego edycję."
       uploading: "Wczytuję…"
@@ -916,17 +884,8 @@ pl_PL:
       select_file: "Wybierz plik"
       image_link: "odnośnik do którego Twój obraz będzie kierował"
     search:
-      sort_by: "Sortuj po"
-      relevance: "Trafność"
-      latest_post: "Aktualne wpisy"
-      most_viewed: "Popularne"
-      most_liked: "Lubiane"
       select_all: "Zaznacz wszystkie"
       clear_all: "Wyczyść wszystkie"
-      result_count:
-        one: "1 wynik dla <span class='term'>\"{{term}}\"</span>"
-        few: "{{count}} wyniki dla <span class='term'>\"{{term}}\"</span>"
-        other: "{{count}} wyników dla <span class='term'>\"{{term}}\"</span>"
       title: "szukaj tematów, wpisów, użytkowników lub kategorii"
       no_results: "Brak wyników wyszukiwania"
       no_more_results: "Nie znaleziono więcej wyników."
@@ -1102,7 +1061,7 @@ pl_PL:
           description: "Nie będziesz otrzymywać powiadomień dotyczących tej dyskusji."
         muted:
           title: "Wyciszenie"
-          description: "Nie otrzymasz powiadomień o nowych wpisach w tym temacie. Nie pojawią się na liście nieprzeczytanych"
+          description: "Nie będzie jakichkolwiek powiadomień dotyczących tego tematu i nie będzie się on pojawiać na karcie nieprzeczytanych."
       actions:
         recover: "Przywróć temat"
         delete: "Usuń temat"
@@ -1299,7 +1258,7 @@ pl_PL:
         no_value: "Nie, pozostaw"
         yes_value: "Tak, porzuć"
       via_email: "ten wpis został dodany emailem"
-      whisper: "ten wpis jest prywatnym szeptem do moderatorów"
+      whisper: "ten wpis jest prywatną notatką dla moderatorów"
       wiki:
         about: "to wpis typu Wiki:  zwykli użytkownicy mogą go edytować"
       archetypes:
@@ -1330,7 +1289,6 @@ pl_PL:
         revert_to_regular: "Wyłącz kolor moderatora"
         rebake: "Odśwież HTML"
         unhide: "Wycofaj ukrycie"
-        change_owner: "Zmiana właściciela"
       actions:
         flag: 'Oflaguj'
         defer_flags:
@@ -1524,16 +1482,16 @@ pl_PL:
       notifications:
         watching:
           title: "Obserwuj wszystko"
-          description: "Będziesz automatycznie śledzić wszystkie nowe tematy w tych kategoriach. Otrzymasz powiadomienie o każdym nowym wpisie i temacie. Wyświetlimy liczbę nowych odpowiedzi na liście tematów."
+          description: "Będziesz automatycznie śledzić wszystkie nowe tematy w tych kategoriach. Dostaniesz powiadomienie o każdym nowym wpisie i temacie. Liczba nowych odpowiedzi będzie wyświetlana na liście tematów."
         tracking:
           title: "Śledzona"
-          description: "Będziesz automatycznie śledzić wszystkie tematy w tych kategoriach. Otrzymasz powiadomienie jeśli ktoś wspomni twój @login lub odpowie na twój wpis. Licznik nowych odpowiedzi pojawi się na liście tematów."
+          description: "Będziesz automatycznie śledzić wszystkie tematy w tych kategoriach. Llicznik nowych odpowiedzi pojawi się obok ich tytułów."
         regular:
           title: "Normalny"
           description: "Dostaniesz powiadomienie jedynie, gdy ktoś wspomni twoją @nazwę lub odpowie na twój wpis."
         muted:
           title: "Wyciszone"
-          description: "Nie otrzymasz powiadomień o nowych tematach w tych kategoriach. Nie pojawią się na liście nieprzeczytanych."
+          description: "Nie będziesz powiadamiany o nowych tematach w tych kategoriach i nie będą się one pojawiać w karcie Nieprzeczytane."
     flagging:
       title: 'Dziękujemy za pomoc w utrzymaniu porządku w naszej społeczności!'
       private_reminder: 'oflagowania są poufne i widoczne <b>jedynie</b> dla obsługi serwisu'
@@ -1587,7 +1545,7 @@ pl_PL:
         help: "Temat nie jest przypięty w ramach twojego konta. Będzie wyświetlany w normalnej kolejności."
       pinned_globally:
         title: "Przypięty globalnie"
-        help: "Ten temat jest przypięty globalnie. Będzie wyświetlany na początku głównej listy oraz swojej kategorii."
+        help: "Temat przypięty globalnie. Będzie wyświetlany na początku wszystkich list."
       pinned:
         title: "Przypięty"
         help: "Temat przypięty dla twojego konta. Będzie wyświetlany na początku swojej kategorii."
@@ -2068,7 +2026,6 @@ pl_PL:
         ip_address: "IP"
         topic_id: "ID tematu"
         post_id: "ID wpisu"
-        category_id: "ID kategorii"
         delete: 'Usuń'
         edit: 'Edytuj'
         save: 'Zapisz'
@@ -2109,9 +2066,6 @@ pl_PL:
             impersonate: "udawanie użytkownika"
             anonymize_user: "anonimizuj użytkownika"
             roll_up: "zwiń bloki IP"
-            change_category_settings: "zmiana ustawień kategorii"
-            delete_category: "Usuń kategorię"
-            create_category: "Dodaj nową kategorię"
         screened_emails:
           title: "Ekranowane emaile"
           description: "Kiedy ktoś próbuje założyć nowe konto, jego adres email zostaje sprawdzony i rejestracja zostaje zablokowana, lub inna akcja jest podejmowana."
@@ -2483,9 +2437,7 @@ pl_PL:
         embed_username_key_from_feed: "Klucz używany do pobrania nazwy użytkownika z kanału"
         embed_truncate: "Skracaj treść osadzanych wpisów"
         embed_whitelist_selector: "Selektor CSS elementów jakie mogą być osadzane"
-        whitelist_example: "article, #tresc, .wpis"
         embed_blacklist_selector: "Selektor CSS elementów jakie są usuwane podczas osadzania"
-        blacklist_example: ".reklama, header"
         feed_polling_enabled: "Importowanie wpisów via RSS/ATOM"
         feed_polling_url: "URL kanału RSS/ATOM"
         save: "Zapisz"

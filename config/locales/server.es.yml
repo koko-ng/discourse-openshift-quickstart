@@ -203,11 +203,11 @@ es:
 
       En vez de añadir otra respuesta, por favor, considera editar tus respuestas previas o visitar otros temas.
     reviving_old_topic: |
-      ### ¿Revivir este tema?
+      ### ¿Resucitar este tema?
 
       La última respuesta a este tema fue hace %{days} días. Tu post reactivará el tema subiéndolo a las primeras posiciones de la lista y notificará a aquellos involucrados en la conversación previa.
 
-      ¿Estás seguro de que quieres continuar esta conversación antigua?
+      ¿Estás seguro de que quieres continuar esta antigua conversación?
   activerecord:
     attributes:
       category:
@@ -302,18 +302,8 @@ es:
       title: "líder"
     change_failed_explanation: "Trataste de degradar a %{user_name} a '%{new_trust_level}'. Sin embargo su nivel de confianza ya es '%{current_trust_level}'. %{user_name} va a permanecer en '%{current_trust_level}' - si deseas degradar al usuario primero bloquea su nivel de confianza."
   rate_limiter:
-    slow_down: "Has realizado esta acción muchas veces, inténtalo de nuevo más tarde."
+    slow_down: "Has realizado esta acción demasiadas veces, inténtalo de nuevo más tarde"
     too_many_requests: "Estas haciendo eso demasiado a menudo. Por favor espera %{time_left} antes de intentarlo de nuevo."
-    by_type:
-      first_day_replies_per_day: "Has llegado al límite de respuestas que un nuevo usuario puede crear en su primer día. Por favor, espera %{time_left} antes de intentarlo de nuevo."
-      first_day_topics_per_day: "Has llegado al límite de temas que un nuevo usuario puede crear en su primer día. Por favor, espera %{time_left} antes de intentarlo de nuevo."
-      create_topic: "Estás creando temas demasiado rápido. Por favor, espera %{time_left} antes de intentarlo de nuevo."
-      create_post: "Estás respondiendo demasiado rápido. Por favor, espera %{time_left} antes de intentarlo de nuevo."
-      topics_per_day: "Has llegado al límite de nuevos temas de hoy. Por favor, espera %{time_left} antes de intentarlo de nuevo."
-      pms_per_day: "Has llegado al límite de mensajes de hoy. Por favor, espera %{time_left} antes de intentarlo de nuevo."
-      create_like: "Has llegado al límite de Me gusta de hoy. Por favor, espera %{time_left} antes de intentarlo de nuevo."
-      create_bookmark: "Has llegado al límite de marcadores de hoy. Por favor, espera %{time_left} antes de intentarlo de nuevo."
-      edit_post: "Has llegado al límite de ediciones de hoy. Por favor, espera %{time_left} antes de intentarlo de nuevo."
     hours:
       one: "1 hora"
       other: "%{count} horas"
@@ -502,10 +492,6 @@ es:
       title: "Nuevos usuarios"
       xaxis: "Día"
       yaxis: "Número de usuarios nuevos"
-    profile_views:
-      title: "Visitas a perfil de usuario"
-      xaxis: "Día"
-      yaxis: "Número de perfiles de usuario vistos"
     topics:
       title: "Temas nuevos"
       xaxis: "Día"
@@ -745,7 +731,7 @@ es:
     summary_likes_required: "Mínimo de \"me gusta\" en un tema para habilitar 'Resumen de este tema'"
     summary_percent_filter: "Cuando un usuario hace clic en 'Resumen de este tema', se muestra el n % mejores posts"
     summary_max_results: "Máximo de posts devueltos en \"Resumen de este  tema\""
-    enable_private_messages: "Permitir a los usuarios de nivel 1 (configurable vía nivel de confianza para enviar mensajes) crear y responder mensajes"
+    enable_private_messages: "Permitir a los usuarios de nivel de confianza 1 crear y responder mensajes"
     enable_long_polling: "Los mensajes usados para notificaciones pueden usar el long polling"
     long_polling_base_url: "URL base usada para el 'long polling' (cuando un CDN esta sirviendo contenido dinámico, asegúrate de ajustar esto al 'pull' de origen) ejemplo: http://origin.site.com"
     long_polling_interval: "Cantidad de tiempo que el servidor debe de esperar antes de responder a los clientes que no hay datos enviados (solamente usuarios con sesión iniciada)."
@@ -764,7 +750,7 @@ es:
     notify_mods_when_user_blocked: "Si un usuario es bloqueado automáticamente, enviar un mensaje a todos los moderadores."
     flag_sockpuppets: "Si un nuevo usuario responde a un tema desde la misma dirección de IP que el nuevo usuario que inició el tema, reportar los posts de los dos como spam en potencia."
     traditional_markdown_linebreaks: "Utiliza saltos de línea tradicionales en Markdown, que requieren dos espacios al final para un salto de línea."
-    allow_html_tables: "Permitir la inserción de tablas en Markdown usando etiquetas HTML. Se permitirá usar TABLE, THEAD, TD, TR o TH (requiere un rebake completo para los posts antiguos que contengan tablas)"
+    allow_html_tables: "Permitir la inserción de tablas en Markdown usando etiquetas HTML como TABLE, THEAD, TD, TR o TH (requiere un rebake completo para todos los posts antiguos que contengan tablas)"
     post_undo_action_window_mins: "Número de minutos durante los cuales los usuarios pueden deshacer sus acciones recientes en un post (me gusta, reportes, etc)."
     must_approve_users: "Los miembros administración deben aprobar todas las nuevas cuentas antes de que se les permita el acceso al sitio. AVISO: ¡habilitar esta opción en un sitio activo revocará el acceso a los usuarios que no sean moderadores o admin!"
     ga_tracking_code: "Código de Google Analytics, ej: UA-12345678-9; visita http://google.com/analytics"
@@ -775,7 +761,6 @@ es:
     enable_noscript_support: "Habilitar el soporte de motor de búsqueda estándar webcrawler mediante la etiqueta noscript"
     allow_moderators_to_create_categories: "Permitir a los moderadores crear nuevas categorías"
     cors_origins: "Orígenes permitidos para las cross-origin requests (CORS). Cada origen debe incluir http:// or https://. La variable env DISCOURSE_ENABLE_CORS debe establecerse a verdadero para activar CORS."
-    use_admin_ip_whitelist: "Los admins solo pueden iniciar sesión si están en una dirección IP definida en la lista de Screened IPs (Admin > Logs > Screened Ips)."
     top_menu: "Determinar que items aparecen en la navegación de la home y en qué orden. Ejemplo latest|new|unread|categories|top|read|posted|bookmarks"
     post_menu: "Determina qué elementos aparecen en el menú de un post y en qué orden. Ejemplo: like|edit|flag|delete|share|bookmark|reply"
     post_menu_hidden_items: "Los elementos del menú a ocultar por defecto en el menú de cada post a menos que se haga clic en el botón para expandir las opciones."
@@ -791,12 +776,11 @@ es:
     topics_per_period_in_top_summary: "Número de mejores temas mostrados en el resumen de mejores temas."
     topics_per_period_in_top_page: "Número de mejores temas mostrados en la vista expandida al clicar en 'ver más'."
     redirect_users_to_top_page: "Redirigir automáticamente a los nuevos usuarios y a los ausentes de larga duración a la página de mejores temas."
-    top_page_default_timeframe: "Período de tiempo por defecto para la página de temas top"
     show_email_on_profile: "Mostrar el e-mail los usuarios en su perfil (solamente visibles para ellos mismos y el staff)"
     email_token_valid_hours: "Los tokens para restablecer contraseña olvidada / activar cuenta son válidos durante (n) horas."
     email_token_grace_period_hours: "Los tokens para restablecer contraseña olvidada / activar cuenta son válidos durante (n) horas de periodo de gracia, después de ser redimidos."
     enable_badges: "Activar el sistema de distintivos"
-    enable_whispers: "Permitir al staff comunicarse privadamente en los temas. (experimental)"
+    enable_whispers: "Permitir a los usuarios enviar susurros a los moderadores"
     allow_index_in_robots_txt: "Especificar en robots.txt que este sitio puede ser indexado por los motores de búsqueda web."
     email_domains_blacklist: "Una lista de dominios de correo electrónico con los que los usuarios no se podrán registrar. Ejemplo: mailinator.com|trashmail.net"
     email_domains_whitelist: "Una lista de dominios de email con los que los usuarios DEBERÁN registrar sus cuentas. AVISO: ¡los usuarios con un email con diferente dominio a los listados no estarán permitidos!"
@@ -877,7 +861,6 @@ es:
     avatar_sizes: "Lista de tamaños de avatar generados automáticamente."
     external_system_avatars_enabled: "Usar un servicio externo para los avatares."
     external_system_avatars_url: "Dirección URL del servicio externo para los avatares. Sustituciones permitidas: {username} {first_letter} {color} {size}"
-    default_opengraph_image_url: "URL de la imagen opengraph por defecto."
     enable_flash_video_onebox: "Habilitar el embebido de enlaces swf y flv (Adobe Flash) en formato Onebox. AVISO: podría introducir riesgos de seguridad."
     default_invitee_trust_level: "Nivel de confianza por defecto (0-4) para usuarios invitados."
     default_trust_level: "Nivel de confianza por defecto (0-4) para los nuevos usuarios. ¡AVISO! Cambiar esto puede resultar en riesgo por spam."
@@ -904,7 +887,6 @@ es:
     tl3_links_no_follow: "No remover rel=nofollow de los enlaces publicados por usuarios con nivel de confianza 3."
     min_trust_to_create_topic: "El mínimo nivel de confianza requerido para crear un nuevo tema."
     min_trust_to_edit_wiki_post: "El mínimo nivel de confianza requerido para editar un post marcado como wiki."
-    min_trust_to_send_messages: "Mínimo nivel de confianza requerido para crear nuevos mensajes directos."
     newuser_max_links: "Cuántos enlaces puede un nuevo usuario añadir a un post."
     newuser_max_images: "Cuántas imágenes puede un nuevo usuario añadir a un post."
     newuser_max_attachments: "Cuántos adjuntos puede un nuevo usuario añadir a un post."
@@ -947,7 +929,6 @@ es:
     white_listed_spam_host_domains: "Una lista de dominios a excluir de las pruebas de spam. A los nuevos usuarios no se les restringirá la posibilidad de crear posts con enlaces a estos dominios."
     staff_like_weight: "Qué ponderación extra otorgan los me gusta provenientes de los miembros del Staff."
     topic_view_duration_hours: "Contar una visita a un nuevo tema por IP/Usuario cada N horas"
-    user_profile_view_duration_hours: "Contar una nueva visita de perfil por IP/Usuario cada N horas"
     levenshtein_distance_spammer_emails: "Al revisar coincidencias por correos electrónicos de spammers, qué número de caracteres permiten una coincidencia parcial."
     max_new_accounts_per_registration_ip: "Si ya hay (n) cuentas con nivel de confianza 0 desde esta IP (y ninguna es de un miembro del staff o de nivel de confianza 2 o más), prohibir nuevos registros desde esa IP."
     min_ban_entries_for_roll_up: "Al hacer clic en el botón Agrupar, se crea un nuevo rango de entradas para banear si hay al menos (N) entradas."
@@ -1016,7 +997,7 @@ es:
     invites_per_page: "Número de invitaciones por defecto mostradas en la página de perfil del usuario."
     short_progress_text_threshold: "Después de que un número de posts en un tema alcance esta cifra, la barra de progreso sólo mostrará el número del post actual. Si cambias el ancho de la barra de progreso, deberías revisar este valor."
     default_code_lang: "Lenguaje de programación por defecto para aplicar el resaltado de la sintaxis en los bloques de código de GitHub (lang-auto, ruby, python etc.)"
-    warn_reviving_old_topic_age: "Cuando alguien publica en un tema cuya última respuesta fue hace este número de días o más, se le mostrará un aviso para desalentar el hecho de revivir una antigua discusión. Deshabilita esta opción introduciendo el valor 0."
+    warn_reviving_old_topic_age: "Cuando alguien publica en un tema cuya última respuesta fue hace este número de días o más, se le mostrará un aviso para desalentar el hecho de resucitar una antigua discusión. Deshabilita esta opción introduciendo el valor 0."
     autohighlight_all_code: "Forzar el resaltado de código a los bloques de código preformateado cuando no se especifique el lenguaje del código."
     highlighted_languages: "Incluye reglas resaltadas de sintaxis. (Advertencia: incluyendo demasiadas lenguages puede afectar al rendimiento) ver: https://highlightjs.org/static/demo/ para una demostración"
     feed_polling_enabled: "SOLO PARA EMBEBER: embeber feeds RSS/ATOM como posts."
@@ -1025,13 +1006,13 @@ es:
     embed_username_key_from_feed: "Clave para extraer el nombre de usuario en Discourse desde el feed."
     embed_truncate: "Truncar los posts embebidos."
     embed_post_limit: "Número máximo de posts a embeber."
-    embed_username_required: "Se requiere el nombre de usuario para la creación de temas."
     embed_whitelist_selector: "Selector CSS para los elementos que están permitidos en los embebidos."
     embed_blacklist_selector: "Selector CSS para los elementos que están eliminados desde los embebidos."
     notify_about_flags_after: "Si hay reportes que no han sido revisados después de este número de horas, enviar un correo electrónico al contact_email. Deshabilita esta opción introduciendo el valor 0."
     enable_cdn_js_debugging: "Permitir /logs mostrar los errores correctamente, añadiendo permisos crossorigin en todas las inclusiones de js"
     show_create_topics_notice: "Si el sitio tiene menos de 5 temas abiertos al público, mostrar un aviso pidiendo a los administradores crear más temas."
     delete_drafts_older_than_n_days: Eliminar borradores de más de (n) días de antigüedad.
+    show_logout_in_header: "Mostrar el botón para cerrar sesión en el desplegable de la cabecera"
     vacuum_db_days: "Correr VACUUM FULL ANALYZE para reclamar espacio en la base de datos después de las migraciones. (Poner en 0 para inhabilitar)"
     prevent_anons_from_downloading_files: "Impedir que los usuarios anónimos descarguen archivos. ADVERTENCIA: Esto impedirá que funcione cualquier recurso del sitio publicado como adjunto."
     slug_generation_method: "Elegir un método de generación de slug. 'encoded' generará cadenas con código porciento. 'none' hara que no se genere slug."
@@ -1791,105 +1772,6 @@ es:
     Edita el primer post de este tema para cambiar el contenido de la página %{page_name}.
   guidelines_topic:
     title: "Preguntas Frecuentes / Directrices"
-    body: |
-      <a name="civilized"></a>
-
-      ## [Este es un lugar público para conversaciones civilizadas](#civilized)
-
-      Por favor, trata este foro de debate con el mismo respeto con el que tratarías un parque. Este es un lugar donde compartir habilidades, conocimiento e intereses a través de debates y conversaciones.
-
-      Estas no son unas normas estrictas y cerradas, sino una ayuda para el correcto desarrollo de la comunidad. Usa estas pautas para mantener este sitio como un lugar limpio y adecuado para poder debatir y conversar correctamente.
-
-      <a name="improve"></a>
-
-      ## [Aporta](#improve)
-
-      Ayúdanos a mantener este foro como un buen lugar esforzándote para mejorar el debate de alguna manera, aunque sea mínima. Si no estás seguro de lo que tu mensaje aporta a la conversación, piensa sobre lo que quieres decir e intenta contestar después.
-
-      El contenido de este foro nos importa, y queremos que actúes como si te importara a ti también. Sé respetuoso con los temas debatidos y con la gente que los debate, aunque no estés de acuerdo con algo de lo que digan.
-
-      Una buena manera de de mejorar el foro es investigando un poco lo que está pasando o ya ha pasado. Por favor, echa un vistazo a los temas ya existentes antes de responder a uno o crearlo y así podrás ver quién opina lo mismo o tiene intereses parecidos a los tuyos.
-
-      <a name="agreeable"></a>
-
-      ## [Sé aceptable incluso cuando no estés de acuerdo](#agreeable)
-
-      Cuando vayas a responder a algo con lo que no estás de acuerdo acuérdate de __criticar las ideas y no las personas__. Por favor, evita:
-
-
-      * Ridiculizar a los demás.
-      * Faltar al respeto e insultar.
-      * Responder al tono del mensaje en vez de a su contenido.
-      * Hacer comparaciones y contradicciones exageradas y/o fuera de lugar.
-
-      En lugar de eso, da argumentos que aporten algo al tema, por favor.
-
-      <a name="participate"></a>
-
-      ## [Tu participación cuenta](#participate)
-
-      Eres parte de la comunidad, y queremos que todo el mundo participe en ella. Crea o responde a los temas aportando algo y harás de este foro un lugar más interesante y agradable.
-
-      Este foro ofrece herramientas que permiten a la comunidad identificar entre todas las mejores (y peores) contribuciones: "Me gusta", marcadores, reportes, distintivos, respuestas, ediciones, y demás. Usa todo esto para mejorar tu experiencia y la de los demás.
-
-      Intentemos dejar esto mejor de lo que nos lo encontramos.
-
-      <a name="flag-problems"></a>
-
-      ## [Si ves un problema, repórtalo](#flag-problems)
-
-      Los moderadores tienen una autoridad especial: son los responsables de este foro. Pero tú lo eres también. Con tu ayuda, los moderadores pueden ser personas que faciliten el desarrollo de la comunidad en lugar de la policía del foro o el servicio de limpieza.
-
-      Cuando veas un comportamiento inadecuado, no respondas. Eso hace que, al reconocer públicamente el contenido inadecuado, se siga publicando contenido de esa clase. Además, lo único que harás será perder energía y el tiempo de todos. En su lugar, repórtalo. Si un post es reportado lo suficiente, se tomarán medidas automáticamente o mediante la intervención de un moderador.
-
-      Para el correcto funcionamiento de esta comunidad, los moderadores se reservan el derecho de eliminar cualquier contenido y cualquier cuenta, por cualquier razón en cualquier momento. Los moderadores no ven los temas antes de que sean publicados por lo que ellos y los operadores del foro no son responsables del contenido publicado por la comunidad.
-
-      <a name="be-civil"></a>
-
-      ## [Sé educado](#be-civil)
-
-      Nada estropea más una conversación que la mala educación.
-
-      * Sé educado. No publoques nada que una persona razonable consideraría ofensivo o abusivo.
-      * Mantén limpio el foro. No publiques nada obsceno o sexualmente explícito.
-      * Respeta. No molestes ni acoses a los demás usuarios, tampoco publiques su información privada y/o personal.
-      * Respeta el foro. No publiques spam ni nos estropees el foro.
-
-      Como puedes ver, estos no son términos exactos con definiciones exactas. Evita siquiera la aparición de cualquiera de estas cosas en el foro. Si no estás seguro, piensa en cómo te sentirías si tu post apareciera en la portada de algún periódico importante.
-
-      Este es un foro público y por tanto el contenido puede aparecer en los motores de búsqueda. El foro es para todos los públicos, así que debes tener cuidado con el vocabulario y el contenido.
-
-      <a name="keep-tidy"></a>
-
-      ## [Mantén limpio y organizado el foro](#keep-tidy)
-
-      Esfuérzate para poner las cosas en su lugar correspondiente para que podamos estar más tiempo participando en la comunidad y menos tiempo limpiando y organizando.
-
-      * No empieces un nuevo tema en la categoría equivocada.
-      * No publiques lo mismo en varios temas diferentes.
-      * No respondas con un mensaje sin contenido.
-      * No desvíes un tema en mitad de la discusión.
-      * No firmes tus mensajes &mdash; tu información y perfil están claramente visibles junto al post.
-
-      En vez de responder “+1” or “Estoy de acuerdo”, usa el botón de Me gusta. En lugar de cambiar radicalmente la dirección de un tema, responde como nuevo tema.
-
-      <a name="stealing"></a>
-
-      ## [Publica sólo lo que es tuyo](#stealing)
-
-      No publiques nada que pertenezca a otra persona sin permiso. No debes facilitar enlaces, descipciones o métodos de robar la propiedad intelectual de los demás. (software, vídeo, audio, imágenes, etc.), o formas de violar las leyes.
-
-      <a name="power"></a>
-
-      ## [Funcionamos gracias a gente como tú](#power)
-
-      Este foro es operado por nuestro [equipo](/about) y *vosotros*, la comunidad. Si tienes alguna pregunta sobre cómo deberían funcionar las cosas aquí, abre un nuevo tema en la [categoría de Sugerencias](/c/site-feedback). Si pasa algo urgente que no puede ser resuelto con un tema o un reporte, contáctanos a través de [esta página](/about).
-
-      <a name="tos"></a>
-
-      ## [Términos del Servicio](#tos)
-
-      Sí, estos temas aburren, pero debemos protegernos &ndash; y, por extensión, a ti y a tus datos &ndash; frente a gente poco amigable. Tenemos unos [Términos del Servicio](/tos) que describen nuestra forma de actuar (y la tuya), y los derechos con relación al contenido, la privacidad y las leyes, Para usar nuestros servicios, debes aceptar nuestros [Términos y Condiciones](/tos).
   tos_topic:
     title: "Términos de Servicio"
   privacy_topic:

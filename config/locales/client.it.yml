@@ -109,7 +109,6 @@ it:
       google+: 'Condividi questo link su Google+'
       email: 'invia questo collegamento via email'
     action_codes:
-      split_topic: "suddividi questo argomento %{when}"
       autoclosed:
         enabled: 'chiuso %{when}'
         disabled: 'aperto %{when}'
@@ -136,7 +135,7 @@ it:
     yes_value: "Sì"
     generic_error: "Spiacenti! C'è stato un problema."
     generic_error_with_reason: "Si è verificato un errore: %{error}"
-    sign_up: "Iscriviti"
+    sign_up: "Registrati"
     log_in: "Accedi"
     age: "Età"
     joined: "Iscritto"
@@ -228,7 +227,6 @@ it:
     revert: "Ripristina"
     failed: "Fallito"
     switch_to_anon: "Modalità Anonima"
-    switch_from_anon: "Abbandona Anonimato"
     banner:
       close: "Nascondi questo banner."
       edit: "Modifica questo annuncio >>"
@@ -390,7 +388,7 @@ it:
         not_supported: "Spiacenti, le notifiche non sono supportate su questo browser."
         perm_default: "Attiva Notifiche"
         perm_denied_btn: "Permesso Negato"
-        perm_denied_expl: "Hai negato il permesso per le notifiche. Usa il browser per abilitare le notifiche, poi premi il bottone quando hai finito. (Per il desktop: è l'icona più a sinistra sulla barra degli indirizzi. Mobile: 'Informazioni sul sito'.)"
+        perm_denied_expl: "Hai negato il permesso per le notifiche. Usa il browser per abilitare le notifiche, poi premi il bottone quando hai finito. (Per il desktop: l'icona più a sinistra sulla barra degli indirizzi. Mobile: 'Informazioni sul sito'.)"
         disable: "Disabilita Notifiche"
         currently_enabled: "(attualmente attivate)"
         enable: "Abilita Notifiche"
@@ -418,6 +416,7 @@ it:
       tracked_categories: "Seguite"
       tracked_categories_instructions: "Seguirai automaticamente tutti i nuovi argomenti appartenenti a queste categorie. Di fianco all'argomento comparirà il conteggio dei nuovi messaggi."
       muted_categories: "Silenziate"
+      muted_categories_instructions: "Non ti verrà notificato nulla sui nuovi argomenti in queste categorie, e non compariranno nel tab dei non letti."
       delete_account: "Cancella il mio account"
       delete_account_confirm: "Sei sicuro di voler cancellare il tuo account in modo permanente? Questa azione non può essere annullata!"
       deleted_yourself: "Il tuo account è stato eliminato con successo."
@@ -556,6 +555,7 @@ it:
         user: "Utente Invitato"
         sent: "Spedito"
         none: "Non ci sono inviti in sospeso da visualizzare."
+        truncated: "Mostro i primi {{count}} inviti."
         redeemed: "Inviti Accettati"
         redeemed_tab: "Riscattato"
         redeemed_tab_with_count: "Riscattato ({{count}})"
@@ -575,7 +575,7 @@ it:
         account_age_days: "Età dell'utente in giorni"
         create: "Invia un Invito"
         generate_link: "Copia il collegamento di invito"
-        generated_link_message: '<p>Il collegamento di invito è stato generato con successo!</p><p><input class="invite-link-input" style="width: 75%;" type="text" value="%{inviteLink}"></p><p>Il collegamento sarà valido solo per la seguente email: <b>%{invitedEmail}</b></p>'
+        generated_link_message: '<p>Il link di invito è stato generato con successo!</p><p><input class="invite-link-input" style="width: 75%;" type="text" value="%{inviteLink}"></p><p>Il link sarà disponibile solo per l''email: <b>%{invitedEmail}</b></p>'
         bulk_invite:
           none: "Non hai ancora invitato nessuno qui. Puoi inviare inviti individuali, o invitare un gruppo di persone caricando un <a href='https://meta.discourse.org/t/send-bulk-invites/16468'>file di invito di massa</a>."
           text: "Invito di Massa da File"
@@ -615,13 +615,11 @@ it:
         server: "Errore del Server"
         forbidden: "Accesso Negato"
         unknown: "Errore"
-        not_found: "Pagina Non Trovata"
       desc:
         network: "Per favore controlla la connessione."
         network_fixed: "Sembra essere tornato."
         server: "Codice di errore: {{status}}"
         forbidden: "Non hai i permessi per visualizzarlo."
-        not_found: "Oops, l'applicazione ha cercato di caricare una URL inesistente."
         unknown: "Qualcosa è andato storto."
       buttons:
         back: "Torna Indietro"
@@ -650,19 +648,6 @@ it:
     replies_lowercase:
       one: risposta
       other: risposte
-    signup_cta:
-      sign_up: "Iscriviti"
-      hide_session: "Ricordamelo domani"
-      hide_forever: "no grazie"
-      hidden_for_session: "Ok, te lo chiederò domani. Puoi sempre usare \"Accedi\" per creare un account."
-      intro: "Ciao! :heart_eyes: A quanto pare ti sta piacendo la discussione, ma non sei ancora iscritto."
-      methods:
-        sso: "Iscriversi è facile: basta avere un account sul sito principale."
-        only_email: "Iscriversi è facile: basta un indirizzo email e una password."
-        only_other: "Usa il tuo account %{provider} per iscriverti."
-        one_and_email: "Usa il tuo account %{provider}, o una email e password, per iscriverti."
-        multiple_no_email: "Iscriversi è facile: usa uno qualsiasi dei nostri %{count} login social."
-        multiple: "Iscriversi è facile: usa uno qualsiasi dei nostri %{count} login social, oppure una email e password."
     summary:
       enabled_description: "Stai visualizzando un riepilogo dell'argomento: è la comunità a determinare quali sono i messaggi più interessanti."
       description: "Ci sono <b>{{count}}</b> risposte."
@@ -744,11 +729,7 @@ it:
     emoji_one: "Emoji One"
     composer:
       emoji: "Emoji :smile:"
-      more_emoji: "altro..."
-      options: "Opzioni"
-      whisper: "sussurra"
       add_warning: "Questo è un avvertimento ufficiale."
-      toggle_whisper: "Attiva/Disattiva Sussurra"
       posting_not_on_topic: "A quale argomento vuoi rispondere?"
       saving_draft_tip: "salvataggio..."
       saved_draft_tip: "salvato"
@@ -777,6 +758,7 @@ it:
       show_edit_reason: "(aggiungi motivo della modifica)"
       reply_placeholder: "Scrivi qui. Per formattare il testo usa Markdown, BBCode o HTML. Trascina o incolla le immagini."
       view_new_post: "Visualizza il tuo nuovo messaggio."
+      saving: "Salvataggio..."
       saved: "Salvato!"
       saved_draft: "Hai un messaggio in bozza in sospeso. Seleziona per riprendere la modifica."
       uploading: "In caricamento..."
@@ -843,8 +825,8 @@ it:
         edited: "Modifica il tuo messaggio da"
         liked: "Ha assegnato un \"Mi piace\" al tuo messaggio"
         private_message: "Messaggio privato da"
-        invited_to_private_message: "Invitato a un messaggio privato da"
-        invited_to_topic: "Invitato a un argomento da"
+        invited_to_private_message: "Invitato ad una conversazione privata da"
+        invited_to_topic: "Invitato ad un argomento da"
         invitee_accepted: "Invito accettato da"
         moved_post: "Il tuo messaggio è stato spostato da"
         linked: "Collegamento al tuo messaggio"
@@ -870,7 +852,6 @@ it:
       select_file: "Seleziona File"
       image_link: "collegamento a cui la tua immagine punterà"
     search:
-      latest_post: "Ultimo Messaggio"
       select_all: "Seleziona Tutto"
       clear_all: "Cancella Tutto"
       title: "cerca argomenti, messaggi, utenti o categorie"
@@ -935,7 +916,7 @@ it:
         search: "Non ci sono altri risultati di ricerca."
     topic:
       unsubscribe:
-        stop_notifications: "Da ora riceverai meno notifiche per <strong>{{title}}</strong>"
+        stop_notifications: "Da ora riceverai meno notifiche su <strong>{{title}}</strong>"
         change_notification_state: "Lo stato delle tue notifiche è"
       filter_to: "{{post_count}} suoi messaggi"
       create: 'Nuovo Argomento'
@@ -1040,6 +1021,7 @@ it:
           description: "Non ti verrà notificato nulla per questo messaggio."
         muted:
           title: "Silenziato"
+          description: "Non ti verrà notificato nulla di questo argomento e non comparirà nella tab dei non letti."
       actions:
         recover: "Ripristina Argomento"
         delete: "Cancella Argomento"
@@ -1075,20 +1057,20 @@ it:
         success_message: 'Hai segnalato questo argomento con successo.'
       feature_topic:
         title: "Poni argomento in primo piano"
-        pin: "Poni questo argomento in cima alla categoria {{categoryLink}} fino a"
+        pin: "Metti questo argomento in cima alla categoria \"{{categoryLink}}\" fino al"
         confirm_pin: "Hai già {{count}} argomenti puntati. Troppi argomenti puntati potrebbero essere un peso per gli utenti nuovi o anonimi. Sicuro di voler puntare un altro argomento in questa categoria?"
         unpin: "Rimuovi questo argomento dalla cima della categoria {{categoryLink}}."
-        unpin_until: "Rimuovi questo argomento dalla cima della categoria {{categoryLink}} o attendi fino a <strong>%{until}</strong>."
+        unpin_until: "Rimuovi questo argomento dalla cima della categoria {{categoryLink}} o attendi fino al <strong>%{until}</strong>."
         pin_note: "Gli utenti possono spuntare gli argomenti individualmente per loro stessi."
-        pin_validation: "È richiesta una data per appuntare questo argomento."
+        pin_validation: "È richiesta una data per appuntare questo argomento"
         already_pinned:
           zero: "Non ci sono argomenti puntati in {{categoryLink}}."
           one: "Argomenti attualmente puntati in {{categoryLink}}: <strong class='badge badge-notification unread'>1</strong>."
           other: "Argomenti attualmente puntati in {{categoryLink}}: <strong class='badge badge-notification unread'>{{count}}</strong>."
-        pin_globally: "Poni questo argomento in cima a tutte le liste di argomenti fino a"
+        pin_globally: "Metti questo argomento in cima a tutte le liste di messaggi fino al"
         confirm_pin_globally: "Hai già {{count}} argomenti puntati globalmente. Troppi argomenti puntati potrebbero essere un peso per gli utenti nuovi o anonimi. Sicuro di voler puntare un altro argomento globalmente?"
         unpin_globally: "Togli questo argomento dalla cima degli altri argomenti."
-        unpin_globally_until: "Rimuovi questo argomento dalla cima di tutte le liste di argomenti o attendi fino a <strong>%{until}</strong>."
+        unpin_globally_until: "Rimuovi questo argomento dalla cima di tutte le liste di argomenti o attenti fino al <strong>%{until}</strong>."
         global_pin_note: "Gli utenti possono spuntare gli argomenti autonomamente per loro stessi."
         already_pinned_globally:
           zero: "Non ci sono argomenti puntati globalmente."
@@ -1115,17 +1097,17 @@ it:
         title: 'Invita'
         username_placeholder: "nome utente"
         action: 'Invia Invito'
-        help: 'invita altri su questo argomento via email o tramite notifiche'
+        help: 'invita altri su questo argomento via email o notifiche'
         to_forum: "Invieremo una breve email che permetterà al tuo amico di entrare subito cliccando un collegamento, senza bisogno di effettuare il collegamento."
         sso_enabled: "Inserisci il nome utente della persona che vorresti invitare su questo argomento."
         to_topic_blank: "Inserisci il nome utente o l'indirizzo email della persona che vorresti invitare su questo argomento."
-        to_topic_email: "Hai inserito un indirizzo email. Invieremo una email di invito che permetterà al tuo amico di rispondere subito a questo argomento."
-        to_topic_username: "Hai inserito un nome utente. Gli invieremo una notifica con un collegamento per invitarlo su questo argomento."
-        to_username: "Inserisci il nome utente della persona che vorresti invitare. Gli invieremo una notifica con un collegamento di invito a questo argomento."
+        to_topic_email: "Hai inserito un indirizzo email. Manderemo una email di invito che permettterà al tuo amico di rispondere subito a questo argomento."
+        to_topic_username: "Hai inserito un nome utente. Gli mandermo una notifica con un link per invitarlo su questo argomento."
+        to_username: "Inserisci il nome utente della persona che vorresti invitare. Gli manderemo una notifica con un link di invito a questo argomento."
         email_placeholder: 'nome@esempio.com'
-        success_email: "Abbiamo inviato un invito via email a <b>{{emailOrUsername}}</b>. Ti avvertiremo quando l'invito verrà riscattato. Controlla la sezione \"inviti\" sulla tua pagina utente per tracciarne lo stato."
+        success_email: "Abbiamo mandato un invito via email a <b>{{emailOrUsername}}</b>. Ti avvertiremo quando l'invito verrà riscattato. Controlla la sezione \"inviti\" sulla tua pagina utente per tracciare lo stato degli inviti."
         success_username: "Abbiamo invitato l'utente a partecipare all'argomento."
-        error: "Spiacenti, non siamo riusciti ad invitare questa persona. E' stata per caso già invitata (gli inviti sono limitati)? "
+        error: "Spiacente, non siamo riusciti ad invitare questa persona. Forse è stata già invitata? (Gli inviti sono limitati)"
       login_reply: 'Collegati per Rispondere'
       filters:
         n_posts:
@@ -1162,7 +1144,7 @@ it:
         action: "cambia timestamp"
         invalid_timestamp: "Il timestamp non può essere nel futuro."
         error: "Errore durante la modifica del timestamp dell'argomento."
-        instructions: "Seleziona il nuovo timestamp per l'argomento. I messaggi nell'argomento saranno aggiornati in modo che abbiano lo stesso intervallo temporale."
+        instructions: "Seleziona un nuovo timestamp per l'argomento. I messaggi nell'argomento saranno aggiornati senza modificare l'intervallo di tempo"
       multi_select:
         select: 'scegli'
         selected: 'selezionati ({{count}})'
@@ -1197,18 +1179,18 @@ it:
       more_links: "{{count}} altri..."
       unread: "Messaggio non letto"
       has_replies:
-        one: "{{count}} Risposta"
-        other: "{{count}} Risposte"
+        one: "Una risposta"
+        other: "{{count}} risposte"
       has_likes:
-        one: "{{count}} \"Mi piace\""
+        one: "Un \"Mi piace\""
         other: "{{count}} \"Mi piace\""
       has_likes_title:
-        one: "Una persona ha messo \"Mi piace\" a questo messaggio"
-        other: "{{count}} persone hanno messo \"Mi piace\" a questo messaggio"
+        one: "A una persona piace questo messaggio"
+        other: "A {{count}} persone piace questo messaggio"
       has_likes_title_you:
-        zero: "Hai messo \"Mi piace\" a questo messaggio"
-        one: "Tu e un'altra persona avete messo \"Mi piace\" a questo messaggio"
-        other: "Tu e altre {{count}} persone avete messo \"Mi piace\" a questo messaggio"
+        zero: "Ti è piaciuto questo messaggio"
+        one: "A te e ad un'altra persona è piaciuto questo messaggio"
+        other: "A te e ad altre {{count}} persone è piaciuto questo messaggio"
       errors:
         create: "Spiacenti, si è verificato un errore nel creare il tuo messaggio. Prova di nuovo."
         edit: "Spiacenti, si è verificato un errore nel modificare il tuo messaggio. Prova di nuovo."
@@ -1384,7 +1366,7 @@ it:
       view: 'Visualizza Argomenti della Categoria'
       general: 'Generale'
       settings: 'Impostazioni'
-      topic_template: "Modello di Argomento"
+      topic_template: "Modello di argomento"
       delete: 'Elimina Categoria'
       create: 'Crea Categoria'
       create_long: 'Crea una nuova categoria'
@@ -1417,7 +1399,7 @@ it:
       email_in_allow_strangers: "Accetta email da utenti anonimi senza alcun account"
       email_in_disabled: "Le Impostazioni Sito non permettono di creare nuovi argomenti via email. Per abilitare la creazione di argomenti via email,"
       email_in_disabled_click: 'abilita l''impostazione "email entrante".'
-      suppress_from_homepage: "Elimina questa categoria dalla homepage."
+      suppress_from_homepage: "Elimina questa categoria dalla homepage"
       allow_badges_label: "Permetti che le targhette vengano assegnate in questa categoria"
       edit_permissions: "Modifica Permessi"
       add_permission: "Aggiungi Permesso"
@@ -1430,13 +1412,16 @@ it:
       notifications:
         watching:
           title: "In osservazione"
+          description: "Osserverai automaticamente tutti i nuovi argomenti in queste categorie. Riceverai notifiche su tutti i nuovi messaggi e argomenti e per tali argomenti apparirà il conteggio delle nuove risposte."
         tracking:
           title: "Seguendo"
+          description: "Seguirai automaticamente tutti i nuovi argomenti in queste categorie. Per tali argomenti apparirà un conteggio delle nuove risposte."
         regular:
           title: "Normale"
           description: "Riceverai una notifica se qualcuno menziona il tuo @nome o ti risponde."
         muted:
           title: "Silenziato"
+          description: "Non ti verrà notificato nulla sui nuovi argomenti di queste categorie, e non compariranno nella tua  tab dei non letti."
     flagging:
       title: 'Grazie per aiutarci a mantenere la nostra comunità civile!'
       private_reminder: 'le segnalazioni sono private, visibili <b>soltanto</b> allo staff  '
@@ -1489,6 +1474,7 @@ it:
         help: "Questo argomento è per te spuntato; verrà mostrato con l'ordinamento di default"
       pinned_globally:
         title: "Appuntato Globalmente"
+        help: "Questo argomento è appuntato globalmente; verrà mostrato in cima ad ogni lista"
       pinned:
         title: "Appuntato"
         help: "Questo argomento è per te appuntato; verrà mostrato con l'ordinamento di default"
@@ -1500,10 +1486,10 @@ it:
     posts_likes_MF: |
       Questo argomento ha {count, plural, one {1 risposta} other {# risposte}} {ratio, select, low {con un alto rapporto "mi piace" / messaggi} med {con un altissimo rapporto "mi piace" / messaggi} high {con un estremamente alto rapporto "mi piace" / messaggi} other {}}
     original_post: "Messaggio Originale"
-    views: "Visite"
+    views: "Visualizzazioni"
     views_lowercase:
-      one: "visita"
-      other: "visite"
+      one: "vista"
+      other: "viste"
     replies: "Risposte"
     views_long: "questo argomento è stato visualizzato {{number}} volte"
     activity: "Attività"
@@ -1742,7 +1728,7 @@ it:
         automatic_membership_email_domains: "Gli utenti che si registrano con un dominio email che corrisponde esattamente a uno presente in questa lista, saranno aggiunti automaticamente a questo gruppo:"
         automatic_membership_retroactive: "Applica la stessa regola sul dominio email per aggiungere utenti registrati esistenti"
         default_title: "Titolo predefinito per tutti gli utenti di questo gruppo"
-        primary_group: "Imposta automaticamente come gruppo principale"
+        primary_group: "Imposta automaticamente un gruppo principale"
       api:
         generate_master: "Genera una Master API Key"
         none: "Non ci sono chiavi API attive al momento."
@@ -1845,7 +1831,7 @@ it:
         header: "Intestazione"
         top: "Alto"
         footer: "Fondo pagina"
-        embedded_css: "CSS incorporato"
+        embedded_css: "CSS inclusi"
         head_tag:
           text: "</head>"
           title: "HTML da inserire prima del tag </head>"
@@ -1937,7 +1923,6 @@ it:
         sent_test: "inviata!"
         delivery_method: "Metodo di consegna"
         preview_digest: "Anteprima Riassunto"
-        preview_digest_desc: "Vedi in anteprima il contenuto delle email di riassunto inviate agli utenti inattivi."
         refresh: "Aggiorna"
         format: "Formato"
         html: "html"
@@ -1963,7 +1948,6 @@ it:
         ip_address: "IP"
         topic_id: "ID argomento"
         post_id: "ID messaggio"
-        category_id: "ID categoria"
         delete: 'Cancella'
         edit: 'Modifica'
         save: 'Salva'
@@ -2004,9 +1988,6 @@ it:
             impersonate: "impersona"
             anonymize_user: "rendi anonimo l'utente "
             roll_up: "inibisci blocchi di indirizzi IP"
-            change_category_settings: "cambia le impostazioni della categoria"
-            delete_category: "cancella categoria"
-            create_category: "crea categoria"
         screened_emails:
           title: "Email Scansionate"
           description: "Quando qualcuno cerca di creare un nuovo account, verrando controllati i seguenti indirizzi email  e la registrazione viene bloccata, o eseguita qualche altra azione."
@@ -2230,11 +2211,11 @@ it:
         delete_confirm: "Sicuro di voler cancellare il campo utente?"
         options: "Opzioni"
         required:
-          title: "Richiesto durante l'iscrizione?"
+          title: "Richiesto durante la registrazione?"
           enabled: "richiesto"
           disabled: "non richiesto"
         editable:
-          title: "Modificabile dopo l'iscrizione?"
+          title: "Modificabile dopo la registrazione?"
           enabled: "modificabile"
           disabled: "non modificabile"
         show_on_profile:
@@ -2278,7 +2259,7 @@ it:
           backups: "Backup"
           login: "Accesso"
           plugins: "Plugin"
-          user_preferences: "Preferenze Utente"
+          user_preferences: "Preferenze utente"
       badges:
         title: Targhette
         new_badge: Nuova Targhetta
@@ -2353,21 +2334,21 @@ it:
         image: "Immagine"
         delete_confirm: "Sicuro di voler cancellare l'emoji :%{name}:?"
       embedding:
-        get_started: "Se lo desideri, puoi incorporare Discourse in un altro sito web. Comincia aggiungendo il nome dell'host"
-        confirm_delete: "Sicuro di voler cancellare questo host?"
+        get_started: "Se lo desideri, puoi incorporare Discourse in un altro sito web. Comincia aggiungo il suo nome host"
+        confirm_delete: "Sei sicuro di volere cancellare questo host?"
         sample: "Utilizza il seguente codice HTML nel tuo sito per creare e incorporare gli argomenti di Discourse. Sostituisci <b>REPLACE_ME</b> con l'URL canonical della pagina in cui lo stai incorporando."
-        title: "Incorporo"
-        host: "Host Abilitati"
+        title: "Incorporamento"
+        host: "Host abilitati"
         edit: "modifica"
-        add_host: "Aggiungi Host"
-        settings: "Impostazioni di incorporo"
-        feed_settings: "Impostazioni Feed"
-        feed_description: "Aggiungendo un feed RSS/ATOM al tuo sito, migliora la capacità di Discourse di importare i tuoi contenuti."
+        add_host: "Aggiungi host"
+        settings: "Impostazioni di incorporamento"
+        feed_settings: "Impostazioni dei feed"
+        feed_description: "Aggiungendo un feed RSS/AROM al tuo sito, migliori l'importazione dei tuoi contenuti da parte di Discourse"
         crawling_settings: "Impostazioni del crawler"
-        crawling_description: "Quando Discourse crea gli argomenti per i tuoi messaggi, se non è presente nessun feed RSS/ATOM, cercherà di estrarre il contenuto dal codice HTML. Il contenuto può risultate a volte ostico da estrarre e, per semplificare il processo, forniamo la possibilità di specificare le regole CSS."
+        crawling_description: "Quando Discourse crea gli argomenti per i messaggi, se non è presente nessun feed RSS/ATOM, cercherà di estrarre il contenuto dal codice HTML. Il contenuto può risultate a volte ostico da estrarre e, per semplificare il processo, forniamo la possibilità di specificare le regole CSS."
         embed_by_username: "Nome utente per la creazione dell'argomento"
         embed_post_limit: "Numero massimo di messaggi da includere"
-        embed_truncate: "Tronca i messaggi incorporati"
+        embed_truncate: "Abbrevia i messaggi incorporati"
         embed_whitelist_selector: "Selettore CSS per gli elementi da includere negli embed"
         embed_blacklist_selector: "Selettore CSS per gli elementi da rimuovere dagli embed"
         feed_polling_enabled: "Importa gli articoli via RSS/ATOM"
@@ -2387,7 +2368,7 @@ it:
         form:
           label: "Nuovo:"
           add: "Aggiungi"
-          filter: "Cerca (URL o URL Esterna)"
+          filter: "Cerca (URL o URL esterna)"
     lightbox:
       download: "scaricamento"
     search_help:
@@ -2423,7 +2404,7 @@ it:
         help: '<b>?</b> Apri l''aiuto per le scorciatoie da tastiera'
         dismiss_new_posts: '<b>x</b>, <b>r</b> Chiudi Nuovo/Messaggi'
         dismiss_topics: '<b>x</b>, <b>t</b> Chiudi Argomenti'
-        log_out: '<b>shift</b>+<b>z</b> <b>shift</b>+<b>z</b> Scollegati'
+        log_out: '<b>shift</b>+<b>z</b> <b>shift</b>+<b>z</b> Esci'
       actions:
         title: 'Azioni'
         bookmark_topic: '<b>f</b> Aggiungi/togli argomento nei segnalibri'
@@ -2556,7 +2537,7 @@ it:
           description: Ha pubblicato un collegamento esterno con almeno 50 clic
         hot_link:
           name: Collegamento Caldo
-          description: Pubblicato un collegamento esterno con almeno 300 clic
+          description: Ha pubblicato un collegamento esterno con almeno 300 clic
         famous_link:
           name: Collegamento Famoso
           description: Ha pubblicato un collegamento esterno con almeno 1000 clic

@@ -25,33 +25,51 @@ function topicsFrom(result, store) {
 const TopicList = RestModel.extend({
   canLoadMore: Em.computed.notEmpty("more_topics_url"),
 
-  forEachNew(topics, callback) {
+  forEachNew: function(topics, callback) {
     const topicIds = [];
+    _.each(this.get('topics'),function(topic) {
+      topicIds[topic.get('id')] = true;
+    });
 
-    _.each(this.get('topics'), topic => topicIds[topic.get('id')] = true);
-
-    _.each(topics, topic => {
-      if (!topicIds[topic.id]) {
+    _.each(topics,function(topic) {
+      if(!topicIds[topic.id]) {
         callback(topic);
       }
     });
   },
 
-  refreshSort(order, ascending) {
-    let params = this.get('params') || {};
+  refreshSort: function(order, ascending) {
+    const self = this;
+    var params = this.get('params') || {};
 
-    if (params.q) {
-      // search is unique, nothing else allowed with it
-      params = { q: params.q };
+    params.order = order || params.order;
+
+    if (ascending === undefined) {
+      params.ascending = ascending;
     } else {
-      params.order = order || params.order;
       params.ascending = ascending;
     }
 
+    if (params.q) {
+      // search is unique, nothing else allowed with it
+      params = {q: params.q};
+    }
+
+    this.set('loaded', false);
     this.set('params', params);
+
+    const store = this.store;
+    store.findFiltered('topicList', {filter: this.get('filter'), params}).then(function(tl) {
+      const newTopics = tl.get('topics'),
+            topics = self.get('topics');
+
+      topics.clear();
+      topics.pushObjects(newTopics);
+      self.setProperties({ loaded: true, more_topics_url: tl.get('topic_list.more_topics_url') });
+    });
   },
 
-  loadMore() {
+  loadMore: function() {
     if (this.get('loadingMore')) { return Ember.RSVP.resolve(); }
 
     const moreUrl = this.get('more_topics_url');
@@ -90,17 +108,19 @@ const TopicList = RestModel.extend({
 
 
   // loads topics with these ids "before" the current topics
-  loadBefore(topic_ids) {
+  loadBefore: function(topic_ids){
     const topicList = this,
-          topics = this.get('topics');
+        topics = this.get('topics');
 
     // refresh dupes
-    topics.removeObjects(topics.filter(topic => topic_ids.indexOf(topic.get('id')) >= 0));
+    topics.removeObjects(topics.filter(function(topic){
+      return topic_ids.indexOf(topic.get('id')) >= 0;
+    }));
 
-    const url = `${Discourse.getURL("/")}${this.get('filter')}?topic_ids=${topic_ids.join(",")}`;
+    const url = Discourse.getURL("/") + this.get('filter') + "?topic_ids=" + topic_ids.join(",");
+
     const store = this.store;
-
-    return Discourse.ajax({ url }).then(result => {
+    return Discourse.ajax({ url }).then(function(result) {
       let i = 0;
       topicList.forEachNew(topicsFrom(result, store), function(t) {
         // highlight the first of the new topics so we can get a visual feedback

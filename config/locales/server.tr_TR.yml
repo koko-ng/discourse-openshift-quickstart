@@ -275,6 +275,7 @@ tr_TR:
       title: "lider"
     change_failed_explanation: " %{user_name} adlı kullanıcıyı '%{new_trust_level}' seviyesine düşürmeye çalıştınız. Ancak, halihazırda kullanıcının güven seviyesi zaten '%{current_trust_level}'. %{user_name} '%{current_trust_level}' seviyesinde kalacak - eğer seviyesini düşürmek istiyorsanız öncelikle güven seviyesini kilitlemelisiniz"
   rate_limiter:
+    slow_down: "Bu işlemi çok fazla kere tekrar ettiniz, lütfen daha sonra tekrar deneyin"
     too_many_requests: "Bu işlem için günlük limitinizi aştınız. Lütfen tekrar denemek için %{time_left} bekleyin. "
     hours:
       other: "%{count} saat"
@@ -677,6 +678,7 @@ tr_TR:
     summary_likes_required: "'Bu Konuyu Özetle'nin etkinleştirilmesi için konuda olması gereken en az beğeni sayısı"
     summary_percent_filter: "Kullanıcı 'Bu Konuyu Özetle'ye tıkladığında, gönderinin ilk % kısmını göster"
     summary_max_results: "'Bu Konuyu Özetle'den dönen en fazla gönderi sayısı"
+    enable_private_messages: "Güven seviyesi 1 olan kullanıcıların mesaj oluşturmasına ve mesajlara cevap vermesine izin ver"
     enable_long_polling: "Bildiri için kullanılan message bus uzun sorgular yapabilir"
     long_polling_base_url: "Uzun sorgular için kullanılan baz URL (CDN dinamik içerik sunuyorsa, bunu origin olarak ayarladığına emin ol) ör: http://origin.site.com"
     long_polling_interval: "Gönderilecek bilgi olmadığı zaman sunucunun kullanıcılara geri dönmeden önce beklemesi gereken zaman (sadece giriş yapmış kullanıcın için)"
@@ -695,6 +697,7 @@ tr_TR:
     notify_mods_when_user_blocked: "Eğer bir kullanıcı otomatik olarak engellendiyse, tüm moderatörlere mesaj yolla."
     flag_sockpuppets: "Eğer, yeni kullanıcı konuya, konuyu başlatan yeni kullanıcı ile aynı IP adresinden cevap yazarsa, her iki gönderiyi de potansiyel spam olarak işaretle. "
     traditional_markdown_linebreaks: "Markdown'da, satır sonundan önce yazının sağında iki tane boşluk gerektiren, geleneksel satır sonu metodunu kullan kullan."
+    allow_html_tables: "Çizelgelerin HTML etiketleri kullanılarak Markdown ile oluşturulmasına izin verin, TABLE, THEAD, TD, TR, TH kabul edilir (çizelge içeren tüm eski gönderilerin yenilenmesini gerektirir)"
     post_undo_action_window_mins: "Kullanıcıya tanınan, bir gönderide yapılan yeni aksiyonları (beğenme, bayraklama, vs) geri alabilme dakika süresi"
     must_approve_users: "Siteye erişimlerine izin verilmeden önce tüm yeni kullanıcı hesaplarının görevliler tarafından onaylanması gerekir. UYARI: yayındaki bir site için bunu etkinleştirmek görevli olmayan hesapların erişimini iptal edecek."
     ga_tracking_code: "Google analytics (ga.js) takip kodu, ör: UA-12345678-9; bakınız http://google.com/analytics"
@@ -954,6 +957,7 @@ tr_TR:
     enable_cdn_js_debugging: "/logs 'ların asli hataları tüm js içeriklerine crossorigin izinleri ekleyerek göstermesine izin ver."
     show_create_topics_notice: "Eğer sitede herkese açık konu sayısı 5'den az ise, adminden yeni konular oluşturmasını isteyen bir uyarı mesajı göster. "
     delete_drafts_older_than_n_days: (n) günden eski taslakları sil.
+    show_logout_in_header: "Başlık çubuğundaki kullanıcı açılır listesinde oturumu kapatı göster"
     vacuum_db_days: "Geçiş sonra DB alanı geri kazanmak için TAM VAKUM ANALİZİ'ni çalıştırın (devre dışı bırakmak için 0 girin)"
     prevent_anons_from_downloading_files: "Anonim kullanıcıların eklenti indirebilmesini önle. DİKKAT: Bu ayar, eklenti olarak gönderilen resim-dışı site içeriklerinin de çalışmasını engelleyebilir."
     slug_generation_method: "Slug üretim yöntemi seçin. 'kodlanmış' seçeneği yüzde kodlamalı metin oluşturur. 'hiçbiri' seçeneği slug'ı devre dışı bırakır."

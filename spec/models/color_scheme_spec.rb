@@ -42,10 +42,6 @@ describe ColorScheme do
     end
 
     context "hex_for_name without anything enabled" do
-      before do
-        ColorScheme.hex_cache.clear
-      end
-
       it "returns nil for a missing attribute" do
         expect(described_class.hex_for_name('undefined')).to eq nil
       end
@@ -59,8 +55,8 @@ describe ColorScheme do
   describe "destroy" do
     it "also destroys old versions" do
       c1 = described_class.create(valid_params.merge(version: 2))
-      _c2 = described_class.create(valid_params.merge(versioned_id: c1.id, version: 1))
-      _other = described_class.create(valid_params)
+      c2 = described_class.create(valid_params.merge(versioned_id: c1.id, version: 1))
+      other = described_class.create(valid_params)
       expect {
         c1.destroy
       }.to change { described_class.count }.by(-2)
@@ -73,7 +69,6 @@ describe ColorScheme do
     end
 
     it "returns the enabled color scheme" do
-      ColorScheme.hex_cache.clear
       expect(described_class.hex_for_name('$primary_background_color')).to eq nil
       c = described_class.create(valid_params.merge(enabled: true))
       expect(described_class.enabled.id).to eq c.id

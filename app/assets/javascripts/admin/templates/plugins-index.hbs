@@ -1,11 +1,9 @@
 {{#if length}}
 
-  {{#if currentUser.admin}}
-    {{d-button label="admin.plugins.change_settings"
-               icon="gear"
-               class='settings-button pull-right'
-               action="showSettings"}}
-  {{/if}}
+  {{d-button label="admin.plugins.change_settings"
+             icon="gear"
+             class='settings-button pull-right'
+             action="showSettings"}}
 
   <h3>{{i18n "admin.plugins.installed"}}</h3>
 
@@ -43,10 +41,11 @@
             {{/if}}
           </td>
           <td>
-            {{#if currentUser.admin}}
-              {{#if plugin.enabled_setting}}
-                {{d-button action="showSettings" actionParam=plugin icon="gear" label="admin.plugins.change_settings_short"}}
-              {{/if}}
+            {{#if plugin.enabled_setting}}
+              <button {{action "showSettings" plugin}} class="btn">
+                {{fa-icon "gear"}}
+                {{i18n "admin.plugins.change_settings_short"}}
+              </button>
             {{/if}}
           </td>
         </tr>

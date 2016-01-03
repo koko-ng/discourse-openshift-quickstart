@@ -114,15 +114,13 @@ describe CookedPostProcessor do
 
         # hmmm this should be done in a cleaner way
         OptimizedImage.expects(:resize).returns(true)
-
-        FileStore::BaseStore.any_instance.expects(:get_depth_for).returns(0)
       end
 
       it "generates overlay information" do
         cpp.post_process_images
-        expect(cpp.html).to match_html '<p><div class="lightbox-wrapper"><a data-download-href="/uploads/default/e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98" href="/uploads/default/1/1234567890123456.jpg" class="lightbox" title="logo.png"><img src="/uploads/default/optimized/1X/e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98_1_690x1380.png" width="690" height="1380"><div class="meta">
+        expect(cpp.html).to match_html '<div class="lightbox-wrapper"><a data-download-href="/uploads/default/e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98" href="/uploads/default/1/1234567890123456.jpg" class="lightbox" title="logo.png"><img src="/uploads/default/optimized/1X/e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98_1_690x1380.png" width="690" height="1380"><div class="meta">
 <span class="filename">logo.png</span><span class="informations">1000x2000 1.21 KB</span><span class="expand"></span>
-</div></a></div></p>'
+</div></a></div>'
         expect(cpp).to be_dirty
       end
 
@@ -143,14 +141,13 @@ describe CookedPostProcessor do
 
         # hmmm this should be done in a cleaner way
         OptimizedImage.expects(:resize).returns(true)
-        FileStore::BaseStore.any_instance.expects(:get_depth_for).returns(0)
       end
 
       it "generates overlay information" do
         cpp.post_process_images
-        expect(cpp.html).to match_html '<p><div class="lightbox-wrapper"><a data-download-href="/uploads/default/e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98" href="/uploads/default/1/1234567890123456.jpg" class="lightbox" title="WAT"><img src="/uploads/default/optimized/1X/e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98_1_690x1380.png" title="WAT" width="690" height="1380"><div class="meta">
+        expect(cpp.html).to match_html '<div class="lightbox-wrapper"><a data-download-href="/uploads/default/e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98" href="/uploads/default/1/1234567890123456.jpg" class="lightbox" title="WAT"><img src="/uploads/default/optimized/1X/e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98_1_690x1380.png" title="WAT" width="690" height="1380"><div class="meta">
        <span class="filename">WAT</span><span class="informations">1000x2000 1.21 KB</span><span class="expand"></span>
-       </div></a></div></p>'
+       </div></a></div>'
         expect(cpp).to be_dirty
       end
 
@@ -344,7 +341,9 @@ describe CookedPostProcessor do
 
     it "uses schemaless url for uploads" do
       cpp.optimize_urls
-      expect(cpp.html).to match_html '<p><a href="//test.localhost/uploads/default/2/2345678901234567.jpg">Link</a><br><img src="//test.localhost/uploads/default/1/1234567890123456.jpg"><br><a href="http://www.google.com" rel="nofollow">Google</a><br><img src="http://foo.bar/image.png"></p>'
+      expect(cpp.html).to match_html '<a href="//test.localhost/uploads/default/2/2345678901234567.jpg">Link</a>
+       <img src="//test.localhost/uploads/default/1/1234567890123456.jpg"><a href="http://www.google.com">Google</a>
+       <img src="http://foo.bar/image.png">'
     end
 
     context "when CDN is enabled" do
@@ -352,13 +351,17 @@ describe CookedPostProcessor do
       it "does use schemaless CDN url for http uploads" do
         Rails.configuration.action_controller.stubs(:asset_host).returns("http://my.cdn.com")
         cpp.optimize_urls
-        expect(cpp.html).to match_html '<p><a href="//my.cdn.com/uploads/default/2/2345678901234567.jpg">Link</a><br><img src="//my.cdn.com/uploads/default/1/1234567890123456.jpg"><br><a href="http://www.google.com" rel="nofollow">Google</a><br><img src="http://foo.bar/image.png"></p>'
+        expect(cpp.html).to match_html '<a href="//my.cdn.com/uploads/default/2/2345678901234567.jpg">Link</a>
+       <img src="//my.cdn.com/uploads/default/1/1234567890123456.jpg"><a href="http://www.google.com">Google</a>
+       <img src="http://foo.bar/image.png">'
       end
 
       it "does not use schemaless CDN url for https uploads" do
         Rails.configuration.action_controller.stubs(:asset_host).returns("https://my.cdn.com")
         cpp.optimize_urls
-        expect(cpp.html).to match_html '<p><a href="https://my.cdn.com/uploads/default/2/2345678901234567.jpg">Link</a><br><img src="https://my.cdn.com/uploads/default/1/1234567890123456.jpg"><br><a href="http://www.google.com" rel="nofollow">Google</a><br><img src="http://foo.bar/image.png"></p>'
+        expect(cpp.html).to match_html '<a href="https://my.cdn.com/uploads/default/2/2345678901234567.jpg">Link</a>
+       <img src="https://my.cdn.com/uploads/default/1/1234567890123456.jpg"><a href="http://www.google.com">Google</a>
+       <img src="http://foo.bar/image.png">'
       end
 
     end

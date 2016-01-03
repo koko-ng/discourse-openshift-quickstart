@@ -133,7 +133,8 @@ export default Ember.Component.extend({
       this._resizeInterval = setInterval(() => {
         Ember.run(() => {
           const $panelBodyContents = this.$('.panel-body-contents');
-          if ($panelBodyContents && $panelBodyContents.length) {
+
+          if ($panelBodyContents.length) {
             const contentHeight = parseInt($panelBodyContents.height());
             if (contentHeight !== this._lastHeight) { this.performLayout(); }
             this._lastHeight = contentHeight;

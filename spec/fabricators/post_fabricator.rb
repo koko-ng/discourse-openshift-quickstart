@@ -12,7 +12,6 @@ Fabricator(:post_with_long_raw_content, from: :post) do
 end
 
 Fabricator(:post_with_youtube, from: :post) do
-  raw 'http://www.youtube.com/watch?v=9bZkp7q19f0'
   cooked '<p><a href="http://www.youtube.com/watch?v=9bZkp7q19f0" class="onebox" target="_blank">http://www.youtube.com/watch?v=9bZkp7q19f0</a></p>'
 end
 
@@ -54,44 +53,44 @@ Fabricator(:post_with_plenty_of_images, from: :post) do
 end
 
 Fabricator(:post_with_uploaded_image, from: :post) do
-  raw '<img src="/uploads/default/2/3456789012345678.png" width="1500" height="2000">'
+  cooked '<img src="/uploads/default/2/3456789012345678.png" width="1500" height="2000">'
 end
 
 Fabricator(:post_with_an_attachment, from: :post) do
-  raw '<a class="attachment" href="/uploads/default/186/66b3ed1503efc936.zip">archive.zip</a>'
+  cooked '<a class="attachment" href="/uploads/default/186/66b3ed1503efc936.zip">archive.zip</a>'
 end
 
 Fabricator(:post_with_unsized_images, from: :post) do
-  raw '
+  cooked '
 <img src="http://foo.bar/image.png">
 <img src="/uploads/default/1/1234567890123456.jpg">
 '
 end
 
 Fabricator(:post_with_image_urls, from: :post) do
-  raw '
+  cooked '
 <img src="http://foo.bar/image.png">
 <img src="http://domain.com/picture.jpg" width="50" height="42">
 '
 end
 
 Fabricator(:post_with_large_image, from: :post) do
-  raw '<img src="/uploads/default/1/1234567890123456.jpg">'
+  cooked '<img src="/uploads/default/1/1234567890123456.jpg">'
 end
 
 Fabricator(:post_with_large_image_and_title, from: :post) do
-  raw '<img src="/uploads/default/1/1234567890123456.jpg" title="WAT">'
+  cooked '<img src="/uploads/default/1/1234567890123456.jpg" title="WAT">'
 end
 
 Fabricator(:post_with_uploads, from: :post) do
-  raw '
+  cooked '
 <a href="/uploads/default/2/2345678901234567.jpg">Link</a>
 <img src="/uploads/default/1/1234567890123456.jpg">
 '
 end
 
 Fabricator(:post_with_uploads_and_links, from: :post) do
-  raw '
+  cooked '
 <a href="/uploads/default/2/2345678901234567.jpg">Link</a>
 <img src="/uploads/default/1/1234567890123456.jpg">
 <a href="http://www.google.com">Google</a>

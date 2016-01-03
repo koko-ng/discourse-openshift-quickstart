@@ -10,14 +10,13 @@ module Email
 
     return false unless String === email
 
-    parsed = Mail::Address.new(email)
-
+    parser = Mail::RFC2822Parser.new
+    parser.root = :addr_spec
+    result = parser.parse(email)
 
     # Don't allow for a TLD by itself list (sam@localhost)
     # The Grammar is: (local_part "@" domain) / local_part ... need to discard latter
-    parsed.address == email && parsed.local != parsed.address && parsed.domain && parsed.domain.split(".").length > 1
-  rescue Mail::Field::ParseError
-    false
+    result && result.respond_to?(:domain) && result.domain.dot_atom_text.elements.size > 1
   end
 
   def self.downcase(email)

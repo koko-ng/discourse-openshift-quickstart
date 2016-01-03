@@ -57,7 +57,6 @@ class PostCreator
     opts[:title] = pg_clean_up(opts[:title]) if opts[:title] && opts[:title].include?("\u0000")
     opts[:raw] = pg_clean_up(opts[:raw]) if opts[:raw] && opts[:raw].include?("\u0000")
     opts.delete(:reply_to_post_number) unless opts[:topic_id]
-    @guardian = opts[:guardian] if opts[:guardian]
 
     @spam = false
   end
@@ -177,7 +176,7 @@ class PostCreator
     cooking_options = post.cooking_options || {}
     cooking_options[:topic_id] = post.topic_id
 
-    post.cooked ||= post.cook(post.raw, cooking_options.symbolize_keys)
+    post.cooked ||= post.cook(post.raw, cooking_options)
     post.sort_order = post.post_number
     post.last_version_at ||= Time.now
   end

@@ -74,10 +74,6 @@ module ApplicationHelper
     end
   end
 
-  def unescape_emoji(title)
-    PrettyText.unescape_emoji(title)
-  end
-
   def with_format(format, &block)
     old_formats = formats
     self.formats = [format]
@@ -122,8 +118,10 @@ module ApplicationHelper
 
   # Creates open graph and twitter card meta data
   def crawlable_meta_data(opts=nil)
+
     opts ||= {}
-    opts[:url] ||= "#{Discourse.base_url_no_prefix}#{request.fullpath}"
+    opts[:image] ||= "#{Discourse.base_url}#{SiteSetting.logo_small_url}"
+    opts[:url] ||= "#{Discourse.base_url}#{request.fullpath}"
 
     # Use the correct scheme for open graph
     if opts[:image].present? && opts[:image].start_with?("//")
@@ -132,19 +130,21 @@ module ApplicationHelper
     end
 
     # Add opengraph tags
-    result = []
-    result << tag(:meta, property: 'og:site_name', content: SiteSetting.title)
+    result =  tag(:meta, property: 'og:site_name', content: SiteSetting.title) << "\n"
+
     result << tag(:meta, name: 'twitter:card', content: "summary")
 
-    [:url, :title, :description, :image].each do |property|
+    # I removed image related opengraph tags from here for now due to
+    # https://meta.discourse.org/t/x/22744/18
+    [:url, :title, :description].each do |property|
       if opts[property].present?
         escape = (property != :image)
-        result << tag(:meta, { property: "og:#{property}", content: opts[property] }, nil, escape)
-        result << tag(:meta, { name: "twitter:#{property}", content: opts[property] }, nil, escape)
+        result << tag(:meta, {property: "og:#{property}", content: opts[property]}, nil, escape) << "\n"
+        result << tag(:meta, {name: "twitter:#{property}", content: opts[property]}, nil, escape) << "\n"
       end
     end
 
-    result.join("\n")
+    result
   end
 
   # Look up site content for a key. If the key is blank, you can supply a block and that

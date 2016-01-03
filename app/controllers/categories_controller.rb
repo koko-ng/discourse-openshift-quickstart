@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
 
   before_filter :ensure_logged_in, except: [:index, :show, :redirect]
   before_filter :fetch_category, only: [:show, :update, :destroy]
-  before_filter :initialize_staff_action_logger, only: [:create, :update, :destroy]
   skip_before_filter :check_xhr, only: [:index, :redirect]
 
   def redirect
@@ -82,18 +81,10 @@ class CategoriesController < ApplicationController
     position = category_params.delete(:position)
 
     @category = Category.create(category_params.merge(user: current_user))
+    return render_json_error(@category) unless @category.save
 
-    if @category.save
-      @category.move_to(position.to_i) if position
-
-      Scheduler::Defer.later "Log staff action create category" do
-        @staff_action_logger.log_category_creation(@category)
-      end
-
-      render_serialized(@category, CategorySerializer)
-    else
-      return render_json_error(@category) unless @category.save
-    end
+    @category.move_to(position.to_i) if position
+    render_serialized(@category, CategorySerializer)
   end
 
   def update
@@ -112,15 +103,8 @@ class CategoriesController < ApplicationController
       end
 
       category_params.delete(:position)
-      old_permissions = Category.find(@category.id).permissions_params
 
-      if result = cat.update_attributes(category_params)
-        Scheduler::Defer.later "Log staff action change category settings" do
-          @staff_action_logger.log_category_settings_change(@category, category_params, old_permissions)
-        end
-      end
-
-      result
+      cat.update_attributes(category_params)
     end
   end
 
@@ -148,10 +132,6 @@ class CategoriesController < ApplicationController
   def destroy
     guardian.ensure_can_delete!(@category)
     @category.destroy
-
-    Scheduler::Defer.later "Log staff action delete category" do
-      @staff_action_logger.log_category_deletion(@category)
-    end
 
     render json: success_json
   end
@@ -194,9 +174,5 @@ class CategoriesController < ApplicationController
 
     def fetch_category
       @category = Category.find_by(slug: params[:id]) || Category.find_by(id: params[:id].to_i)
-    end
-
-    def initialize_staff_action_logger
-      @staff_action_logger = StaffActionLogger.new(current_user)
     end
 end

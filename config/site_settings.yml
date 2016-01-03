@@ -164,16 +164,6 @@ basic:
   topics_per_period_in_top_page:
     default: 50
     min: 1
-  top_page_default_timeframe:
-    default: 'yearly'
-    type: enum
-    choices:
-      - all
-      - yearly
-      - quarterly
-      - monthly
-      - weekly
-      - daily
   category_featured_topics:
     client: true
     default: 3
@@ -590,10 +580,9 @@ files:
     client: true
     shadowed_by_global: true
   external_system_avatars_url:
-    default: "https://avatars.discourse.org/v2/letter/{first_letter}/{color}/{size}.png"
+    default: "https://avatars.discourse.org/letter/{first_letter}/{color}/{size}.png"
     client: true
     regex: '^https?:\/\/.+[^\/]'
-  default_opengraph_image_url: ''
 
 trust:
   default_trust_level:
@@ -606,9 +595,6 @@ trust:
     default: 0
     enum: 'TrustLevelSetting'
   min_trust_to_edit_wiki_post:
-    default: 1
-    enum: 'TrustLevelSetting'
-  min_trust_to_send_messages:
     default: 1
     enum: 'TrustLevelSetting'
   tl1_requires_topics_entered: 5
@@ -670,9 +656,6 @@ security:
   cors_origins:
     default: ''
     type: list
-  use_admin_ip_whitelist:
-    default: false
-    client: true
 
 onebox:
   enable_flash_video_onebox: false
@@ -778,7 +761,7 @@ developer:
   migrate_to_new_scheme:
     hidden: true
     default: false
-  max_new_topics:
+  max_tracked_new_unread:
     default: 500
     client: true
     hidden: true
@@ -873,7 +856,6 @@ uncategorized:
   previous_visit_timeout_hours: 1
   staff_like_weight: 3
   topic_view_duration_hours: 8
-  user_profile_view_duration_hours: 8
 
   # Summary mode
   summary_score_threshold: 15
@@ -995,6 +977,10 @@ uncategorized:
   privacy_topic_id:
     default: -1
     hidden: true
+
+  show_logout_in_header:
+    default: false
+    client: true
 
 user_preferences:
   default_email_digest_frequency:

@@ -66,14 +66,11 @@ describe Email::Sender do
 
     context "adds a List-ID header to identify the forum" do
       before do
-        category =  Fabricate(:category, name: 'Name With Space')
-        topic = Fabricate(:topic, category_id: category.id)
-        message.header['X-Discourse-Topic-Id'] = topic.id
+        message.header['X-Discourse-Topic-Id'] = 5577
       end
 
       When { email_sender.send }
       Then { expect(message.header['List-ID']).to be_present }
-      Then { expect(message.header['List-ID'].to_s).to match('name-with-space') }
     end
 
     context "adds a Message-ID header even when topic id is not present" do

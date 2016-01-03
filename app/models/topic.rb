@@ -5,7 +5,6 @@ require_dependency 'rate_limiter'
 require_dependency 'text_sentinel'
 require_dependency 'text_cleaner'
 require_dependency 'archetype'
-require_dependency 'html_prettify'
 
 class Topic < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
@@ -165,9 +164,6 @@ class Topic < ActiveRecord::Base
       cancel_auto_close_job
       ensure_topic_has_a_category
     end
-    if title_changed?
-      write_attribute :fancy_title, Topic.fancy_title(title)
-    end
   end
 
   after_save do
@@ -274,28 +270,17 @@ class Topic < ActiveRecord::Base
     apply_per_day_rate_limit_for("pms", :max_private_messages_per_day)
   end
 
-  def self.fancy_title(title)
-    escaped = ERB::Util.html_escape(title)
-    return unless escaped
-    HtmlPrettify.render(escaped)
-  end
-
   def fancy_title
-    return ERB::Util.html_escape(title) unless SiteSetting.title_fancy_entities?
+    sanitized_title = ERB::Util.html_escape(title)
 
-    unless fancy_title = read_attribute(:fancy_title)
+    return unless sanitized_title
+    return sanitized_title unless SiteSetting.title_fancy_entities?
 
-      fancy_title = Topic.fancy_title(title)
-      write_attribute(:fancy_title, fancy_title)
+    # We don't always have to require this, if fancy is disabled
+    # see: http://meta.discourse.org/t/pattern-for-defer-loading-gems-and-profiling-with-perftools-rb/4629
+    require 'redcarpet' unless defined? Redcarpet
 
-      unless new_record?
-        # make sure data is set in table, this also allows us to change algorithm
-        # by simply nulling this column
-        exec_sql("UPDATE topics SET fancy_title = :fancy_title where id = :id", id: self.id, fancy_title: fancy_title)
-      end
-    end
-
-    fancy_title
+    Redcarpet::Render::SmartyPants.render(sanitized_title)
   end
 
   def pending_posts_count
@@ -517,16 +502,18 @@ class Topic < ActiveRecord::Base
   def add_moderator_post(user, text, opts=nil)
     opts ||= {}
     new_post = nil
-    creator = PostCreator.new(user,
-                              raw: text,
-                              post_type: opts[:post_type] || Post.types[:moderator_action],
-                              action_code: opts[:action_code],
-                              no_bump: opts[:bump].blank?,
-                              skip_notifications: opts[:skip_notifications],
-                              topic_id: self.id,
-                              skip_validations: true)
-    new_post = creator.create
-    increment!(:moderator_posts_count) if new_post.persisted?
+    Topic.transaction do
+      creator = PostCreator.new(user,
+                                raw: text,
+                                post_type: opts[:post_type] || Post.types[:moderator_action],
+                                action_code: opts[:action_code],
+                                no_bump: opts[:bump].blank?,
+                                skip_notifications: opts[:skip_notifications],
+                                topic_id: self.id,
+                                skip_validations: true)
+      new_post = creator.create
+      increment!(:moderator_posts_count)
+    end
 
     if new_post.present?
       # If we are moving posts, we want to insert the moderator post where the previous posts were
@@ -714,7 +701,6 @@ class Topic < ActiveRecord::Base
   def title=(t)
     slug = Slug.for(t.to_s)
     write_attribute(:slug, slug)
-    write_attribute(:fancy_title, nil)
     write_attribute(:title,t)
   end
 
@@ -734,14 +720,10 @@ class Topic < ActiveRecord::Base
     self.class.url id, slug, post_number
   end
 
-  def self.relative_url(id, slug, post_number=nil)
+  def relative_url(post_number=nil)
     url = "#{Discourse.base_uri}/t/#{slug}/#{id}"
     url << "/#{post_number}" if post_number.to_i > 1
     url
-  end
-
-  def relative_url(post_number=nil)
-    Topic.relative_url(id, slug, post_number)
   end
 
   def unsubscribe_url
